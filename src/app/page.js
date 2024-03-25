@@ -1,13 +1,23 @@
 "use client";
 
 import "../styles/globals.scss";
-import CardParent from "@/components/CardParent";
+import { useState } from "react";
+import ReactCardFlip from "react-card-flip";
+import LandingScreen from "../components/LandingScreen";
+import MainScreen from "../components/MainScreen";
 
 export default function Home() {
+  const [flip, setFlip] = useState(false);
   return (
     <main>
-      <h1>Card Flip</h1>
-      <CardParent />
+      <ReactCardFlip
+        isFlipped={flip}
+        flipSpeedBackToFront={2}
+        flipSpeedFrontToBack={2}
+      >
+        <LandingScreen onFlip={() => setFlip(!flip)} />
+        <MainScreen onFlip={() => setFlip(!flip)} />
+      </ReactCardFlip>
     </main>
   );
 }
