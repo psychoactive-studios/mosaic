@@ -1,4 +1,16 @@
-import "./globals.css";
+import localFont from "next/font/local";
+import { Fira_Sans } from "next/font/google";
+
+const firaSans = Fira_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "800"],
+});
+
+const kefa = localFont({
+  src: "../../public/fonts/Kefa-Bold.woff2",
+  variable: "--font-kefa",
+  display: "block", // change to auto or swap if taking too long to load
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -7,7 +19,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${kefa.variable} ${firaSans.className}`}>
       <body>{children}</body>
     </html>
   );
