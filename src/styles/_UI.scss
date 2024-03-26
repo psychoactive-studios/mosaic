@@ -18,6 +18,20 @@
 .top-border-wrapper {
   position: absolute;
   top: 0;
+  height: 38px;
+  width: 100%;
+}
+
+.red-border {
+  background-image: url("/images/top-border_red.png");
+}
+
+.blue-border {
+  background-image: url("/images/top-border_blue.png");
+}
+
+.yellow-border {
+  background-image: url("/images/top-border_yellow.png");
 }
 
 // FOOTER

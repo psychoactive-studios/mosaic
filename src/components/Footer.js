@@ -1,6 +1,7 @@
 import React from "react";
 
 const Footer = ({ setModalState }) => {
+  console.log("footer rendered");
   return (
     <div className="footer-wrapper flex pointer">
       <div className="footer-item" onClick={() => setModalState("suggestions")}>

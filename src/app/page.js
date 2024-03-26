@@ -19,7 +19,9 @@ export default function Home() {
         flipSpeedFrontToBack={2}
       >
         <LandingScreen onFlip={() => setFlip(!flip)} />
-        <MainScreen modalState={modalState} setModalState={setModalState} />
+        {flip ? (
+          <MainScreen modalState={modalState} setModalState={setModalState} />
+        ) : null}
       </ReactCardFlip>
       <ModalWrapper modalState={modalState} setModalState={setModalState} />
     </main>

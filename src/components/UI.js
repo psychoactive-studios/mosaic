@@ -5,6 +5,7 @@ const UI = ({
   isShuffled,
   setModalState,
 }) => {
+  console.log("ui rendered");
   return (
     <div className="ui-wrapper">
       <div className="ui-inner left">
@@ -14,9 +15,9 @@ const UI = ({
         </div>
       </div>
       <div className="ui-inner right">
-        <div onClick={onPrevious}>Previous</div>
-        <div onClick={() => setModalState("pathways")}>Learning Pathways</div>
         <div onClick={onNext}>Next</div>
+        <div onClick={() => setModalState("pathways")}>Learning Pathways</div>
+        <div onClick={onPrevious}>Previous</div>
       </div>
     </div>
   );

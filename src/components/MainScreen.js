@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 import UI from "./UI";
-import cardData from "@/data/cardData";
+import { cardData, cardCategories } from "@/data/cardData";
 import { shuffleCards } from "@/utils/functions";
 import Footer from "./Footer";
 import TopBorder from "./TopBorder";
 
 const MainScreen = ({ modalState, setModalState }) => {
+  console.log("mainscreen rendered");
   const [isShuffled, setIsShuffled] = useState(true);
-  const [displayCards, setDisplayCards] = useState([]);
+  const [displayCards] = useState(shuffleCards(cardData));
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentCategory] = useState(cardCategories.red);
 
-  useEffect(() => {
-    // When isShuffled changes, update displayCards and reset currentIndex
-    setDisplayCards(isShuffled ? shuffleCards([...cardData]) : [...cardData]);
-    setCurrentIndex(0); // Reset to the first card whenever the shuffle state changes
-  }, [isShuffled]);
+  // useEffect(() => {
+  //   // When isShuffled changes, update displayCards and reset currentIndex
+  //   setDisplayCards(isShuffled ? shuffleCards([...cardData]) : [...cardData]);
+  //   setCurrentIndex(0); // Reset to the first card whenever the shuffle state changes
+  // }, [isShuffled]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % displayCards.length);
@@ -31,9 +33,13 @@ const MainScreen = ({ modalState, setModalState }) => {
     setIsShuffled(!isShuffled);
   };
 
+  // useEffect(() => {
+  //   setCurrentCategory(displayCards[currentIndex]?.category);
+  // }, [displayCards, currentIndex]);
+
   return (
     <div className="mainscreen-wrapper">
-      <TopBorder />
+      <TopBorder currentCategory={currentCategory} />
       <UI
         onNext={handleNext}
         onPrevious={handlePrevious}

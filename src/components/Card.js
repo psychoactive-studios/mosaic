@@ -1,7 +1,9 @@
 const Card = ({ card }) => {
+  console.log("card rendered");
   return (
     <div className="card-wrapper">
       <h2>{card.category}</h2>
+      <p>{card.id}</p>
       <h3>{card.title}</h3>
       {card.highlighted && (
         <p>

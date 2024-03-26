@@ -1,7 +1,13 @@
+const cardCategories = {
+  red: "MAPPING OPINIONS (STARTER QUESTIONS)",
+  blue: "SHIFTING ATTITUDES (COURAGEOUS CONVERSATIONS)",
+  yellow: "INTEGRATING COHESION (WHERE TO FROM HERE)",
+};
+
 const cardData = [
   {
     id: 1,
-    category: "MAPPING OPINIONS (STARTER QUESTIONS)",
+    category: cardCategories.red,
     title: "How do you describe your values and beliefs?",
     questions: [
       "What are you particularly passionate about?",
@@ -17,7 +23,7 @@ const cardData = [
   },
   {
     id: 2, // actually 13, just set to 2 for testing
-    category: "SHIFTING ATTITUDES (COURAGEOUS CONVERSATIONS)",
+    category: cardCategories.blue,
     title: "How do you define ‘banter'?",
     questions: [
       "What does good banter feel like?",
@@ -30,7 +36,7 @@ const cardData = [
   },
   {
     id: 3, // actually 30, just set to 3 for testing
-    category: "INTEGRATING COHESION (WHERE TO FROM HERE)",
+    category: cardCategories.yellow,
     title: "What kind of person do you want to be?",
     questions: [
       "What are the good things about you that you can celebrate?",
@@ -43,4 +49,4 @@ const cardData = [
   },
 ];
 
-export default cardData;
+export { cardData, cardCategories };
