@@ -1,10 +1,10 @@
-const AboutModal = ({ setModalState }) => {
+const PathwaysModal = ({ setModalState }) => {
   return (
     <div className="modal-inner">
-      About
+      Pathways
       <button onClick={() => setModalState("closed")}>x</button>
     </div>
   );
 };
 
-export default AboutModal;
+export default PathwaysModal;

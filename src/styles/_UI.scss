@@ -1,0 +1,39 @@
+// MAIN UI
+.ui-inner {
+  position: absolute;
+  div {
+    cursor: pointer;
+  }
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+// TOP BORDER
+.top-border-wrapper {
+  position: absolute;
+  top: 0;
+}
+
+// FOOTER
+.footer-wrapper {
+  gap: 1rem;
+  position: fixed;
+  bottom: $g1;
+  color: $mid-grey;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 1.2px;
+}
+.footer-item {
+  padding-right: 1rem;
+  border-right: 1.5px solid $mid-grey;
+  p {
+    line-height: 70%;
+  }
+}

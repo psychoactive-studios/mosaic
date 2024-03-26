@@ -1,0 +1,6 @@
+.mainscreen-wrapper {
+  height: 100vh;
+  width: 100%;
+  @include flex_centre;
+  flex-direction: column;
+}

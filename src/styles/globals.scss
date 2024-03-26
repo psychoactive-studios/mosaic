@@ -1,5 +1,4 @@
-@import "./variables", "./mixins", "./UI", "./preloader", "./modals",
-  "./cards";
+@import "./variables", "./mixins", "./UI", "./preloader", "./modals", "./cards";
 
 // CSS RESET
 * {
@@ -15,7 +14,6 @@ a {
 
 // GLOBAL ELEMENTS
 html {
-  // font-family: $adihaus;
   color: $black;
 }
 
@@ -35,4 +33,12 @@ h2 {
 
 h3 {
   font-size: 2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.pointer {
+  cursor: pointer;
 }

@@ -5,9 +5,12 @@ import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import LandingScreen from "../components/LandingScreen";
 import MainScreen from "../components/MainScreen";
+import ModalWrapper from "@/components/ModalWrapper";
 
 export default function Home() {
   const [flip, setFlip] = useState(false);
+  const [modalState, setModalState] = useState("closed");
+
   return (
     <main>
       <ReactCardFlip
@@ -16,8 +19,9 @@ export default function Home() {
         flipSpeedFrontToBack={2}
       >
         <LandingScreen onFlip={() => setFlip(!flip)} />
-        <MainScreen onFlip={() => setFlip(!flip)} />
+        <MainScreen modalState={modalState} setModalState={setModalState} />
       </ReactCardFlip>
+      <ModalWrapper modalState={modalState} setModalState={setModalState} />
     </main>
   );
 }

@@ -1,10 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
 
 const IntroLottie = ({ onFlip }) => {
   const container = useRef(null);
-  const animation = useRef(null); // Correctly using useRef to hold the animation instance
-  const isPausedOnFrame280 = useRef(false);
+  const animation = useRef(null);
+  const clickableRef = useRef(false);
+
+  const stillFrame = 275; // adjust to new timing on updated lottie if necessary
+  const [clickable, setClickable] = useState(false);
+
+  // update ref to new state if state is updated
+  useEffect(() => {
+    clickableRef.current = clickable;
+  }, [clickable]);
 
   useEffect(() => {
     animation.current = lottie.loadAnimation({
@@ -16,10 +24,9 @@ const IntroLottie = ({ onFlip }) => {
     });
 
     const handleEnterFrame = (e) => {
-      // Use the event parameter to access the current frame
-      if (e.currentTime >= 280 && !isPausedOnFrame280.current) {
+      if (e.currentTime >= stillFrame && !clickableRef.current) {
         animation.current.pause();
-        isPausedOnFrame280.current = true;
+        setClickable(true);
       }
     };
 
@@ -33,38 +40,25 @@ const IntroLottie = ({ onFlip }) => {
 
   useEffect(() => {
     const handleClick = () => {
-      if (isPausedOnFrame280.current) {
+      if (clickableRef.current) {
         animation.current.play();
+        setTimeout(() => {
+          onFlip();
+        }, 2000);
       }
     };
-
     container.current.addEventListener("click", handleClick);
-
     return () => {
       container.current.removeEventListener("click", handleClick);
     };
   }, []);
 
-  function handleEnterClick() {
-    setTimeout(() => {
-      onFlip();
-    }, 2000);
-  }
-
   return (
-    <>
-      {/* <div
-        className="lottie-clicker"
-        style={{ cursor: "pointer" }}
-        onClick={handleEnterClick}
-      ></div> */}
-      <div
-        ref={container}
-        className="lottie-container"
-        style={{ cursor: "pointer" }}
-        onClick={handleEnterClick}
-      ></div>
-    </>
+    <div
+      ref={container}
+      className="lottie-container"
+      style={clickable ? { cursor: "pointer" } : { cursor: "auto" }}
+    ></div>
   );
 };
 

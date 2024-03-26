@@ -1,9 +1,5 @@
-import React from 'react'
-
 const TopBorder = () => {
-  return (
-    <div>TopBorder</div>
-  )
-}
+  return <div className="top-border-wrapper">TopBorder</div>;
+};
 
-export default TopBorder
+export default TopBorder;

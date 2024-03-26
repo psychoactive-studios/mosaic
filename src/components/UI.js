@@ -1,16 +1,22 @@
-const UI = ({ onNext, onPrevious, onToggleShuffle, isShuffled }) => {
+const UI = ({
+  onNext,
+  onPrevious,
+  onToggleShuffle,
+  isShuffled,
+  setModalState,
+}) => {
   return (
     <div className="ui-wrapper">
       <div className="ui-inner left">
-        <button>Sound</button>
-        <button onClick={onToggleShuffle}>
+        <div className="">Sound</div>
+        <div onClick={onToggleShuffle}>
           {isShuffled ? "Unshuffle" : "Shuffle"}
-        </button>
+        </div>
       </div>
       <div className="ui-inner right">
-        <button onClick={onPrevious}>Previous</button>
-        <button>Learning Pathways</button>
-        <button onClick={onNext}>Next</button>
+        <div onClick={onPrevious}>Previous</div>
+        <div onClick={() => setModalState("pathways")}>Learning Pathways</div>
+        <div onClick={onNext}>Next</div>
       </div>
     </div>
   );
