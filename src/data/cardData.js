@@ -16,7 +16,7 @@ const cardData = [
     },
   },
   {
-    id: 13,
+    id: 2, // actually 13, just set to 2 for testing
     category: "SHIFTING ATTITUDES (COURAGEOUS CONVERSATIONS)",
     title: "How do you define ‘banter'?",
     questions: [
@@ -29,7 +29,7 @@ const cardData = [
     text: {},
   },
   {
-    id: 30,
+    id: 3, // actually 30, just set to 3 for testing
     category: "INTEGRATING COHESION (WHERE TO FROM HERE)",
     title: "What kind of person do you want to be?",
     questions: [

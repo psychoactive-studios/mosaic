@@ -1,25 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "./Card";
 import UI from "./UI";
-import cardData from "../data/cardData";
+import cardData from "@/data/cardData";
+import { shuffleCards } from "@/utils/functions";
+import Footer from "./Footer";
+import TopBorder from "./TopBorder";
 
 const MainScreen = () => {
+  const [isShuffled, setIsShuffled] = useState(true);
+  const [displayCards, setDisplayCards] = useState([]);
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    // When isShuffled changes, update displayCards and reset currentIndex
+    setDisplayCards(isShuffled ? shuffleCards([...cardData]) : [...cardData]);
+    setCurrentIndex(0); // Reset to the first card whenever the shuffle state changes
+  }, [isShuffled]);
+
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % cardData.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % displayCards.length);
   };
 
   const handlePrevious = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + cardData.length) % cardData.length
+      (prevIndex) => (prevIndex - 1 + displayCards.length) % displayCards.length
     );
   };
-
+  const toggleShuffle = () => {
+    setIsShuffled(!isShuffled);
+  };
   return (
-    <div>
-      <UI onNext={handleNext} onPrevious={handlePrevious} />
-      <Card card={cardData[currentIndex]} />
+    <div className="mainscreen-wrapper">
+      <TopBorder />
+      <UI
+        onNext={handleNext}
+        onPrevious={handlePrevious}
+        onToggleShuffle={toggleShuffle}
+        isShuffled={isShuffled}
+      />
+      {displayCards[currentIndex] ? (
+        <Card card={displayCards[currentIndex]} />
+      ) : null}
+      <Footer />
     </div>
   );
 };

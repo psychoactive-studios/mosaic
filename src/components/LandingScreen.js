@@ -2,7 +2,7 @@ import IntroLottie from "./IntroLottie";
 
 const LandingScreen = ({ onFlip }) => {
   return (
-    <div className="landingcard-wrapper">
+    <div className="landingscreen-wrapper">
       MOSAIC
       <br />
       <button onClick={onFlip}>ENTER</button>
