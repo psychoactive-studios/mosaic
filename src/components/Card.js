@@ -1,6 +1,6 @@
 const Card = ({ card }) => {
   return (
-    <div>
+    <div className="card-wrapper">
       <h2>{card.category}</h2>
       <h3>{card.title}</h3>
       {card.highlighted && (
