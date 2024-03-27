@@ -1,3 +1,5 @@
+import { cardCategories } from "@/data/cardData";
+
 const shuffleCards = (array) => {
   let currentIndex = array.length,
     randomIndex;
@@ -14,8 +16,20 @@ const shuffleCards = (array) => {
       array[currentIndex],
     ];
   }
-
   return array;
 };
 
-export { shuffleCards };
+const getCategoryColor = (currentCategory) => {
+  switch (currentCategory) {
+    case cardCategories.red:
+      return "red";
+    case cardCategories.blue:
+      return "blue";
+    case cardCategories.yellow:
+      return "yellow";
+    default:
+      return null;
+  }
+};
+
+export { shuffleCards, getCategoryColor };

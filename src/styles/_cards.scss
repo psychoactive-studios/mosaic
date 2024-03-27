@@ -1,6 +1,69 @@
-.mainscreen-wrapper {
+.mainscreen-wrapper,
+.landingscreen-wrapper {
   height: 100vh;
   width: 100%;
   @include flex_centre;
   flex-direction: column;
+}
+
+.card-padding {
+  padding: 0 $card-padding;
+}
+
+.card-wrapper {
+  width: $card-width;
+  max-width: $card-max-width;
+}
+
+.top-half {
+  background-color: $black;
+  color: white;
+}
+
+.card-category-wrapper {
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.card-category {
+  letter-spacing: 0.75px;
+  span {
+    font-weight: 500;
+    letter-spacing: 0.6px;
+  }
+}
+
+.card-border {
+  height: 68px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.card-id {
+  border-radius: 100%;
+  color: $black;
+  height: 26px;
+  width: 26px;
+  @include flex_centre;
+}
+
+.title-wrapper {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.question-wrapper {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+.additional-text-wrapper {
+  font-style: italic;
+  strong {
+    font-weight: 500;
+  }
 }

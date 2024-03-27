@@ -1,17 +1,22 @@
 // MAIN UI
 .ui-inner {
   position: absolute;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   div {
     cursor: pointer;
   }
 }
 
 .left {
-  left: 0;
+  left: $g1;
 }
 
 .right {
-  right: 0;
+  right: $g1;
 }
 
 // TOP BORDER
@@ -22,23 +27,11 @@
   width: 100%;
 }
 
-.red-border {
-  background-image: url("/images/top-border_red.png");
-}
-
-.blue-border {
-  background-image: url("/images/top-border_blue.png");
-}
-
-.yellow-border {
-  background-image: url("/images/top-border_yellow.png");
-}
-
 // FOOTER
 .footer-wrapper {
   gap: 1rem;
   position: fixed;
-  bottom: $g1;
+  bottom: $g1 / 2;
   color: $mid-grey;
   font-weight: 800;
   font-size: 0.75rem;

@@ -1,7 +1,19 @@
 const cardCategories = {
-  red: "MAPPING OPINIONS (STARTER QUESTIONS)",
-  blue: "SHIFTING ATTITUDES (COURAGEOUS CONVERSATIONS)",
-  yellow: "INTEGRATING COHESION (WHERE TO FROM HERE)",
+  red: (
+    <>
+      <span>MAPPING OPINIONS</span> (STARTER QUESTIONS)
+    </>
+  ),
+  blue: (
+    <>
+      <span>SHIFTING ATTITUDES</span> (COURAGEOUS CONVERSATIONS)
+    </>
+  ),
+  yellow: (
+    <>
+      <span>INTEGRATING COHESION</span> (WHERE TO FROM HERE)
+    </>
+  )
 };
 
 const cardData = [

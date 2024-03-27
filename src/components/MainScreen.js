@@ -1,23 +1,27 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 import UI from "./UI";
+import ReactCardFlip from "react-card-flip";
+import LandingScreen from "../components/LandingScreen";
 import { cardData, cardCategories } from "@/data/cardData";
-import { shuffleCards } from "@/utils/functions";
+import { getCategoryColor, shuffleCards } from "@/utils/functions";
 import Footer from "./Footer";
 import TopBorder from "./TopBorder";
 
 const MainScreen = ({ modalState, setModalState }) => {
   console.log("mainscreen rendered");
-  const [isShuffled, setIsShuffled] = useState(true);
-  const [displayCards] = useState(shuffleCards(cardData));
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentCategory] = useState(cardCategories.red);
+  const [flip, setFlip] = useState(false);
 
-  // useEffect(() => {
-  //   // When isShuffled changes, update displayCards and reset currentIndex
-  //   setDisplayCards(isShuffled ? shuffleCards([...cardData]) : [...cardData]);
-  //   setCurrentIndex(0); // Reset to the first card whenever the shuffle state changes
-  // }, [isShuffled]);
+  const [isShuffled, setIsShuffled] = useState(true);
+  const [displayCards, setDisplayCards] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentCategory, setCurrentCategory] = useState(cardCategories.red);
+
+  useEffect(() => {
+    // When isShuffled changes, update displayCards and reset currentIndex
+    setDisplayCards(isShuffled ? shuffleCards([...cardData]) : [...cardData]);
+    setCurrentIndex(0); // Reset to the first card whenever the shuffle state changes
+  }, [isShuffled]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % displayCards.length);
@@ -33,24 +37,38 @@ const MainScreen = ({ modalState, setModalState }) => {
     setIsShuffled(!isShuffled);
   };
 
-  // useEffect(() => {
-  //   setCurrentCategory(displayCards[currentIndex]?.category);
-  // }, [displayCards, currentIndex]);
+  useEffect(() => {
+    setCurrentCategory(displayCards[currentIndex]?.category);
+  }, [displayCards, currentIndex]);
 
   return (
-    <div className="mainscreen-wrapper">
-      <TopBorder currentCategory={currentCategory} />
-      <UI
-        onNext={handleNext}
-        onPrevious={handlePrevious}
-        onToggleShuffle={toggleShuffle}
-        isShuffled={isShuffled}
-        setModalState={setModalState}
-      />
-      {displayCards[currentIndex] ? (
-        <Card card={displayCards[currentIndex]} />
+    <div
+      className={`mainscreen-wrapper ${
+        flip ? getCategoryColor(currentCategory) : null
+      }-background-main`}
+    >
+      {flip ? <TopBorder currentCategory={currentCategory} /> : null}
+      {flip ? (
+        <UI
+          onNext={handleNext}
+          onPrevious={handlePrevious}
+          onToggleShuffle={toggleShuffle}
+          isShuffled={isShuffled}
+          setModalState={setModalState}
+          currentCategory={currentCategory}
+        />
       ) : null}
-      <Footer setModalState={setModalState} />
+      <ReactCardFlip
+        isFlipped={flip}
+        flipSpeedBackToFront={2}
+        flipSpeedFrontToBack={2}
+      >
+        <LandingScreen onFlip={() => setFlip(!flip)} />
+        {displayCards[currentIndex] ? (
+          <Card card={displayCards[currentIndex]} />
+        ) : null}
+      </ReactCardFlip>
+      {flip ? <Footer setModalState={setModalState} /> : null}
     </div>
   );
 };

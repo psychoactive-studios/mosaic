@@ -1,0 +1,63 @@
+.red-border {
+  background-image: url("/images/top-border_red.png");
+}
+.blue-border {
+  background-image: url("/images/top-border_blue.png");
+}
+.yellow-border {
+  background-image: url("/images/top-border_yellow.png");
+}
+.red-card-border {
+  background-image: url("/images/card-border_red.png");
+}
+.blue-card-border {
+  background-image: url("/images/card-border_blue.png");
+}
+.yellow-card-border {
+  background-image: url("/images/card-border_yellow.png");
+}
+.red-background-main {
+  background-color: #fff5f8;
+}
+.blue-background-main {
+  background-color: #f7ffff;
+}
+.yellow-background-main {
+  background-color: #fffef7;
+}
+.red-text-color {
+  color: $red;
+}
+.blue-text-color {
+  color: $blue;
+}
+.yellow-text-color {
+  color: $yellow;
+}
+.red-background-color {
+  background-color: $red;
+}
+.blue-background-color {
+  background-color: $blue;
+}
+.yellow-background-color {
+  background-color: $yellow;
+}
+.red-box-shadow {
+  box-shadow: 0.592px 30.328px 161px 0px rgba(201, 14, 68, 0.07),
+    0.3px 15.353px 70.186px 0px rgba(201, 14, 68, 0.03),
+    0.118px 6.066px 26.163px 0px rgba(201, 14, 68, 0.05),
+    0.026px 1.327px 9.308px 0px rgba(201, 14, 68, 0.07);
+}
+.blue-box-shadow {
+  box-shadow: 0.592px 30.328px 161px 0px rgba(0, 181, 175, 0.07),
+    0.3px 15.353px 70.186px 0px rgba(0, 181, 175, 0.03),
+    0.118px 6.066px 26.163px 0px rgba(0, 181, 175, 0.05),
+    0.026px 1.327px 9.308px 0px rgba(0, 181, 175, 0.07);
+}
+.yellow-box-shadow {
+  box-shadow: 0.592px 30.328px 161px 0px rgba(253, 185, 50, 0.07),
+    0.3px 15.353px 70.186px 0px rgba(253, 185, 50, 0.03),
+    0.118px 6.066px 26.163px 0px rgba(253, 185, 50, 0.05),
+    0.026px 1.327px 9.308px 0px rgba(253, 185, 50, 0.07);
+}

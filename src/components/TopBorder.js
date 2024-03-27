@@ -1,20 +1,11 @@
-import { cardCategories } from "@/data/cardData";
+import { getCategoryColor } from "@/utils/functions";
 
 const TopBorder = ({ currentCategory }) => {
-  // console.log(currentCategory);
-  const borderColor = () => {
-    switch (currentCategory) {
-      case cardCategories.red:
-        return "red-border";
-      case cardCategories.blue:
-        return "blue-border";
-      case cardCategories.yellow:
-        return "yellow-border";
-      default:
-        return null;
-    }
-  };
-  return <div className={`top-border-wrapper ${borderColor()}`}></div>;
+  return (
+    <div
+      className={`top-border-wrapper ${getCategoryColor(currentCategory)}-border`}
+    ></div>
+  );
 };
 
 export default TopBorder;
