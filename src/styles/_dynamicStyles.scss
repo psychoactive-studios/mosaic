@@ -16,6 +16,24 @@
 .yellow-card-border {
   background-image: url("/images/card-border_yellow.png");
 }
+.red-bullet-point {
+  background: url("/svgs/red-bullet.svg") no-repeat left 3px;
+}
+.blue-bullet-point {
+  background: url("/svgs/blue-bullet.svg") no-repeat left 3px;
+}
+.yellow-bullet-point {
+  background: url("/svgs/yellow-bullet.svg") no-repeat left 3px;
+}
+.red-frame {
+  background: url("/svgs/red-frame.svg") no-repeat left top;
+}
+.blue-frame {
+  background: url("/svgs/blue-frame.svg") no-repeat left top;
+}
+.yellow-frame {
+  background: url("/svgs/yellow-frame.svg") no-repeat left top;
+}
 .red-background-main {
   background-color: #fff5f8;
 }

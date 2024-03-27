@@ -1,5 +1,4 @@
-.mainscreen-wrapper,
-.landingscreen-wrapper {
+.mainscreen-wrapper {
   height: 100vh;
   width: 100%;
   @include flex_centre;
@@ -13,6 +12,9 @@
 .card-wrapper {
   width: $card-width;
   max-width: $card-max-width;
+  height: $card-height;
+  display: flex;
+  flex-direction: column;
 }
 
 .top-half {
@@ -50,20 +52,52 @@
 
 .title-wrapper {
   padding-top: 2rem;
-  padding-bottom: 3rem;
+  padding-bottom: 2.5rem;
+}
+
+.bottom-half {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2.5rem;
 }
 
 .question-wrapper {
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: 0.8px;
+
   padding-top: 2rem;
   padding-bottom: 1rem;
 }
 
-.additional-text-wrapper {
+.question-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  width: 100%;
+  background-size: cover;
+  // background-position: ;
+}
+
+.card-list-item {
+  padding-bottom: 0.75rem;
+  list-style-type: none;
+  padding: 0 0 0.75rem 2rem;
+  background-position: 50%;
+}
+
+.additional-question {
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.additional-text {
   font-style: italic;
   strong {
     font-weight: 500;
+  }
+  p {
+    padding-bottom: 0.5rem;
+    letter-spacing: 0.375px;
+    line-height: 130%;
   }
 }

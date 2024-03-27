@@ -31,15 +31,31 @@ const Card = ({ card }) => {
       </div>
       <div className="bottom-half">
         <div className="question-wrapper card-padding">
-          <ul>
+          <ul className="question-text">
             {card.questions.map((question, index) => (
-              <li key={index}>{question}</li>
+              <li
+                className={`card-list-item ${getCategoryColor(
+                  card.category
+                )}-bullet-point`}
+                key={index}
+              >
+                {question}
+              </li>
             ))}
           </ul>
         </div>
         <div className="additional-text-wrapper card-padding">
+          {card.highlighted && (
+            <div
+              className={`question-text additional-question ${getCategoryColor(
+                card.category
+              )}-frame`}
+            >
+              <p>{card.highlighted}</p>
+            </div>
+          )}
           {card.text && Object.keys(card.text).length > 0 && (
-            <div>
+            <div className="additional-text">
               <p>
                 <strong>Values:</strong> {card.text.values}
               </p>
@@ -50,30 +66,6 @@ const Card = ({ card }) => {
           )}
         </div>
       </div>
-      {/*       
-      <h2>{card.category}</h2>
-      <p>{card.id}</p>
-
-      {card.highlighted && (
-        <p>
-          <strong>Highlighted:</strong> {card.highlighted}
-        </p>
-      )}
-      <ul>
-        {card.questions.map((question, index) => (
-          <li key={index}>{question}</li>
-        ))}
-      </ul>
-      {card.text && Object.keys(card.text).length > 0 && (
-        <div>
-          <p>
-            <strong>Values:</strong> {card.text.values}
-          </p>
-          <p>
-            <strong>Beliefs:</strong> {card.text.beliefs}
-          </p>
-        </div>
-      )} */}
     </div>
   );
 };
