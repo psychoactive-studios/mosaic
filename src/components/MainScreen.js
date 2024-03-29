@@ -47,28 +47,30 @@ const MainScreen = ({ modalState, setModalState }) => {
         flip ? getCategoryColor(currentCategory) : null
       }-background-main`}
     >
-      {flip ? <TopBorder currentCategory={currentCategory} /> : null}
-      {flip ? (
-        <UI
-          onNext={handleNext}
-          onPrevious={handlePrevious}
-          onToggleShuffle={toggleShuffle}
-          isShuffled={isShuffled}
-          setModalState={setModalState}
-          currentCategory={currentCategory}
-        />
-      ) : null}
-      <ReactCardFlip
+      {/* {flip ? ( */}
+        <>
+          <TopBorder currentCategory={currentCategory} />
+          <UI
+            onNext={handleNext}
+            onPrevious={handlePrevious}
+            onToggleShuffle={toggleShuffle}
+            isShuffled={isShuffled}
+            setModalState={setModalState}
+            currentCategory={currentCategory}
+          />
+          <Footer setModalState={setModalState} />
+        </>
+      {/* ) : null} */}
+      {/* <ReactCardFlip
         isFlipped={flip}
         flipSpeedBackToFront={2}
         flipSpeedFrontToBack={2}
       >
-        <LandingScreen onFlip={() => setFlip(!flip)} />
+        <LandingScreen onFlip={() => setFlip(!flip)} /> */}
         {displayCards[currentIndex] ? (
           <Card card={displayCards[currentIndex]} />
         ) : null}
-      </ReactCardFlip>
-      {flip ? <Footer setModalState={setModalState} /> : null}
+      {/* </ReactCardFlip> */}
     </div>
   );
 };

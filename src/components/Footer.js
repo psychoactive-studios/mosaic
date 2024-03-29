@@ -13,7 +13,7 @@ const Footer = ({ setModalState }) => {
       <div className="footer-item" onClick={() => setModalState("share")}>
         <p>SHARE</p>
       </div>
-      <div className="footer-item" onClick={() => setModalState("about")}>
+      <div className="footer-item">
         <a
           href="https://arataiohi.org.nz/publications/mosaic-cards/"
           target="_blank"

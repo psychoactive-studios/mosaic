@@ -1,0 +1,49 @@
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  @include flex_centre;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.no-mb {
+  margin-bottom: 0 !important;
+}
+
+.mb-small {
+  margin-bottom: 0.5rem !important;
+}
+
+.mb-medium {
+  margin-bottom: 1rem !important;
+}
+
+.mb-large {
+  margin-bottom: 2rem !important;
+}
+
+.hide {
+  display: none;
+}
+
+.light-text {
+  color: $dark-grey;
+  opacity: 0.8;
+}
+
+.small-font {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.no-deco {
+  text-decoration: none;
+}

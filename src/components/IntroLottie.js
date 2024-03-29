@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
+import { lottieData } from "@/data/lottieData";
 
 const IntroLottie = ({ onFlip }) => {
   const container = useRef(null);
@@ -20,7 +21,7 @@ const IntroLottie = ({ onFlip }) => {
       renderer: "svg",
       loop: false,
       autoplay: true,
-      path: "lotties/MOSAIC_export_test_v01.json",
+      path: lottieData.preloader,
     });
 
     const handleEnterFrame = (e) => {

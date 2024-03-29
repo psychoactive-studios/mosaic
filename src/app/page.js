@@ -11,7 +11,9 @@ export default function Home() {
   return (
     <main>
       <MainScreen modalState={modalState} setModalState={setModalState} />
-      <ModalWrapper modalState={modalState} setModalState={setModalState} />
+      {modalState != "closed" ? (
+        <ModalWrapper modalState={modalState} setModalState={setModalState} />
+      ) : null}
     </main>
   );
 }
