@@ -35,7 +35,7 @@ const DownloadModal = ({ modalState, isClosing, handleClose }) => {
             >
               <PrimaryCTA text={"Download Mosaic"} icon={"download"} />
             </a>
-            <p className="small-font light-text">(PDF, 5.6MB)</p>
+            <p className="small-font light-text no-mb">(PDF, 5.6MB)</p>
           </div>
         </div>
       </animated.div>

@@ -81,14 +81,15 @@ const AboutModal = ({ modalState, isClosing, handleClose }) => {
             </p>
             <p>
               Both of these can be viewed at
-              <a target="_blank" href="www.arataiohi.org.nz">
+              <br />
+              <a target="_blank" href="https://www.arataiohi.org.nz">
                 www.arataiohi.org.nz
               </a>
             </p>
           </div>
-          <div className="modal-footer">
+          <div className="modal-footer flex">
             <div className="modal-footer-inner left-footer">
-              <p className="medium">
+              <p className="medium align-left">
                 The following organisations have contributed to the development
                 of these cards.
               </p>
@@ -111,7 +112,7 @@ const AboutModal = ({ modalState, isClosing, handleClose }) => {
               </div>
             </div>
             <div className="modal-footer-inner right-footer">
-              <p className="footer-icon-text">
+              <p className="footer-icon-text align-left">
                 Enabled by a grant from the Preventing and Countering Violent
                 Extremism fund and the Clare foundation
               </p>

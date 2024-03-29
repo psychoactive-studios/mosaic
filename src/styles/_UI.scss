@@ -37,6 +37,80 @@
   }
 }
 
+// ICONS
+.social-share-wrapper {
+  justify-content: center;
+}
+.social-share-item {
+  @include flex_centre;
+  flex-direction: column;
+  p {
+    text-transform: capitalize;
+  }
+}
+
+.social-share-icon {
+  background-color: $subtle-grey;
+  padding: 1rem;
+  border-radius: 100%;
+  width: 56px;
+  height: 56px;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// FORM / INPUTS
+.copy-link-wrapper {
+  background-color: $subtle-grey;
+  color: $dark-grey;
+  opacity: 0.8;
+  padding: 1.125rem 0.75rem;
+  gap: 1rem;
+}
+
+// SVG hovers
+.copy-link-wrapper:hover #content_copy {
+  fill: $dark-grey;
+  transition: fill 0.2s;
+}
+
+#content_copy {
+  fill: $grey;
+  transition: fill 0.2s;
+}
+
+.copy-link-wrapper:hover p {
+  font-weight: 500;
+}
+
+#fb-icon,
+#x-icon,
+#reddit-icon,
+#discord-icon {
+  fill: $black;
+  // transition: fill 0.2s;
+}
+
+.social-share-item:hover #fb-icon,
+.social-share-item:hover #x-icon,
+.social-share-item:hover #reddit-icon,
+.social-share-item:hover #discord-icon {
+  fill: $subtle-grey;
+  // transition: fill 0.2s;
+}
+
+.social-share-item:hover .social-share-icon {
+  background-color: $dark-grey;
+  transition: fill 0.4s;
+}
+
+.social-share-item:hover p {
+  text-decoration: underline;
+  transition: fill 0.4s;
+}
+
 // MODALS
 .close-btn {
   width: 100%;
@@ -75,4 +149,7 @@
   p {
     line-height: 70%;
   }
+}
+.footer-icon {
+  // height: 14px;
 }

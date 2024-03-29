@@ -32,9 +32,18 @@
   padding: 0 2rem 8rem 2rem;
 }
 
+.modal-inner-small,
+.modal-inner-medium {
+  padding: 0 2rem 3rem 2rem;
+}
+
 .modal-inner-small {
-  padding: 0 2rem 1.5rem 2rem;
   max-width: 27rem;
+}
+
+.modal-inner-medium {
+  max-width: unset;
+  width: 32rem;
 }
 
 .modal-text-block {
@@ -51,7 +60,11 @@
   }
 }
 
-.modal-footer {
+.social-share-wrapper {
+  gap: 2rem;
+}
+
+.modal-footer x {
   text-align: left;
   display: flex;
   padding-top: 1rem;

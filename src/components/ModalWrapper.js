@@ -52,6 +52,19 @@ const ModalWrapper = ({ modalState, setModalState }) => {
     }, closeDelay);
   };
 
+  // close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        handleClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [handleClose]);
+
   return (
     <animated.div
       className={`modal-outer-wrapper ${isSmallModal ? "flex-center" : ""}`}

@@ -65,7 +65,7 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
               cultures, views and opinions we have around us.
             </p>
           </div>
-          <div className="modal-text-block">
+          <div className="modal-text-block no-mb">
             <h2>Suggestions</h2>
             <p className="medium no-mb">
               When using the cards, we encourage you to:
