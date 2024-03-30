@@ -146,10 +146,21 @@
 .footer-item {
   padding-right: 1rem;
   border-right: 1.5px solid $mid-grey;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
   p {
     line-height: 70%;
   }
 }
-.footer-icon {
-  // height: 14px;
+
+.download-footer svg {
+  height: 10.5px;
 }
+
+.footer-download-svg {
+  stroke: #727272;
+}
+
+

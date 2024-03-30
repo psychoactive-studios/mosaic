@@ -94,4 +94,29 @@ export const svgData = {
       </defs>
     </svg>
   ),
+  download: (
+    <svg
+      width="8"
+      height="11"
+      viewBox="0 0 8 11"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        className="footer-download-svg"
+        d="M6.52974 4.19678L3.56249 7.16421L0.593605 4.19678"
+        stroke-width="1.4"
+      />
+      <path
+        className="footer-download-svg"
+        d="M0 9.53809H7.12167"
+        stroke-width="1.4"
+      />
+      <path
+        className="footer-download-svg"
+        d="M3.56055 6.37257V0.833496"
+        stroke-width="1.4"
+      />
+    </svg>
+  ),
 };

@@ -1,0 +1,98 @@
+export const pathwaysData = [
+  {
+    id: 1,
+    title: "Discrimination",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 2,
+    title: "Empathy",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 3,
+    title: "Inclusion",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 4,
+    title: "Resilience",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 5,
+    title: "Healing",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 6,
+    title: "Awareness",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 7,
+    title: "Equality",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 8,
+    title: "Support",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 9,
+    title: "Unity",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 10,
+    title: "Courage",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 11,
+    title: "Acceptance",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 12,
+    title: "Justice",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 13,
+    title: "Solidarity",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 14,
+    title: "Compassion",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 15,
+    title: "Dialogue",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+  {
+    id: 16,
+    title: "Peace",
+    thumbnail: "images/pathway_thumbnails/placeholder.png",
+    pdf: "pdfs/pathway_pdfs/placeholder.pdf",
+  },
+];

@@ -64,6 +64,24 @@
 .yellow-background-color {
   background-color: $yellow;
 }
+.download-footer:hover .download-footer-red {
+  color: $red;
+}
+.download-footer:hover .download-footer-blue {
+  color: $blue;
+}
+.download-footer:hover .download-footer-yellow {
+  color: $yellow;
+}
+.download-footer-red:hover .footer-download-svg {
+  stroke: $red;
+}
+.download-footer-blue:hover .footer-download-svg {
+  stroke: $blue;
+}
+.download-footer-yellow:hover .footer-download-svg {
+  stroke: $yellow;
+}
 .red-box-shadow {
   box-shadow: 0.592px 30.328px 161px 0px rgba(201, 14, 68, 0.07),
     0.3px 15.353px 70.186px 0px rgba(201, 14, 68, 0.03),
