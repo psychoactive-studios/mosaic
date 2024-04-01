@@ -38,5 +38,12 @@ export default {
       type: "boolean",
       initialValue: false,
     },
+    {
+      name: "isApproved",
+      title: "Approved",
+      type: "boolean",
+      description: "Comments will only appear on the site once approved.",
+      initialValue: false,
+    },
   ],
 };

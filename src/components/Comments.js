@@ -6,7 +6,7 @@ const Comments = () => {
 
   useEffect(() => {
     const fetchComments = async () => {
-      const query = `*[_type == "comment"]{
+      const query = `*[_type == "comment" && isApproved == true]{
         _id,
         comment,
         fullName,
