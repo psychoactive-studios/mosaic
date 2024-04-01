@@ -2,14 +2,12 @@ import sendgrid from "@sendgrid/mail";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-export default async function handler(req, res) {
+export async function POST(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ message: req });
+    return res.status(405).json({ message: req.body });
   }
 
-  // Perform any necessary validation or checks here
-
-  const { _id, _type, comment, email, fullName, approvalStatus } = req.body;
+  const { _type, comment, email, fullName, approvalStatus } = req.body;
 
   if (_type === "comment" && approvalStatus === true) {
     const message = {
