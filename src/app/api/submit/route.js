@@ -1,4 +1,3 @@
-// app/api/submit/route.ts
 import { client } from "@/../../sanity/lib/client";
 
 export async function POST(request) {
@@ -6,7 +5,7 @@ export async function POST(request) {
     const doc = await request.json();
     await client.create(doc);
     return new Response(
-      JSON.stringify({ message: "Comment submitted successfully" }),
+      JSON.stringify({ message: "Comment successfully submitted" }),
       {
         status: 200,
         headers: {

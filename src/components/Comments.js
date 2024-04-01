@@ -21,7 +21,7 @@ const Comments = () => {
     };
 
     fetchComments();
-  }, []); // Effect runs on component mount
+  }, []);
 
   return (
     <div>
