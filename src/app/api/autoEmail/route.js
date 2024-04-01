@@ -34,10 +34,5 @@ export async function POST(req) {
         }
       );
     }
-  } else {
-    return new Response(JSON.stringify({ message: "No action needed" }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
   }
 }
