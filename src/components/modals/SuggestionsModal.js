@@ -1,6 +1,6 @@
 import { useSpring, animated, config } from "@react-spring/web";
 import CloseBtn from "../ui/CloseBtn";
-import { pageSlideConfig } from "@/configs/springConfigs";
+import { usePageSlideConfig } from "@/configs/springConfigs";
 import PrimaryCTA from "../ui/PrimaryCTA";
 
 const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
@@ -10,7 +10,7 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
     to: { transform: "translateY(100%)" },
   }));
 
-  pageSlideConfig("suggestions", modalState, isClosing, api);
+  usePageSlideConfig("pathways", modalState, isClosing, api);
 
   return (
     <>

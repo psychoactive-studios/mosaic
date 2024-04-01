@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const pageSlideConfig = (modal, modalState, isClosing, api) => {
+export const usePageSlideConfig = (modal, modalState, isClosing, api) => {
   useEffect(() => {
     api.start({
       transform: modalState === modal ? "translateY(0%)" : "translateY(100%)",
@@ -14,7 +14,7 @@ const pageSlideConfig = (modal, modalState, isClosing, api) => {
   }, [isClosing, api]);
 };
 
-const pageFadeConfig = (modal, modalState, isClosing, api) => {
+export const usePageFadeConfig = (modal, modalState, isClosing, api) => {
   useEffect(() => {
     api.start({
       opacity: modalState === modal ? 1 : 0,
@@ -27,5 +27,3 @@ const pageFadeConfig = (modal, modalState, isClosing, api) => {
     });
   }, [isClosing, api]);
 };
-
-export { pageSlideConfig, pageFadeConfig };
