@@ -9,7 +9,6 @@ import Footer from "./Footer";
 import TopBorder from "./TopBorder";
 
 const MainScreen = ({ modalState, setModalState }) => {
-  console.log("mainscreen rendered");
   const [flip, setFlip] = useState(false);
 
   const [isShuffled, setIsShuffled] = useState(true);

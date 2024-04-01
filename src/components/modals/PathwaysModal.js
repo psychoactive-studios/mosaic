@@ -3,6 +3,8 @@ import CloseBtn from "../ui/CloseBtn";
 import { pageSlideConfig } from "@/configs/springConfigs";
 import PathwayItem from "../ui/PathwayItem";
 import { pathwaysData } from "@/data/pathwaysData";
+import CommentForm from "../CommentForm";
+import Comments from "../Comments";
 
 const PathwaysModal = ({ modalState, isClosing, handleClose }) => {
   const [pageSlide, api] = useSpring(() => ({
@@ -23,7 +25,7 @@ const PathwaysModal = ({ modalState, isClosing, handleClose }) => {
           <div className="close-btn">
             <CloseBtn handleClose={handleClose} />
           </div>
-          <div className="modal-text-block">
+          <div className="modal-text-block mb-large">
             <h1>Learning Pathways</h1>
             <p>
               Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -31,7 +33,7 @@ const PathwaysModal = ({ modalState, isClosing, handleClose }) => {
               dolor sit amet, consectetur adipiscing elit.{" "}
             </p>
           </div>
-          <div className="pathways-wrapper flex">
+          <div className="pathways-wrapper flex mb-large">
             {pathwaysData.map((item) => (
               <PathwayItem
                 key={item.id}
@@ -40,6 +42,11 @@ const PathwaysModal = ({ modalState, isClosing, handleClose }) => {
                 pdf={item.pdf}
               />
             ))}
+          </div>
+          <div className="comments-wrapper">
+            <h2>Comments</h2>
+            <CommentForm />
+            <Comments />
           </div>
         </div>
       </animated.div>

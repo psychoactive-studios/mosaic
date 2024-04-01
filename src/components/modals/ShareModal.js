@@ -35,7 +35,7 @@ const ShareModal = ({ modalState, isClosing, handleClose }) => {
               <ShareIcon platform={"facebook"} />
               <ShareIcon platform={"x"} />
               <ShareIcon platform={"reddit"} />
-              <ShareIcon platform={"discord"} />
+              {/* <ShareIcon platform={"discord"} /> */}
             </div>
             <p className="medium align-left mb-small">Page Link</p>
             <div

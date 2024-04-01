@@ -105,17 +105,17 @@ export const svgData = {
       <path
         className="footer-download-svg"
         d="M6.52974 4.19678L3.56249 7.16421L0.593605 4.19678"
-        stroke-width="1.4"
+        strokeWidth="1.4"
       />
       <path
         className="footer-download-svg"
         d="M0 9.53809H7.12167"
-        stroke-width="1.4"
+        strokeWidth="1.4"
       />
       <path
         className="footer-download-svg"
         d="M3.56055 6.37257V0.833496"
-        stroke-width="1.4"
+        strokeWidth="1.4"
       />
     </svg>
   ),
