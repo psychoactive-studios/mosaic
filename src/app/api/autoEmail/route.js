@@ -7,7 +7,7 @@ export default async (req, res) => {
 
   const message = {
     to: comment.email,
-    from: "admin@arataiohi.org.nz",
+    from: "josh@psychoactive.co.nz", // change to ara taiohi later
     subject: "Your comment on Mosaic Cards has been approved!",
     text: `Hello ${comment.fullName}, we are just lettting you know that your comment has been approved. Thank you for contributing!`,
   };
