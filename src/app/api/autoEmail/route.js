@@ -2,12 +2,8 @@ import sendgrid from "@sendgrid/mail";
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-export async function POST(req, res) {
-  if (req.method !== "POST") {
-    return res.status(200).json({ message: "POST request received" });
-  }
-
-  const { _type, comment, email, fullName, approvalStatus } = req.body;
+export async function POST(req) {
+  const { _type, comment, email, fullName, approvalStatus } = await req.json();
 
   if (_type === "comment" && approvalStatus === true) {
     const message = {
@@ -16,18 +12,32 @@ export async function POST(req, res) {
       subject: "Your comment on Mosaic Cards has been approved!",
       text: `Hello ${fullName}, we are just lettting you know that your comment: "${comment}" has been approved. Thank you for contributing!`,
     };
-
     try {
       await sendgrid.send(message);
-      res.status(200).json({ message: "Email sent successfully" });
+      return new Response(
+        JSON.stringify({ message: "Email sent successfully" }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     } catch (error) {
       console.error(error);
-      if (error.response) {
-        console.error(error.response.body);
-      }
-      return res.status(500).json({ error: "Failed to send email" });
+      return new Response(
+        JSON.stringify({
+          error: "Failed to send email",
+          details: error.toString(),
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
     }
   } else {
-    res.status(200).json({ message: "No action needed" });
+    return new Response(JSON.stringify({ message: "No action needed" }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
