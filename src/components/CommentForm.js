@@ -127,6 +127,7 @@ const CommentForm = () => {
               </option>
               {pathwaysData.map((item) => (
                 <option
+                  key={item.id}
                   value={`Mosaic Pathway on ${item.title}`}
                 >{`Mosaic Pathway on ${item.title}`}</option>
               ))}
