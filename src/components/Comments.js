@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { client } from "../../sanity/lib/client";
+import { getInitials, getTimeFromNow } from "@/utils/functions";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
@@ -16,7 +17,11 @@ const Comments = () => {
         anonymous,
         _createdAt
       }`;
-      const comments = await client.fetch(query);
+      let comments = await client.fetch(query);
+      comments = comments.sort(
+        (a, b) => new Date(b._createdAt) - new Date(a._createdAt)
+      );
+
       setComments(comments);
     };
 
@@ -24,14 +29,33 @@ const Comments = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Comments</h2>
+    <div className="comments-wrapper">
       {comments.length > 0 ? (
         comments.map((comment) => (
-          <div key={comment._id}>
-            <p>{comment.comment}</p>
-            <p>By: {comment.anonymous ? "Anonymous" : comment.fullName}</p>
-            {/* Display other fields as needed */}
+          <div className="comment flex" key={comment._id}>
+            <div>
+              <div className="initials">
+                <p className="medium">
+                  {comment.anonymous ? "AN" : getInitials(comment.fullName)}
+                </p>
+              </div>
+            </div>
+            <div className="comment-body">
+              <div className="comment-top-half flex">
+                <p className="medium">
+                  {comment.anonymous ? "Anonymous" : comment.fullName}
+                </p>
+                <p
+                  className="small-font"
+                  style={{ textTransform: "lowercase" }}
+                >
+                  {getTimeFromNow(comment._createdAt)} · {comment.pathway}
+                </p>
+              </div>
+              <div className="comment-bottom-half align-left">
+                <p>{comment.comment}</p>
+              </div>
+            </div>
           </div>
         ))
       ) : (

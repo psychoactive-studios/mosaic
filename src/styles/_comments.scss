@@ -1,0 +1,111 @@
+// COMMENT FORM
+.comment-form-wrapper {
+  margin-bottom: 4rem;
+  padding-top: 1.5rem;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.comment-form input,
+.comment-form textarea,
+.comment-form select {
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  background-color: $subtle-grey;
+  border: none;
+  border-bottom: 2px solid $grey;
+  font-family: var(--firaSans-font-family);
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus,
+.comment-form select:focus {
+  outline: none !important;
+  border-bottom: 2px solid $dark-grey !important;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-label,
+select {
+  color: $dark-grey;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+.comment-form option {
+  background-color: $subtle-grey;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  background-color: $subtle-grey;
+  border: none;
+  border-bottom: 2px solid $grey;
+  font-family: var(--firaSans-font-family);
+}
+
+.anonymous-checkbox-wrapper input {
+  width: unset;
+  margin-left: 1rem;
+}
+
+.form-closing-wrapper {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  font-size: 14px;
+  color: $dark-grey;
+}
+
+.submit-btn {
+  background-color: $yellow;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  font-family: var(--firaSans-font-family);
+}
+
+.success-msg {
+  color: $blue;
+  text-align: right;
+}
+
+// COMMENTS
+.comment {
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.initials {
+  height: 2.25rem;
+  width: 2.25rem;
+  border: 2px solid $blue;
+  border-radius: 100%;
+  @include flex_centre;
+}
+
+.comment-body {
+  flex-basis: fit-content;
+}
+
+.comment-top-half {
+  gap: 0.75rem;
+  color: $dark-grey;
+  align-items: center;
+  text-transform: capitalize;
+  p {
+    margin-bottom: 0.375rem;
+    line-height: normal;
+  }
+}

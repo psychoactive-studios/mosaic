@@ -1,4 +1,7 @@
 import { getCategoryColor } from "@/utils/functions";
+import { lottieData } from "@/data/lottieData";
+import NextBtn from "./ui/NextBtn";
+import LottieBtn from "./ui/LottieBtn";
 
 const UI = ({
   onNext,
@@ -18,7 +21,7 @@ const UI = ({
       </div>
       <div className="ui-inner right">
         <div className="ui-item" onClick={onNext}>
-          Next
+          <LottieBtn lottiePath={lottieData.next} />
         </div>
         <div
           className={`ui-item ${getCategoryColor(
