@@ -20,6 +20,9 @@
 .top-half {
   background-color: $black;
   color: white;
+  min-height: 324px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-category-wrapper {
@@ -53,6 +56,9 @@
 .title-wrapper {
   padding-top: 2rem;
   padding-bottom: 2.5rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 }
 
 .bottom-half {
@@ -64,7 +70,6 @@
 }
 
 .question-wrapper {
-
   padding-top: 2rem;
   padding-bottom: 1rem;
 }
@@ -75,7 +80,6 @@
   letter-spacing: 0.8px;
   width: 100%;
   background-size: cover;
-  // background-position: ;
 }
 
 .card-list-item {
@@ -90,6 +94,10 @@
   padding: 1rem 2rem;
 }
 
+.additional-text-wrapper {
+  display: flex;
+}
+
 .additional-text {
   font-style: italic;
   strong {
@@ -100,4 +108,10 @@
     letter-spacing: 0.375px;
     line-height: 130%;
   }
+}
+
+.question-column {
+  columns: 2; /* This creates 2 columns */
+  -webkit-columns: 2; /* For Safari and older Chrome browsers */
+  -moz-columns: 2; /* For Firefox */
 }

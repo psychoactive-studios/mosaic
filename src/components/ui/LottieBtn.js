@@ -1,11 +1,18 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
 
 const LottieBtn = ({ lottiePath }) => {
   const container = useRef(null);
-  const animation = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [reRender, setReRender] = useState(false);
+  const [initialMount, setInitialMount] = useState(false);
+
+  const enterFrame = 1;
+  const holdFrame = 20;
+  const endFrame = 70;
+
   useEffect(() => {
-    animation.current = lottie.loadAnimation({
+    const animation = lottie.loadAnimation({
       container: container.current,
       renderer: "svg",
       loop: false,
@@ -13,25 +20,51 @@ const LottieBtn = ({ lottiePath }) => {
       path: lottiePath,
     });
 
-    animation.current.stop();
-
-    // Hover play animation
-    // const handleMouseEnter = () => animation.current.play();
-    const handleMouseEnter = () =>
-      animation.current.playSegments([25, 130], true); // Play specific segments
-    const handleMouseLeave = () => animation.current.stop();
-
-    const animContainer = container.current;
-    animContainer.addEventListener("mouseenter", handleMouseEnter);
-    animContainer.addEventListener("mouseleave", handleMouseLeave);
+    container.current.animation = animation;
 
     return () => {
-      animContainer.removeEventListener("mouseenter", handleMouseEnter);
-      animContainer.removeEventListener("mouseleave", handleMouseLeave);
-      animation.current.destroy();
+      animation.destroy();
     };
   }, [lottiePath]);
-  return <div className="ui-lottie-container" ref={container}></div>;
-};
 
-export default LottieBtn;
+  useEffect(() => {
+    if (!container.current.animation) return;
+
+    if (isHovered) {
+      container.current.animation.playSegments([enterFrame, holdFrame], true);
+      setInitialMount(true);
+    }
+    if (!isHovered && initialMount) {
+      container.current.animation.playSegments([holdFrame, enterFrame], true);
+    }
+  }, [isHovered]);
+
+  useEffect(() => {
+    if (isHovered) {
+      container.current.animation.playSegments([enterFrame, holdFrame], true);
+      setReRender(false);
+    }
+  });
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+
+  const handleClick = () => {
+    if (!container.current.animation) return;
+    container.current.animation.playSegments([holdFrame, endFrame], true);
+    setTimeout(() => {
+      setReRender(true);
+    }, 650);
+  };
+
+  return (
+    <div
+      className="ui-lottie-container"
+      ref={container}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+    ></div>
+  );
+};
+export default React.memo(LottieBtn);

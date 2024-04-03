@@ -10,23 +10,42 @@ import TopBorder from "./TopBorder";
 
 const MainScreen = ({ modalState, setModalState }) => {
   const [flip, setFlip] = useState(false);
+  const [useTranslateY, setUseTranslateY] = useState(true);
 
   const [isShuffled, setIsShuffled] = useState(true);
   const [displayCards, setDisplayCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentCategory, setCurrentCategory] = useState(cardCategories.red);
+  const [navDirection, setNavDirection] = useState("next");
 
   useEffect(() => {
-    // When isShuffled changes, update displayCards and reset currentIndex
     setDisplayCards(isShuffled ? shuffleCards([...cardData]) : [...cardData]);
-    setCurrentIndex(0); // Reset to the first card whenever the shuffle state changes
+    setCurrentIndex(0);
   }, [isShuffled]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setUseTranslateY(false);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleNextPreviousCommon = () => {
+    if (useTranslateY) {
+      setUseTranslateY(false);
+    }
+  };
+
   const handleNext = () => {
+    handleNextPreviousCommon();
+    setNavDirection("next");
     setCurrentIndex((prevIndex) => (prevIndex + 1) % displayCards.length);
   };
 
   const handlePrevious = () => {
+    handleNextPreviousCommon();
+    setNavDirection("prev");
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + displayCards.length) % displayCards.length
     );
@@ -48,7 +67,12 @@ const MainScreen = ({ modalState, setModalState }) => {
     >
       {/* {flip ? ( */}
       <>
-        <TopBorder currentCategory={currentCategory} />
+        <TopBorder
+          currentCategory={currentCategory}
+          currentIndex={currentIndex}
+          useTranslateY={useTranslateY}
+          navDirection={navDirection}
+        />
         <UI
           onNext={handleNext}
           onPrevious={handlePrevious}
@@ -70,7 +94,10 @@ const MainScreen = ({ modalState, setModalState }) => {
       >
         <LandingScreen onFlip={() => setFlip(!flip)} /> */}
       {displayCards[currentIndex] ? (
-        <Card card={displayCards[currentIndex]} />
+        <Card
+          // key={displayCards[currentIndex].id}
+          card={displayCards[currentIndex]}
+        />
       ) : null}
       {/* </ReactCardFlip> */}
     </div>

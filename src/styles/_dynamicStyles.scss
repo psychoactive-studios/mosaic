@@ -27,15 +27,15 @@
 }
 .red-frame {
   background: url("/svgs/red-frame.svg") no-repeat left top;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 .blue-frame {
   background: url("/svgs/blue-frame.svg") no-repeat left top;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 .yellow-frame {
   background: url("/svgs/yellow-frame.svg") no-repeat left top;
-  background-size: 100% 100%;
+  background-size: cover;
 }
 .red-background-main {
   background-color: #fff5f8;
@@ -64,22 +64,25 @@
 .yellow-background-color {
   background-color: $yellow;
 }
-.download-footer:hover .download-footer-red {
+.footer-item:hover .hover-footer-red {
   color: $red;
+  text-decoration: underline;
 }
-.download-footer:hover .download-footer-blue {
+.footer-item:hover .hover-footer-blue {
   color: $blue;
+  text-decoration: underline;
 }
-.download-footer:hover .download-footer-yellow {
+.footer-item:hover .hover-footer-yellow {
   color: $yellow;
+  text-decoration: underline;
 }
-.download-footer-red:hover .footer-download-svg {
+.link-footer-red:hover .link-download-svg {
   stroke: $red;
 }
-.download-footer-blue:hover .footer-download-svg {
+.link-footer-blue:hover .link-download-svg {
   stroke: $blue;
 }
-.download-footer-yellow:hover .footer-download-svg {
+.link-footer-yellow:hover .link-download-svg {
   stroke: $yellow;
 }
 .red-box-shadow {

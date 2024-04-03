@@ -26,6 +26,7 @@
 .comment-form select:focus {
   outline: none !important;
   border-bottom: 2px solid $dark-grey !important;
+  background-color: $light-grey;
 }
 
 textarea {
@@ -61,20 +62,33 @@ select {
 
 .submit-wrapper {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
   font-size: 14px;
   color: $dark-grey;
 }
 
 .submit-btn {
-  background-color: $yellow;
+  background-color: #ffc85d;
   padding: 0.5rem 1rem;
   font-weight: 500;
   font-size: 14px;
   border: none;
   outline: none;
   font-family: var(--firaSans-font-family);
+}
+
+.submit-btn:hover {
+  background-color: $yellow;
+}
+
+.cancel-btn {
+  padding: 0.5rem 1rem;
+}
+
+.cancel-btn:hover {
+  background-color: $grey;
+  color: $black;
 }
 
 .success-msg {

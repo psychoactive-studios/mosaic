@@ -20,6 +20,7 @@ ul {
 html {
   color: $black;
   max-width: $width-minus-scrollbar;
+  overflow-x: hidden !important;
 }
 
 main {

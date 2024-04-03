@@ -142,7 +142,7 @@
 .footer-wrapper {
   gap: 1rem;
   position: fixed;
-  bottom: $g1 / 2;
+  bottom: 5%;
   color: $mid-grey;
   font-weight: 800;
   font-size: 0.75rem;
@@ -160,10 +160,10 @@
   }
 }
 
-.download-footer svg {
+.link-footer svg {
   height: 10.5px;
 }
 
-.footer-download-svg {
+.link-download-svg {
   stroke: #727272;
 }

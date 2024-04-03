@@ -1,8 +1,24 @@
+import React, { useState, useEffect } from "react";
+import { useSpring, animated } from "@react-spring/web";
 import { getCategoryColor } from "@/utils/functions";
 
 const Card = ({ card }) => {
+  const [runAnimation, setRunAnimation] = useState(true);
+
+  useEffect(() => {
+    setRunAnimation(true);
+  }, [card.id]);
+
+  const fade = useSpring({
+    reset: runAnimation,
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    onRest: () => setRunAnimation(false),
+  });
+
   return (
-    <div
+    <animated.div
+      style={fade}
       className={`card-wrapper ${getCategoryColor(card.category)}-box-shadow`}
     >
       <div className="top-half">
@@ -30,7 +46,11 @@ const Card = ({ card }) => {
         </div>
       </div>
       <div className="bottom-half">
-        <div className="question-wrapper card-padding">
+        <div
+          className={`question-wrapper card-padding ${
+            card.questions.length > 4 ? "question-column" : ""
+          }`}
+        >
           <ul className="question-text">
             {card.questions.map((question, index) => (
               <li
@@ -51,22 +71,33 @@ const Card = ({ card }) => {
                 card.category
               )}-frame`}
             >
-              <p>{card.highlighted}</p>
+              <p className="align-left">{card.highlighted}</p>
             </div>
           )}
           {card.text && Object.keys(card.text).length > 0 && (
             <div className="additional-text">
               <p>
-                <strong>Values:</strong> {card.text.values}
+                <strong>
+                  {Object.keys(card.text)[0] == "Values"
+                    ? Object.keys(card.text)[0]
+                    : null}
+                </strong>
+                {card.text.Values ? card.text.Values : card.text}
               </p>
               <p>
-                <strong>Beliefs:</strong> {card.text.beliefs}
+                <strong>
+                  {" "}
+                  {Object.keys(card.text)[1] == "Beliefs"
+                    ? Object.keys(card.text)[1]
+                    : null}
+                </strong>
+                {card.text.Beliefs}
               </p>
             </div>
           )}
         </div>
       </div>
-    </div>
+    </animated.div>
   );
 };
 

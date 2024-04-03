@@ -1,5 +1,5 @@
-import { useSpring, animated, config } from "@react-spring/web";
 import CloseBtn from "../ui/CloseBtn";
+import { useSpring, animated, config } from "@react-spring/web";
 import { usePageSlideConfig } from "@/configs/springConfigs";
 
 const AboutModal = ({ modalState, isClosing, handleClose }) => {

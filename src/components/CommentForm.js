@@ -46,11 +46,10 @@ const CommentForm = () => {
       setShowSuccessMsg(true);
       resetForm();
 
-      setTimeout(() => {
-        setShowSuccessMsg(false);
-      }, 3000);
-
-      // error handling
+      // optionally make the comment dissapear after a few seconds
+      // setTimeout(() => {
+      //   setShowSuccessMsg(false);
+      // }, 3000);
     } catch (error) {
       setError(error.message);
       console.error(error);
@@ -157,7 +156,9 @@ const CommentForm = () => {
               </div>
             </div>
             <p className="success-msg">
-              {showSuccessMsg ? "Comment submitted successfully!" : null}
+              {showSuccessMsg
+                ? "Comment submitted! You'll be notified once it has been approved."
+                : null}
             </p>
           </>
         )}
