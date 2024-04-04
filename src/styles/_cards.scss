@@ -31,7 +31,9 @@
 }
 
 .card-category {
-  letter-spacing: 0.75px;
+  p {
+    letter-spacing: 0.75px;
+  }
   span {
     font-weight: 500;
     letter-spacing: 0.6px;
@@ -77,9 +79,11 @@
 .question-text {
   font-size: 1.25rem;
   font-weight: 500;
-  letter-spacing: 0.8px;
   width: 100%;
   background-size: cover;
+  p {
+    letter-spacing: 0.8px;
+  }
 }
 
 .card-list-item {
@@ -111,7 +115,7 @@
 }
 
 .question-column {
-  columns: 2; /* This creates 2 columns */
-  -webkit-columns: 2; /* For Safari and older Chrome browsers */
-  -moz-columns: 2; /* For Firefox */
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
 }

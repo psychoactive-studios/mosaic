@@ -88,8 +88,9 @@ const CommentForm = () => {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           onClick={() => setFormOpen(true)}
-          placeholder="Add a comment..."
+          placeholder="Add a comment...*"
           required
+          style={formOpen ? { height: "7.5rem" } : null}
         ></textarea>
         {formOpen && (
           <>
@@ -97,7 +98,7 @@ const CommentForm = () => {
               type="text"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              placeholder="Full Name"
+              placeholder="Full Name*"
               required
             />
             <input
@@ -110,7 +111,7 @@ const CommentForm = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
+              placeholder="Email*"
               required
             />
             <select
@@ -119,7 +120,7 @@ const CommentForm = () => {
               required
             >
               <option className="form-label" value="">
-                Select a pathway to give feedback on...
+                Select a pathway to give feedback on...*
               </option>
               <option value="General feedback on Mosaic">
                 General feedback on Mosaic

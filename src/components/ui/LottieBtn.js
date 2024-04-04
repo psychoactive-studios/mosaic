@@ -8,8 +8,8 @@ const LottieBtn = ({ lottiePath }) => {
   const [initialMount, setInitialMount] = useState(false);
 
   const enterFrame = 1;
-  const holdFrame = 20;
-  const endFrame = 70;
+  const holdFrame = 5;
+  const endFrame = 15;
 
   useEffect(() => {
     const animation = lottie.loadAnimation({
@@ -54,7 +54,7 @@ const LottieBtn = ({ lottiePath }) => {
     container.current.animation.playSegments([holdFrame, endFrame], true);
     setTimeout(() => {
       setReRender(true);
-    }, 650);
+    }, 200);
   };
 
   return (

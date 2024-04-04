@@ -17,17 +17,20 @@ const Card = ({ card }) => {
   });
 
   return (
-    <animated.div
-      style={fade}
+    <div
       className={`card-wrapper ${getCategoryColor(card.category)}-box-shadow`}
     >
       <div className="top-half">
-        <div
+        <animated.div
+          style={fade}
           className={`card-border ${getCategoryColor(
             card.category
           )}-card-border`}
-        ></div>
-        <div className="card-category-wrapper flex card-padding">
+        ></animated.div>
+        <animated.div
+          className="card-category-wrapper flex card-padding"
+          style={fade}
+        >
           <div className="card-category">
             <p className={`${getCategoryColor(card.category)}-text-color`}>
               {card.category}
@@ -40,12 +43,12 @@ const Card = ({ card }) => {
           >
             <p>{card.id}</p>
           </div>
-        </div>
-        <div className="title-wrapper card-padding">
+        </animated.div>
+        <animated.div className="title-wrapper card-padding" style={fade}>
           <h3>{card.title}</h3>
-        </div>
+        </animated.div>
       </div>
-      <div className="bottom-half">
+      <animated.div className="bottom-half" style={fade}>
         <div
           className={`question-wrapper card-padding ${
             card.questions.length > 4 ? "question-column" : ""
@@ -96,8 +99,8 @@ const Card = ({ card }) => {
             </div>
           )}
         </div>
-      </div>
-    </animated.div>
+      </animated.div>
+    </div>
   );
 };
 
