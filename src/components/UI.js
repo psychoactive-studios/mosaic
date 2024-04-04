@@ -21,7 +21,10 @@ const UI = ({
       </div>
       <div className="ui-inner right">
         <div className="ui-item" onClick={onNext}>
-          <LottieBtn lottiePath={lottieData.next} />
+          <LottieBtn
+            lottiePath={lottieData.next}
+            currentCategory={currentCategory}
+          />
         </div>
         <div
           className={`ui-item ${getCategoryColor(

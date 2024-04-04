@@ -22,8 +22,8 @@
   // right: $g1;
 }
 
-.right .ui-inner {
-  // margin-right: 5px;
+.ui-lottie-wrapper {
+  display: flex;
 }
 
 .ui-item {
@@ -31,8 +31,36 @@
 }
 
 .ui-lottie-container {
-  width: 56px;
-  height: 56px;
+  width: $ui-lottie-size;
+  height: $ui-lottie-size;
+}
+
+// TOOL TIPS
+.tooltip-wrapper {
+  position: absolute;
+}
+
+.tooltip-container {
+  position: relative;
+  height: $ui-lottie-size;
+  width: $ui-lottie-size;
+  right: calc($ui-lottie-size + 1rem);
+  @include flex_centre;
+}
+
+.tooltip {
+  padding: 0.5rem 1rem;
+  p {
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+}
+
+.flip-x {
+  transform: scaleX(-1);
 }
 
 // BUTTONS

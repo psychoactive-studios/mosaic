@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
+import ToolTip from "./ToolTip";
 
-const LottieBtn = ({ lottiePath }) => {
+const LottieBtn = ({ lottiePath, currentCategory }) => {
   const container = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [reRender, setReRender] = useState(false);
@@ -58,13 +59,16 @@ const LottieBtn = ({ lottiePath }) => {
   };
 
   return (
-    <div
-      className="ui-lottie-container"
-      ref={container}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
-    ></div>
+    <div className="ui-lottie-wrapper">
+      <ToolTip text={"next"} currentCategory={currentCategory} />
+      <div
+        className="ui-lottie-container"
+        ref={container}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
+      ></div>
+    </div>
   );
 };
 export default React.memo(LottieBtn);

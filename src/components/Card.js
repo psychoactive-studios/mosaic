@@ -72,7 +72,7 @@ const Card = ({ card }) => {
             <div
               className={`question-text additional-question ${getCategoryColor(
                 card.category
-              )}-frame`}
+              )}-frame-left`}
             >
               <p className="align-left">{card.highlighted}</p>
             </div>

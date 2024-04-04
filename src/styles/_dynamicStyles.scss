@@ -25,16 +25,28 @@
 .yellow-bullet-point {
   background: url("/svgs/yellow-bullet.svg") no-repeat left 3px;
 }
-.red-frame {
+.red-frame-left {
   background: url("/svgs/red-frame.svg") no-repeat left top;
   background-size: cover;
 }
-.blue-frame {
+.blue-frame-left {
   background: url("/svgs/blue-frame.svg") no-repeat left top;
   background-size: cover;
 }
-.yellow-frame {
+.yellow-frame-left {
   background: url("/svgs/yellow-frame.svg") no-repeat left top;
+  background-size: cover;
+}
+.red-frame-right {
+  background: url("/svgs/red-frame-flipped.svg") no-repeat right top;
+  background-size: cover;
+}
+.blue-frame-right {
+  background: url("/svgs/blue-frame-flipped.svg") no-repeat right top;
+  background-size: cover;
+}
+.yellow-frame-right {
+  background: url("/svgs/yellow-frame-flipped.svg") no-repeat right top;
   background-size: cover;
 }
 .red-background-main {
