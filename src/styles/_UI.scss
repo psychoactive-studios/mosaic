@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 1rem;
   width: $ui-sidebar-width;
   div {
     cursor: pointer;
@@ -25,9 +26,13 @@
   // margin-right: 5px;
 }
 
+.ui-item {
+  @include flex_centre;
+}
+
 .ui-lottie-container {
-  // width: 40px;
-  // height: 40px;
+  width: 56px;
+  height: 56px;
 }
 
 // BUTTONS
