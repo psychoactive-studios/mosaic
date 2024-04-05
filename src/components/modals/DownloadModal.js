@@ -4,7 +4,7 @@ import { usePageFadeConfig } from "@/configs/springConfigs";
 import PrimaryCTA from "../ui/PrimaryCTA";
 
 const DownloadModal = ({ modalState, isClosing, handleClose }) => {
-  const [pageSlide, api] = useSpring(() => ({
+  const [pageFade, api] = useSpring(() => ({
     config: { ...config.gentle },
     from: { opacity: 0 },
     to: { opacity: 0 },
@@ -16,7 +16,7 @@ const DownloadModal = ({ modalState, isClosing, handleClose }) => {
     <>
       <animated.div
         className="modal-wrapper modal-outer-small"
-        style={pageSlide}
+        style={pageFade}
       >
         <div className="modal-inner-wrapper modal-inner-small">
           <div className="close-btn small-close-btn">

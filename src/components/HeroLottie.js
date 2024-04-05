@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import { lottieData } from "@/data/lottieData";
 
-const IntroLottie = ({ onFlip }) => {
+const HeroLottie = ({ onFlip }) => {
   const container = useRef(null);
   const animation = useRef(null);
   const clickableRef = useRef(false);
 
-  const stillFrame = 275; // adjust to new timing on updated lottie if necessary
+  const stillFrame = 200; // adjust to new timing on updated lottie if necessary
   const [clickable, setClickable] = useState(false);
 
   // update ref to new state if state is updated
@@ -21,7 +21,7 @@ const IntroLottie = ({ onFlip }) => {
       renderer: "svg",
       loop: false,
       autoplay: true,
-      path: lottieData.preloader,
+      path: lottieData.hero,
     });
 
     const handleEnterFrame = (e) => {
@@ -55,12 +55,14 @@ const IntroLottie = ({ onFlip }) => {
   }, []);
 
   return (
-    <div
-      ref={container}
-      className="lottie-container"
-      style={clickable ? { cursor: "pointer" } : { cursor: "auto" }}
-    ></div>
+    <div className="landingscreen-wrapper">
+      <div
+        ref={container}
+        className="lottie-container"
+        style={clickable ? { cursor: "pointer" } : { cursor: "auto" }}
+      ></div>
+    </div>
   );
 };
 
-export default IntroLottie;
+export default HeroLottie;

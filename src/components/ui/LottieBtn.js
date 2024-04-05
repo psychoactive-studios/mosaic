@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import ToolTip from "./ToolTip";
 
-const LottieBtn = ({ lottiePath, currentCategory }) => {
+const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
   const container = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [reRender, setReRender] = useState(false);
@@ -60,7 +60,12 @@ const LottieBtn = ({ lottiePath, currentCategory }) => {
 
   return (
     <div className="ui-lottie-wrapper">
-      <ToolTip text={"next"} currentCategory={currentCategory} />
+      <ToolTip
+        text={text}
+        currentCategory={currentCategory}
+        isHovered={isHovered}
+        direction={frameDirection}
+      />
       <div
         className="ui-lottie-container"
         ref={container}

@@ -44,8 +44,9 @@
   position: relative;
   height: $ui-lottie-size;
   width: $ui-lottie-size;
-  right: calc($ui-lottie-size + 1rem);
+  // right: calc($ui-lottie-size + 1rem);
   @include flex_centre;
+  justify-content: flex-start;
 }
 
 .tooltip {
@@ -56,11 +57,8 @@
     font-weight: 800;
     letter-spacing: 1.2px;
     text-transform: uppercase;
+    white-space: nowrap;
   }
-}
-
-.flip-x {
-  transform: scaleX(-1);
 }
 
 // BUTTONS

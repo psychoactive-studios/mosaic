@@ -1,7 +1,7 @@
 import { getCategoryColor } from "@/utils/functions";
 import { lottieData } from "@/data/lottieData";
-import NextBtn from "./ui/NextBtn";
 import LottieBtn from "./ui/LottieBtn";
+import { useState } from "react";
 
 const UI = ({
   onNext,
@@ -11,19 +11,36 @@ const UI = ({
   setModalState,
   currentCategory,
 }) => {
+  const [isMuted, setIsMuted] = useState(false);
   return (
     <div className="ui-wrapper">
       <div className="ui-inner left">
-        <div className="ui-item">Sound</div>
+        <div className="ui-item">
+          <LottieBtn
+            lottiePath={lottieData[`mute_${getCategoryColor(currentCategory)}`]}
+            currentCategory={currentCategory}
+            frameDirection="left"
+            text={isMuted ? "unmute" : "mute"}
+          />
+        </div>
         <div className="ui-item" onClick={onToggleShuffle}>
-          {isShuffled ? "Unshuffle" : "Shuffle"}
+          <LottieBtn
+            lottiePath={
+              lottieData[`shuffle_${getCategoryColor(currentCategory)}`]
+            }
+            currentCategory={currentCategory}
+            frameDirection="left"
+            text={isShuffled ? "disable shuffle" : "enable shuffle"}
+          />
         </div>
       </div>
       <div className="ui-inner right">
         <div className="ui-item" onClick={onNext}>
           <LottieBtn
-            lottiePath={lottieData.next}
+            lottiePath={lottieData[`next_${getCategoryColor(currentCategory)}`]}
             currentCategory={currentCategory}
+            frameDirection="right"
+            text="next"
           />
         </div>
         <div
@@ -35,7 +52,12 @@ const UI = ({
           Learning Pathways
         </div>
         <div className="ui-item" onClick={onPrevious}>
-          Previous
+          <LottieBtn
+            lottiePath={lottieData[`prev_${getCategoryColor(currentCategory)}`]}
+            currentCategory={currentCategory}
+            frameDirection="right"
+            text="previous"
+          />
         </div>
       </div>
     </div>

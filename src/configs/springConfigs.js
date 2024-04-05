@@ -27,3 +27,14 @@ export const usePageFadeConfig = (modal, modalState, isClosing, api) => {
     });
   }, [isClosing, api]);
 };
+
+export const useToolTipConfig = (isHovered, direction, api) => {
+  const transformDirection =
+    direction == "right" ? "translateX(10%)" : "translateX(-10%)";
+  useEffect(() => {
+    api.start({
+      opacity: isHovered ? 1 : 0,
+      transform: isHovered ? "translateX(0%)" : transformDirection,
+    });
+  }, [isHovered, api]);
+};

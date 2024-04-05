@@ -5,7 +5,7 @@ import ShareIcon from "../ui/ShareIcon";
 import { svgData } from "@/data/svgData";
 
 const ShareModal = ({ modalState, isClosing, handleClose }) => {
-  const [pageSlide, api] = useSpring(() => ({
+  const [pageFade, api] = useSpring(() => ({
     config: { ...config.gentle },
     from: { opacity: 0 },
     to: { opacity: 0 },
@@ -23,7 +23,7 @@ const ShareModal = ({ modalState, isClosing, handleClose }) => {
     <>
       <animated.div
         className="modal-wrapper modal-outer-medium"
-        style={pageSlide}
+        style={pageFade}
       >
         <div className="modal-inner-wrapper modal-inner-medium">
           <div className="close-btn small-close-btn">
