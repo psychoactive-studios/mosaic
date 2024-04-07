@@ -7,8 +7,8 @@ import { svgData } from "@/data/svgData";
 const ShareModal = ({ modalState, isClosing, handleClose }) => {
   const [pageFade, api] = useSpring(() => ({
     config: { ...config.gentle },
-    from: { opacity: 0 },
-    to: { opacity: 0 },
+    // from: { opacity: 0 },
+    // to: { opacity: 0 },
   }));
 
   usePageFadeConfig("share", modalState, isClosing, api);

@@ -1,26 +1,24 @@
 import { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import { lottieData } from "@/data/lottieData";
+import { useSpring, animated, config } from "@react-spring/web";
 
-const HeroLottie = ({ onFlip }) => {
+const HeroLottie = ({ onFlip, showHero }) => {
+  const [clickable, setClickable] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
   const container = useRef(null);
   const animation = useRef(null);
   const clickableRef = useRef(false);
 
-  const stillFrame = 200; // adjust to new timing on updated lottie if necessary
-  const [clickable, setClickable] = useState(false);
-
-  // update ref to new state if state is updated
-  useEffect(() => {
-    clickableRef.current = clickable;
-  }, [clickable]);
+  const stillFrame = 200; // Adjust according to new lottie version
 
   useEffect(() => {
     animation.current = lottie.loadAnimation({
       container: container.current,
       renderer: "svg",
       loop: false,
-      autoplay: true,
+      autoplay: false,
       path: lottieData.hero,
     });
 
@@ -40,27 +38,62 @@ const HeroLottie = ({ onFlip }) => {
   }, []);
 
   useEffect(() => {
+    clickableRef.current = clickable;
+  }, [clickable]);
+
+  useEffect(() => {
+    if (showHero) animation.current.play();
+  }, [showHero]);
+
+  useEffect(() => {
     const handleClick = () => {
       if (clickableRef.current) {
         animation.current.play();
         setTimeout(() => {
           onFlip();
-        }, 2000);
+        }, 2000); // Adjust lottie animation out time if necessary
       }
     };
     container.current.addEventListener("click", handleClick);
-    return () => {
-      container.current.removeEventListener("click", handleClick);
-    };
+    return () => container.current.removeEventListener("click", handleClick);
   }, []);
 
+  const [{ scale, shadowIntensity }, api] = useSpring(() => ({
+    scale: 1,
+    shadowIntensity: 0,
+    config: config.gentle,
+  }));
+
+  useEffect(() => {
+    api.start({
+      scale: isHovered ? 1.01 : 1,
+      shadowIntensity: clickable ? 1.5 : 0,
+    });
+  }, [isHovered, clickable, api]);
+
+  const animatedBoxShadow = shadowIntensity.to(
+    (intensity) =>
+      `0.592px 30.328px 161px 0px rgba(0, 0, 0, ${0.07 * intensity}),
+       0.3px 15.353px 70.186px 0px rgba(0, 0, 0, ${0.03 * intensity}),
+       0.118px 6.066px 26.163px 0px rgba(0, 0, 0, ${0.05 * intensity}),
+       0.026px 1.327px 9.308px 0px rgba(0, 0, 0, ${0.07 * intensity})`
+  );
+
   return (
-    <div className="landingscreen-wrapper">
-      <div
+    <div
+      className="landingscreen-wrapper"
+      style={clickable ? { cursor: "pointer" } : { cursor: "auto" }}
+    >
+      <animated.div
         ref={container}
+        onMouseEnter={() => (clickable ? setIsHovered(true) : null)}
+        onMouseLeave={() => (clickable ? setIsHovered(false) : null)}
         className="lottie-container"
-        style={clickable ? { cursor: "pointer" } : { cursor: "auto" }}
-      ></div>
+        style={{
+          transform: scale.to((s) => `scale(${s})`),
+          boxShadow: animatedBoxShadow,
+        }}
+      ></animated.div>
     </div>
   );
 };

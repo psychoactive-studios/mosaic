@@ -9,7 +9,7 @@ import TopBorder from "./TopBorder";
 import Preloader from "./Preloader";
 import HeroLottie from "./HeroLottie";
 
-const MainScreen = ({ modalState, setModalState }) => {
+const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);
   const [useTranslateY, setUseTranslateY] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -63,8 +63,6 @@ const MainScreen = ({ modalState, setModalState }) => {
     if (displayCards.length > 0) setLoading(false);
   }, [displayCards, currentIndex]);
 
-  console.log("loading: ", loading, "showHero: ", showHero);
-
   return (
     <div
       className={`mainscreen-wrapper ${
@@ -93,17 +91,16 @@ const MainScreen = ({ modalState, setModalState }) => {
           />
         </>
       ) : null}
-      {showHero ? (
+      {!showHero && <Preloader isLoading={loading} setShowHero={setShowHero} />}
+      {!loading && (
         <ReactCardFlip
           isFlipped={flip}
           flipSpeedBackToFront={2}
           flipSpeedFrontToBack={2}
         >
-          <HeroLottie onFlip={() => setFlip(!flip)} />
+          <HeroLottie onFlip={() => setFlip(!flip)} showHero={showHero} />
           <Card card={displayCards[currentIndex]} />
         </ReactCardFlip>
-      ) : (
-        <Preloader isLoading={loading} setShowHero={setShowHero} />
       )}
     </div>
   );

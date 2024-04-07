@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main>
-      <MainScreen modalState={modalState} setModalState={setModalState} />
+      <MainScreen setModalState={setModalState} />
       {modalState != "closed" ? (
         <ModalWrapper modalState={modalState} setModalState={setModalState} />
       ) : null}

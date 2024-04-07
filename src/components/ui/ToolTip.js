@@ -16,10 +16,10 @@ const ToolTip = ({ text, currentCategory, isHovered, direction }) => {
     }
   }, []);
 
-  const [tooTipSpring, api] = useSpring(() => ({
+  const [toolTipSpring, api] = useSpring(() => ({
     config: { ...config.gentle },
-    from: { opacity: 0, transform: "translateX(0%)" },
-    to: { opacity: 0, transform: "translateX(0%)" },
+    // from: { opacity: 0, transform: "translateX(0%)" },
+    // to: { opacity: 0, transform: "translateX(0%)" },
   }));
 
   useToolTipConfig(isHovered, direction, api);
@@ -37,7 +37,7 @@ const ToolTip = ({ text, currentCategory, isHovered, direction }) => {
       >
         <animated.div
           ref={toolTip}
-          style={tooTipSpring}
+          style={toolTipSpring}
           className={`tooltip ${getCategoryColor(
             currentCategory
           )}-frame-${direction}`}
