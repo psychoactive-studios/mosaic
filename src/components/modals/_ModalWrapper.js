@@ -1,36 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useSpring, animated, config } from "@react-spring/web";
-import ShareModal from "./modals/ShareModal";
-import AboutModal from "./modals/AboutModal";
-import DownloadModal from "./modals/DownloadModal";
-import SuggestionsModal from "./modals/SuggestionsModal";
-import PathwaysModal from "./modals/PathwaysModal";
+import { useState } from "react";
+import { animated } from "@react-spring/web";
+import ShareModal from "./ShareModal";
+import AboutModal from "./AboutModal";
+import DownloadModal from "./DownloadModal";
+import SuggestionsModal from "./SuggestionsModal";
+import PathwaysModal from "./PathwaysModal";
 import { closeDelay } from "@/data/globalVariables";
+import { useModalFade } from "@/configs/springConfigs";
+import { closeModalOnEscapeKey } from "@/utils/customHooks";
 
 const ModalWrapper = ({ modalState, setModalState }) => {
   const [isClosing, setIsClosing] = useState(false);
-
-  // REACT SPRING
-  const [style, api] = useSpring(() => ({
-    config: { ...config.slow },
-    opacity: 0,
-  }));
-
-  const backgroundColor = style.opacity.to(
-    (opacity) => `rgba(0, 0, 0, ${opacity * 0.4})`
-  );
-
-  // fade-in on open
-  useEffect(() => {
-    api.start({ opacity: modalState !== "closed" ? 1 : 0 });
-  }, [modalState, api]);
-
-  // fade-out on close
-  useEffect(() => {
-    api.start({
-      opacity: isClosing ? 0 : 1,
-    });
-  }, [isClosing, api]);
 
   // CONDITIONAL MODAL RENDERER
   const modals = {
@@ -53,17 +33,10 @@ const ModalWrapper = ({ modalState, setModalState }) => {
   };
 
   // close modal on escape key
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        handleClose();
-      }
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [handleClose]);
+  closeModalOnEscapeKey(handleClose);
+
+  // react spring config
+  const { backgroundColor } = useModalFade(modalState, isClosing);
 
   return (
     <animated.div

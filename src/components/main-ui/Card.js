@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
-import { getCategoryColor } from "@/utils/functions";
+import { getCategoryColor } from "@/utils/utilFunctions";
 
 const Card = ({ card }) => {
   const [runAnimation, setRunAnimation] = useState(true);

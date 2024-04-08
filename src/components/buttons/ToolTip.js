@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { getCategoryColor } from "@/utils/functions";
+import { getCategoryColor } from "@/utils/utilFunctions";
 import { useSpring, animated, config } from "@react-spring/web";
 import { useToolTipConfig } from "@/configs/springConfigs";
 

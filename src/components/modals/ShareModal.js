@@ -1,7 +1,7 @@
 import { useSpring, animated, config } from "@react-spring/web";
-import CloseBtn from "../ui/CloseBtn";
+import CloseBtn from "../buttons/CloseBtn";
 import { usePageFadeConfig } from "@/configs/springConfigs";
-import ShareIcon from "../ui/ShareIcon";
+import ShareIcon from "../buttons/ShareIcon";
 import { svgData } from "@/data/svgData";
 
 const ShareModal = ({ modalState, isClosing, handleClose }) => {

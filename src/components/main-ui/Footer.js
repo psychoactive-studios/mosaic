@@ -1,6 +1,6 @@
 import React from "react";
 import { svgData } from "@/data/svgData";
-import { getCategoryColor } from "@/utils/functions";
+import { getCategoryColor } from "@/utils/utilFunctions";
 
 const Footer = ({ setModalState, currentCategory }) => {
   return (

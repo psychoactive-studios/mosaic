@@ -9,7 +9,7 @@ const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
 
   const enterFrame = 0;
   const holdFrame = 5;
-  const endFrame = 15;
+  const endFrame = 14;
 
   useEffect(() => {
     const animation = lottie.loadAnimation({

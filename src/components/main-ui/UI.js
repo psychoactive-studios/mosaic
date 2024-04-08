@@ -1,6 +1,7 @@
-import { getCategoryColor } from "@/utils/functions";
+import { getCategoryColor } from "@/utils/utilFunctions";
 import { lottieData } from "@/data/lottieData";
-import LottieBtn from "./ui/LottieBtn";
+import ArrowBtn from "../buttons/ArrowBtn";
+import LottieBtn from "../buttons/LottieBtn";
 import { useState } from "react";
 
 const UI = ({
@@ -12,10 +13,11 @@ const UI = ({
   currentCategory,
 }) => {
   const [isMuted, setIsMuted] = useState(false);
+  // soundFunctionality();
   return (
     <div className="ui-wrapper">
       <div className="ui-inner left">
-        <div className="ui-item">
+        <div className="ui-item" onClick={() => setIsMuted(!isMuted)}>
           <LottieBtn
             lottiePath={lottieData[`mute_${getCategoryColor(currentCategory)}`]}
             currentCategory={currentCategory}
@@ -36,7 +38,7 @@ const UI = ({
       </div>
       <div className="ui-inner right">
         <div className="ui-item" onClick={onNext}>
-          <LottieBtn
+          <ArrowBtn
             lottiePath={
               lottieData[`arrow_${getCategoryColor(currentCategory)}`]
             }
@@ -54,7 +56,7 @@ const UI = ({
           Learning Pathways
         </div>
         <div className="ui-item" onClick={onPrevious}>
-          <LottieBtn
+          <ArrowBtn
             lottiePath={
               lottieData[`arrow_${getCategoryColor(currentCategory)}`]
             }

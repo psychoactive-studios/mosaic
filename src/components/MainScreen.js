@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
-import Card from "./Card";
-import UI from "./UI";
+import Card from "./main-ui/Card";
+import UI from "./main-ui/UI";
 import ReactCardFlip from "react-card-flip";
 import { cardData, cardCategories } from "@/data/cardData";
-import { getCategoryColor, shuffleCards } from "@/utils/functions";
-import Footer from "./Footer";
-import TopBorder from "./TopBorder";
-import Preloader from "./Preloader";
-import HeroLottie from "./HeroLottie";
+import { getCategoryColor, shuffleCards } from "@/utils/utilFunctions";
+import Footer from "./main-ui/Footer";
+import TopBorder from "./main-ui/TopBorder";
+import Preloader from "./lotties/PreloaderLottie";
+import HeroLottie from "./lotties/HeroLottie";
 import { useTopBorderSlideDownConfig } from "@/configs/springConfigs";
 
 const MainScreen = ({ setModalState }) => {

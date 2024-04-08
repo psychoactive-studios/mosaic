@@ -1,7 +1,7 @@
 import { useSpring, animated, config } from "@react-spring/web";
-import CloseBtn from "../ui/CloseBtn";
+import CloseBtn from "../buttons/CloseBtn";
 import { usePageSlideConfig } from "@/configs/springConfigs";
-import PrimaryCTA from "../ui/PrimaryCTA";
+import PrimaryCTA from "../buttons/PrimaryCTA";
 
 const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
   const [pageSlide, api] = useSpring(() => ({

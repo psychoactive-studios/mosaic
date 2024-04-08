@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import { lottieData } from "@/data/lottieData";
 import { useSpring, animated, config } from "@react-spring/web";
+import { useHeroHoverAnimation } from "@/configs/springConfigs";
 
 const HeroLottie = ({ onFlip, showHero }) => {
   const [clickable, setClickable] = useState(false);
@@ -11,7 +12,7 @@ const HeroLottie = ({ onFlip, showHero }) => {
   const animation = useRef(null);
   const clickableRef = useRef(false);
 
-  const stillFrame = 200; // Adjust according to new lottie version
+  const stillFrame = 135; // Adjust according to new lottie version
 
   useEffect(() => {
     animation.current = lottie.loadAnimation({
@@ -58,26 +59,28 @@ const HeroLottie = ({ onFlip, showHero }) => {
     return () => container.current.removeEventListener("click", handleClick);
   }, []);
 
-  const [{ scale, shadowIntensity }, api] = useSpring(() => ({
-    scale: 1,
-    shadowIntensity: 0,
-    config: config.gentle,
-  }));
+  // const [{ scale, shadowIntensity }, api] = useSpring(() => ({
+  //   scale: 1,
+  //   shadowIntensity: 0,
+  //   config: config.gentle,
+  // }));
 
-  useEffect(() => {
-    api.start({
-      scale: isHovered ? 1.01 : 1,
-      shadowIntensity: clickable ? 1.5 : 0,
-    });
-  }, [isHovered, clickable, api]);
+  // useEffect(() => {
+  //   api.start({
+  //     scale: isHovered ? 1 : 0.98,
+  //     shadowIntensity: clickable ? 3 : 0,
+  //   });
+  // }, [isHovered, clickable, api]);
 
-  const animatedBoxShadow = shadowIntensity.to(
-    (intensity) =>
-      `0.592px 30.328px 161px 0px rgba(0, 0, 0, ${0.07 * intensity}),
-       0.3px 15.353px 70.186px 0px rgba(0, 0, 0, ${0.03 * intensity}),
-       0.118px 6.066px 26.163px 0px rgba(0, 0, 0, ${0.05 * intensity}),
-       0.026px 1.327px 9.308px 0px rgba(0, 0, 0, ${0.07 * intensity})`
-  );
+  // const animatedBoxShadow = shadowIntensity.to(
+  //   (intensity) =>
+  //     `0.592px 30.328px 161px 5px rgba(0, 0, 0, ${0.07 * intensity}),
+  //      0.3px 15.353px 70.186px 5px rgba(0, 0, 0, ${0.03 * intensity}),
+  //      0.118px 6.066px 26.163px 5px rgba(0, 0, 0, ${0.05 * intensity}),
+  //      0.026px 1.327px 9.308px 5px rgba(0, 0, 0, ${0.07 * intensity})`
+  // );
+
+  const { scale, animatedBoxShadow } = useHeroHoverAnimation(isHovered, clickable);
 
   return (
     <div

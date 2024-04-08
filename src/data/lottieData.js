@@ -1,6 +1,6 @@
 export const lottieData = {
-  preloader: "lotties/MOSAIC_HERO_v03_PRELOADER.json",
-  hero: "lotties/MOSAIC_HERO_v03.json",
+  preloader: "lotties/MOSAIC_PRELOADER_v04.json",
+  hero: "lotties/MOSAIC_HERO_v11.json",
   close: "lotties/ui/close_v01.json",
   arrow_red: "lotties/ui/arrow.json",
   arrow_blue: "lotties/ui/arrow.json",

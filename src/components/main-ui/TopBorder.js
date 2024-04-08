@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
 import { useTransition, animated } from "@react-spring/web";
-import { getCategoryColor } from "@/utils/functions";
+import { getCategoryColor } from "@/utils/utilFunctions";
 
-const TopBorder = ({
-  currentCategory,
-  currentIndex,
-  navDirection,
-}) => {
+const TopBorder = ({ currentCategory, currentIndex, navDirection }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {

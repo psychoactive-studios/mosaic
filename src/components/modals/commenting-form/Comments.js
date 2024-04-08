@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { client } from "../../sanity/lib/client";
-import { getInitials, getTimeFromNow } from "@/utils/functions";
+import { client } from "../../../../sanity/lib/client";
+import { getInitials, getTimeFromNow } from "@/utils/utilFunctions";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);
