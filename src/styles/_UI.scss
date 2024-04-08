@@ -166,7 +166,14 @@
   position: absolute;
   top: 0;
   height: 38px;
-  width: $width-minus-scrollbar;
+  // width: $width-minus-scrollbar;
+  width: 100%;
+}
+
+.top-border-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
 // FOOTER

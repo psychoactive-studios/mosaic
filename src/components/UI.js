@@ -37,7 +37,9 @@ const UI = ({
       <div className="ui-inner right">
         <div className="ui-item" onClick={onNext}>
           <LottieBtn
-            lottiePath={lottieData[`next_${getCategoryColor(currentCategory)}`]}
+            lottiePath={
+              lottieData[`arrow_${getCategoryColor(currentCategory)}`]
+            }
             currentCategory={currentCategory}
             frameDirection="right"
             text="next"
@@ -53,7 +55,9 @@ const UI = ({
         </div>
         <div className="ui-item" onClick={onPrevious}>
           <LottieBtn
-            lottiePath={lottieData[`prev_${getCategoryColor(currentCategory)}`]}
+            lottiePath={
+              lottieData[`arrow_${getCategoryColor(currentCategory)}`]
+            }
             currentCategory={currentCategory}
             frameDirection="right"
             text="previous"

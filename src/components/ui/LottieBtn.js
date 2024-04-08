@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import ToolTip from "./ToolTip";
 
@@ -7,7 +7,7 @@ const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [initialMount, setInitialMount] = useState(false);
 
-  const enterFrame = 1;
+  const enterFrame = 0;
   const holdFrame = 5;
   const endFrame = 15;
 
@@ -35,9 +35,6 @@ const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
   if (isHovered && initialMount)
     container.current.animation.playSegments([enterFrame, holdFrame], true);
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-
   const handleClick = () => {
     container.current.animation.playSegments([holdFrame, endFrame], true);
   };
@@ -53,9 +50,10 @@ const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
       <div
         className="ui-lottie-container"
         ref={container}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         onClick={handleClick}
+        style={text == "previous" ? { transform: "scaleY(-1)" } : null}
       ></div>
     </div>
   );

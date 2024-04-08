@@ -5,10 +5,11 @@ import { getCategoryColor } from "@/utils/functions";
 const Card = ({ card }) => {
   const [runAnimation, setRunAnimation] = useState(true);
   const [runAnimation2, setRunAnimation2] = useState(false);
+  const [showText, setShowText] = useState(false);
 
   const currentCategory = getCategoryColor(card.category);
-
   useEffect(() => {
+    // console.log("current cat changed");
     setRunAnimation(true);
   }, [currentCategory]);
 
@@ -18,17 +19,21 @@ const Card = ({ card }) => {
 
   const fadeOnlyOnCategoryChange = useSpring({
     reset: runAnimation,
-    from: { opacity: 1 },
+    from: { opacity: 0 },
     to: { opacity: 1 },
-    config: { ...config.gentle },
-    onRest: () => setRunAnimation(false),
+    // config: { ...config.molasses },
+    onRest: () => {
+      // console.log("onREst");
+      setRunAnimation(false);
+    },
   });
 
   const fadeEveryTime = useSpring({
     reset: runAnimation2,
+    onStart: () => setShowText(true),
     from: { opacity: 0 },
     to: { opacity: 1 },
-    config: { ...config.gentle },
+    config: { ...config.molasses },
     onRest: () => setRunAnimation2(false),
   });
 
@@ -69,7 +74,7 @@ const Card = ({ card }) => {
                 className={`card-list-item ${currentCategory}-bullet-point`}
                 key={index}
               >
-                {question}
+                {showText ? question : null}
               </li>
             ))}
           </ul>

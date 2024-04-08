@@ -38,3 +38,17 @@ export const useToolTipConfig = (isHovered, direction, api) => {
     });
   }, [isHovered, api]);
 };
+
+export const useTopBorderSlideDownConfig = (
+  // modal,
+  // modalState,
+  // isClosing,
+  flip,
+  api
+) => {
+  useEffect(() => {
+    api.start({
+      transform: flip ? "translateY(0%)" : "translateY(-100%)",
+    });
+  }, [flip, api]);
+};

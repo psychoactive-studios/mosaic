@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTransition, animated } from "@react-spring/web";
 import { getCategoryColor } from "@/utils/functions";
 
 const TopBorder = ({
   currentCategory,
   currentIndex,
-  useTranslateY,
   navDirection,
 }) => {
   const [items, setItems] = useState([]);
@@ -21,11 +20,8 @@ const TopBorder = ({
 
   const transitions = useTransition(items, {
     from: {
-      transform: useTranslateY
-        ? "translateY(-100%)"
-        : navDirection === "next"
-        ? "translateX(-100%)"
-        : "translateX(100%)",
+      transform:
+        navDirection === "next" ? "translateX(-100%)" : "translateX(100%)",
     },
     enter: { transform: "translateX(0%)" },
     leave: {
@@ -37,7 +33,7 @@ const TopBorder = ({
 
   return transitions((style, item) => (
     <animated.div
-      className={`top-border-wrapper ${item.color}-border`}
+      className={`top-border-inner ${item.color}-border`}
       style={style}
     ></animated.div>
   ));

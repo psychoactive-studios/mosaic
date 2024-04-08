@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSpring, animated, config } from "@react-spring/web";
 import Card from "./Card";
 import UI from "./UI";
 import ReactCardFlip from "react-card-flip";
@@ -8,6 +9,7 @@ import Footer from "./Footer";
 import TopBorder from "./TopBorder";
 import Preloader from "./Preloader";
 import HeroLottie from "./HeroLottie";
+import { useTopBorderSlideDownConfig } from "@/configs/springConfigs";
 
 const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);
@@ -26,13 +28,13 @@ const MainScreen = ({ setModalState }) => {
     setCurrentIndex(0);
   }, [isShuffled]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setUseTranslateY(false);
-    }, 100);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setUseTranslateY(false);
+  //   }, 100);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const handleNextPreviousCommon = () => {
     if (useTranslateY) {
@@ -63,6 +65,14 @@ const MainScreen = ({ setModalState }) => {
     if (displayCards.length > 0) setLoading(false);
   }, [displayCards, currentIndex]);
 
+  const [topBorderSlideDown, api] = useSpring(() => ({
+    config: { ...config.slow },
+    from: { transform: "translateY(-100%)" },
+  }));
+
+  useTopBorderSlideDownConfig(flip, api);
+  console.log(flip);
+
   return (
     <div
       className={`mainscreen-wrapper ${
@@ -71,12 +81,17 @@ const MainScreen = ({ setModalState }) => {
     >
       {flip ? (
         <>
-          <TopBorder
-            currentCategory={currentCategory}
-            currentIndex={currentIndex}
-            useTranslateY={useTranslateY}
-            navDirection={navDirection}
-          />
+          <animated.div
+            style={topBorderSlideDown}
+            className={"top-border-wrapper"}
+          >
+            <TopBorder
+              currentCategory={currentCategory}
+              currentIndex={currentIndex}
+              useTranslateY={useTranslateY}
+              navDirection={navDirection}
+            />
+          </animated.div>
           <UI
             onNext={handleNext}
             onPrevious={handlePrevious}

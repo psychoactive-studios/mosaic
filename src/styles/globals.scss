@@ -19,7 +19,7 @@ ul {
 // GLOBAL ELEMENTS
 html {
   color: $black;
-  max-width: $width-minus-scrollbar;
+  // max-width: $width-minus-scrollbar; 
   overflow-x: hidden !important;
 }
 
@@ -55,7 +55,8 @@ p {
 // CUSTOM SCROLLBAR
 /* Width of the scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  // width: 5px;
+  width: 0;
 }
 
 /* Track of the scrollbar */
