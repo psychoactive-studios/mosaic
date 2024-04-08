@@ -5,7 +5,6 @@ import ToolTip from "./ToolTip";
 const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
   const container = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [reRender, setReRender] = useState(false);
   const [initialMount, setInitialMount] = useState(false);
 
   const enterFrame = 1;
@@ -20,42 +19,27 @@ const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
       autoplay: false,
       path: lottiePath,
     });
-
     container.current.animation = animation;
-
     return () => {
-      animation.destroy();
+      container.current.animation.destroy();
     };
   }, [lottiePath]);
 
   useEffect(() => {
-    if (!container.current.animation) return;
-
-    if (isHovered) {
-      container.current.animation.playSegments([enterFrame, holdFrame], true);
-      setInitialMount(true);
-    }
+    if (isHovered) setInitialMount(true);
     if (!isHovered && initialMount) {
       container.current.animation.playSegments([holdFrame, enterFrame], true);
     }
   }, [isHovered]);
 
-  useEffect(() => {
-    if (isHovered) {
-      container.current.animation.playSegments([enterFrame, holdFrame], true);
-      setReRender(false);
-    }
-  });
+  if (isHovered && initialMount)
+    container.current.animation.playSegments([enterFrame, holdFrame], true);
 
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
   const handleClick = () => {
-    if (!container.current.animation) return;
     container.current.animation.playSegments([holdFrame, endFrame], true);
-    setTimeout(() => {
-      setReRender(true);
-    }, 200);
   };
 
   return (
@@ -76,4 +60,4 @@ const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
     </div>
   );
 };
-export default React.memo(LottieBtn);
+export default LottieBtn;

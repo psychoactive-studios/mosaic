@@ -6,7 +6,7 @@ import PrimaryCTA from "../ui/PrimaryCTA";
 const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
   const [pageSlide, api] = useSpring(() => ({
     config: { ...config.slow },
-    // from: { transform: "translateY(100%)" },
+    from: { transform: "translateY(100%)" },
     // to: { transform: "translateY(100%)" },
   }));
 

@@ -18,7 +18,7 @@ const ToolTip = ({ text, currentCategory, isHovered, direction }) => {
 
   const [toolTipSpring, api] = useSpring(() => ({
     config: { ...config.gentle },
-    // from: { opacity: 0, transform: "translateX(0%)" },
+    from: { opacity: 0, transform: "translateX(0%)" },
     // to: { opacity: 0, transform: "translateX(0%)" },
   }));
 

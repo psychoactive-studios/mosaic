@@ -1,54 +1,63 @@
 import React, { useState, useEffect } from "react";
-import { useSpring, animated } from "@react-spring/web";
+import { useSpring, animated, config } from "@react-spring/web";
 import { getCategoryColor } from "@/utils/functions";
 
 const Card = ({ card }) => {
   const [runAnimation, setRunAnimation] = useState(true);
+  const [runAnimation2, setRunAnimation2] = useState(false);
+
+  const currentCategory = getCategoryColor(card.category);
 
   useEffect(() => {
     setRunAnimation(true);
+  }, [currentCategory]);
+
+  useEffect(() => {
+    setRunAnimation2(true);
   }, [card.id]);
 
-  const fade = useSpring({
+  const fadeOnlyOnCategoryChange = useSpring({
     reset: runAnimation,
-    from: { opacity: 0 },
+    from: { opacity: 1 },
     to: { opacity: 1 },
+    config: { ...config.gentle },
     onRest: () => setRunAnimation(false),
   });
 
+  const fadeEveryTime = useSpring({
+    reset: runAnimation2,
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+    config: { ...config.gentle },
+    onRest: () => setRunAnimation2(false),
+  });
+
   return (
-    <div
-      className={`card-wrapper ${getCategoryColor(card.category)}-box-shadow`}
-    >
+    <div className={`card-wrapper ${currentCategory}-box-shadow`}>
       <div className="top-half">
         <animated.div
-          style={fade}
-          className={`card-border ${getCategoryColor(
-            card.category
-          )}-card-border`}
+          style={fadeOnlyOnCategoryChange}
+          className={`card-border ${currentCategory}-card-border`}
         ></animated.div>
         <animated.div
           className="card-category-wrapper flex card-padding"
-          style={fade}
+          style={fadeOnlyOnCategoryChange}
         >
           <div className="card-category">
-            <p className={`${getCategoryColor(card.category)}-text-color`}>
-              {card.category}
-            </p>
+            <p className={`${currentCategory}-text-color`}>{card.category}</p>
           </div>
-          <div
-            className={`card-id ${getCategoryColor(
-              card.category
-            )}-background-color`}
-          >
+          <div className={`card-id ${currentCategory}-background-color`}>
             <p>{card.id}</p>
           </div>
         </animated.div>
-        <animated.div className="title-wrapper card-padding" style={fade}>
+        <animated.div
+          className="title-wrapper card-padding"
+          style={fadeEveryTime}
+        >
           <h3>{card.title}</h3>
         </animated.div>
       </div>
-      <animated.div className="bottom-half" style={fade}>
+      <animated.div className="bottom-half" style={fadeEveryTime}>
         <div
           className={`question-wrapper card-padding ${
             card.questions.length > 4 ? "question-column" : ""
@@ -57,9 +66,7 @@ const Card = ({ card }) => {
           <ul className="question-text">
             {card.questions.map((question, index) => (
               <li
-                className={`card-list-item ${getCategoryColor(
-                  card.category
-                )}-bullet-point`}
+                className={`card-list-item ${currentCategory}-bullet-point`}
                 key={index}
               >
                 {question}
@@ -70,9 +77,7 @@ const Card = ({ card }) => {
         <div className="additional-text-wrapper card-padding">
           {card.highlighted && (
             <div
-              className={`question-text additional-question ${getCategoryColor(
-                card.category
-              )}-frame-left`}
+              className={`question-text additional-question ${currentCategory}-frame-left`}
             >
               <p className="align-left">{card.highlighted}</p>
             </div>

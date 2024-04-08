@@ -6,7 +6,7 @@ import PrimaryCTA from "../ui/PrimaryCTA";
 const DownloadModal = ({ modalState, isClosing, handleClose }) => {
   const [pageFade, api] = useSpring(() => ({
     config: { ...config.gentle },
-    // from: { opacity: 0 },
+    from: { opacity: 0 },
     // to: { opacity: 0 },
   }));
 
