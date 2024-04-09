@@ -35,6 +35,41 @@
   height: $ui-lottie-size;
 }
 
+.pathways-lottie {
+  width: $ui-sidebar-width;
+  height: $ui-sidebar-width;
+}
+
+.pathways-text-wrapper {
+  position: absolute;
+  width: $ui-sidebar-width;
+  height: $ui-sidebar-width;
+  @include flex_centre;
+  text-align: center;
+  p {
+    position: absolute;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+  }
+}
+
+.pathways-pulse-wrapper {
+  position: absolute;
+  width: $ui-sidebar-width;
+  height: $ui-sidebar-width;
+  @include flex_centre;
+  z-index: 2;
+}
+
+.pathways-pulse-lottie {
+  position: absolute;
+  width: $ui-sidebar-width + 20;
+  height: $ui-sidebar-width + 20;
+}
+
 // TOOL TIPS
 .tooltip-wrapper {
   position: absolute;
@@ -44,7 +79,6 @@
   position: relative;
   height: $ui-lottie-size;
   width: $ui-lottie-size;
-  // right: calc($ui-lottie-size + 1rem);
   @include flex_centre;
   justify-content: flex-start;
 }
@@ -68,9 +102,6 @@
   background-color: #ffc85d;
   font-size: 14px;
   padding: 0.5rem 1rem;
-  p {
-    // line-height: 1rem;
-  }
 }
 
 // ICONS
@@ -198,10 +229,33 @@
   }
 }
 
+.hero-footer {
+  width: 100%;
+  @include flex_centre;
+  div {
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
 .link-footer svg {
   height: 10.5px;
 }
 
 .link-download-svg {
   stroke: #727272;
+}
+
+@keyframes fadeOpacity {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.fade-text {
+  animation: fadeOpacity 2s infinite ease-in-out;
 }

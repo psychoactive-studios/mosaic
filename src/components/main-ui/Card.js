@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
-import { getCategoryColor } from "@/utils/utilFunctions";
+import { getCategoryColor } from "@/utils/utilityFunctions";
 
 const Card = ({ card }) => {
   const [runAnimation, setRunAnimation] = useState(true);
@@ -17,6 +17,7 @@ const Card = ({ card }) => {
     setRunAnimation2(true);
   }, [card.id]);
 
+  // move to spring configs once fixed
   const fadeOnlyOnCategoryChange = useSpring({
     reset: runAnimation,
     from: { opacity: 0 },

@@ -4,12 +4,12 @@ import Card from "./main-ui/Card";
 import UI from "./main-ui/UI";
 import ReactCardFlip from "react-card-flip";
 import { cardData, cardCategories } from "@/data/cardData";
-import { getCategoryColor, shuffleCards } from "@/utils/utilFunctions";
+import { getCategoryColor, shuffleCards } from "@/utils/utilityFunctions";
 import Footer from "./main-ui/Footer";
 import TopBorder from "./main-ui/TopBorder";
 import Preloader from "./lotties/PreloaderLottie";
 import HeroLottie from "./lotties/HeroLottie";
-import { useTopBorderSlideDownConfig } from "@/configs/springConfigs";
+import { useTopBorderSlideDownConfig } from "@/configs/react-spring/topBorderConfig";
 
 const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);
@@ -71,7 +71,6 @@ const MainScreen = ({ setModalState }) => {
   }));
 
   useTopBorderSlideDownConfig(flip, api);
-  console.log(flip);
 
   return (
     <div

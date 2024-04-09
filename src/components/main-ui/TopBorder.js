@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTransition, animated } from "@react-spring/web";
-import { getCategoryColor } from "@/utils/utilFunctions";
+import { getCategoryColor } from "@/utils/utilityFunctions";
 
 const TopBorder = ({ currentCategory, currentIndex, navDirection }) => {
   const [items, setItems] = useState([]);
@@ -14,15 +14,15 @@ const TopBorder = ({ currentCategory, currentIndex, navDirection }) => {
     ]);
   }, [currentIndex, currentCategory]);
 
+  const direction = navDirection === "next";
+
   const transitions = useTransition(items, {
     from: {
-      transform:
-        navDirection === "next" ? "translateX(-100%)" : "translateX(100%)",
+      transform: direction ? "translateX(-100%)" : "translateX(100%)",
     },
     enter: { transform: "translateX(0%)" },
     leave: {
-      transform:
-        navDirection === "next" ? "translateX(100%)" : "translateX(-100%)",
+      transform: direction ? "translateX(100%)" : "translateX(-100%)",
     },
     keys: (item) => item.id,
   });

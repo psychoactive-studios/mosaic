@@ -1,17 +1,10 @@
-import { useSpring, animated, config } from "@react-spring/web";
+import { animated } from "@react-spring/web";
 import CloseBtn from "../buttons/CloseBtn";
-import { usePageFadeConfig } from "@/configs/springConfigs";
+import { usePageFadeConfig } from "@/configs/react-spring/modalConfigs";
 import PrimaryCTA from "../buttons/PrimaryCTA";
 
 const DownloadModal = ({ modalState, isClosing, handleClose }) => {
-  const [pageFade, api] = useSpring(() => ({
-    config: { ...config.gentle },
-    from: { opacity: 0 },
-    // to: { opacity: 0 },
-  }));
-
-  usePageFadeConfig("download", modalState, isClosing, api);
-
+  const pageFade = usePageFadeConfig("download", modalState, isClosing);
   return (
     <>
       <animated.div

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import lottie from "lottie-web";
 import { lottieData } from "@/data/lottieData";
+import { lottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
 
 const CloseBtn = ({ handleClose }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -8,23 +8,8 @@ const CloseBtn = ({ handleClose }) => {
   const container = useRef(null);
   const animationRef = useRef(null);
 
-  const enterFrame = 0;
-  const holdFrame = 5;
-  const endFrame = 11;
-
-  useEffect(() => {
-    const animation = lottie.loadAnimation({
-      container: container.current,
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: lottieData["close"],
-    });
-    animationRef.current = animation;
-    return () => {
-      animation.destroy();
-    };
-  }, []);
+  const { enterFrame, holdFrame, endFrame } = returnFrames(0, 5, 11);
+  lottieBtnConfig(container, lottieData["close"], animationRef);
 
   useEffect(() => {
     animationRef.current.setDirection(isHovered ? 1 : -1);

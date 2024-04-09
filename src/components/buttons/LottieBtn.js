@@ -2,14 +2,21 @@ import { useState, useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import ToolTip from "./ToolTip";
 
-const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
+const LottieBtn = ({
+  lottiePath,
+  currentCategory,
+  frameDirection,
+  text,
+  updateState,
+}) => {
   const container = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [initialMount, setInitialMount] = useState(false);
 
   const enterFrame = 0;
-  const holdFrame = 5;
-  const endFrame = 14;
+  const holdFrame = 6;
+  const reverseFrame = 5;
+  const endFrame = 11;
 
   useEffect(() => {
     const animation = lottie.loadAnimation({
@@ -28,15 +35,23 @@ const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
   useEffect(() => {
     if (isHovered) setInitialMount(true);
     if (!isHovered && initialMount) {
-      container.current.animation.playSegments([holdFrame, enterFrame], true);
+      container.current.animation.playSegments(
+        [reverseFrame, enterFrame],
+        true
+      );
     }
-  }, [isHovered]);
+  }, [isHovered, lottiePath]);
 
-  if (isHovered && initialMount)
+  if (isHovered && initialMount) {
+    console.log("play");
     container.current.animation.playSegments([enterFrame, holdFrame], true);
+  }
 
   const handleClick = () => {
     container.current.animation.playSegments([holdFrame, endFrame], true);
+    setTimeout(() => {
+      updateState();
+    }, 100);
   };
 
   return (
@@ -53,7 +68,6 @@ const LottieBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleClick}
-        style={text == "previous" ? { transform: "scaleY(-1)" } : null}
       ></div>
     </div>
   );

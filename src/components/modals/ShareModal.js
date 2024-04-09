@@ -1,18 +1,11 @@
-import { useSpring, animated, config } from "@react-spring/web";
+import { animated } from "@react-spring/web";
 import CloseBtn from "../buttons/CloseBtn";
-import { usePageFadeConfig } from "@/configs/springConfigs";
+import { usePageFadeConfig } from "@/configs/react-spring/modalConfigs";
 import ShareIcon from "../buttons/ShareIcon";
 import { svgData } from "@/data/svgData";
 
 const ShareModal = ({ modalState, isClosing, handleClose }) => {
-  const [pageFade, api] = useSpring(() => ({
-    config: { ...config.gentle },
-    from: { opacity: 0 },
-    // to: { opacity: 0 },
-  }));
-
-  usePageFadeConfig("share", modalState, isClosing, api);
-
+  const pageFade = usePageFadeConfig("share", modalState, isClosing);
   const copyLink = "https://arataiohi.org.nz/publications/mosaic-cards/";
 
   const copyToClipboard = () => {

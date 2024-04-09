@@ -1,7 +1,7 @@
-import { useRef, useState, useEffect } from "react";
-import { getCategoryColor } from "@/utils/utilFunctions";
-import { useSpring, animated, config } from "@react-spring/web";
-import { useToolTipConfig } from "@/configs/springConfigs";
+import { useRef, useState } from "react";
+import { getCategoryColor } from "@/utils/utilityFunctions";
+import { animated } from "@react-spring/web";
+import { useToolTipConfig } from "@/configs/react-spring/toolTipConfig";
 
 const ToolTip = ({ text, currentCategory, isHovered, direction }) => {
   const [rightPosition, setRightPosition] = useState(0);
@@ -9,20 +9,12 @@ const ToolTip = ({ text, currentCategory, isHovered, direction }) => {
   const toolTip = useRef(null);
   const toolTipWrapper = useRef(null);
 
-  useEffect(() => {
-    if (toolTip.current) {
-      const width = toolTip.current.offsetWidth;
-      setRightPosition(direction == "right" ? width + 16 : 72);
-    }
-  }, []);
-
-  const [toolTipSpring, api] = useSpring(() => ({
-    config: { ...config.gentle },
-    from: { opacity: 0, transform: "translateX(0%)" },
-    // to: { opacity: 0, transform: "translateX(0%)" },
-  }));
-
-  useToolTipConfig(isHovered, direction, api);
+  const toolTipSpring = useToolTipConfig(
+    isHovered,
+    direction,
+    toolTip,
+    setRightPosition
+  );
 
   return (
     <div className="tooltip-wrapper">

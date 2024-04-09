@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const closeModalOnEscapeKey = (handleClose) => {
+export const useCloseModalOnEscapeKey = (handleClose) => {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") {

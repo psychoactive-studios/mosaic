@@ -1,15 +1,9 @@
 import CloseBtn from "../buttons/CloseBtn";
-import { useSpring, animated, config } from "@react-spring/web";
-import { usePageSlideConfig } from "@/configs/springConfigs";
+import { animated } from "@react-spring/web";
+import { usePageSlideConfig } from "@/configs/react-spring/modalConfigs";
 
 const AboutModal = ({ modalState, isClosing, handleClose }) => {
-  const [pageSlide, api] = useSpring(() => ({
-    config: { ...config.slow },
-    from: { transform: "translateY(100%)" },
-  }));
-
-  usePageSlideConfig("about", modalState, isClosing, api);
-
+  const pageSlide = usePageSlideConfig("about", modalState, isClosing);
   return (
     <>
       <animated.div

@@ -1,45 +1,33 @@
 import { useState, useEffect, useRef } from "react";
-import lottie from "lottie-web";
 import { lottieData } from "@/data/lottieData";
-import { useSpring, animated, config } from "@react-spring/web";
-import { useHeroHoverAnimation } from "@/configs/springConfigs";
+import { animated } from "@react-spring/web";
+import { useHeroHoverAnimation } from "@/configs/react-spring/heroHoverConfig";
+import { heroLottieConfig } from "@/configs/lottie/lottieConfigs";
+import FooterHero from "../main-ui/FooterHero";
 
 const HeroLottie = ({ onFlip, showHero }) => {
   const [clickable, setClickable] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [showFooterHero, setShowFooterHero] = useState(false);
 
   const container = useRef(null);
   const animation = useRef(null);
   const clickableRef = useRef(false);
 
-  const stillFrame = 135; // Adjust according to new lottie version
+  const stillFrame = 147;
 
-  useEffect(() => {
-    animation.current = lottie.loadAnimation({
-      container: container.current,
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: lottieData.hero,
-    });
-
-    const handleEnterFrame = (e) => {
-      if (e.currentTime >= stillFrame && !clickableRef.current) {
-        animation.current.pause();
-        setClickable(true);
-      }
-    };
-
-    animation.current.addEventListener("enterFrame", handleEnterFrame);
-
-    return () => {
-      animation.current.removeEventListener("enterFrame", handleEnterFrame);
-      animation.current.destroy();
-    };
-  }, []);
+  heroLottieConfig(
+    container,
+    lottieData.hero,
+    animation,
+    clickableRef,
+    stillFrame,
+    setClickable
+  );
 
   useEffect(() => {
     clickableRef.current = clickable;
+    if (clickable) setShowFooterHero(true);
   }, [clickable]);
 
   useEffect(() => {
@@ -52,6 +40,7 @@ const HeroLottie = ({ onFlip, showHero }) => {
         animation.current.play();
         setTimeout(() => {
           onFlip();
+          setShowFooterHero(false);
         }, 2000); // Adjust lottie animation out time if necessary
       }
     };
@@ -59,28 +48,10 @@ const HeroLottie = ({ onFlip, showHero }) => {
     return () => container.current.removeEventListener("click", handleClick);
   }, []);
 
-  // const [{ scale, shadowIntensity }, api] = useSpring(() => ({
-  //   scale: 1,
-  //   shadowIntensity: 0,
-  //   config: config.gentle,
-  // }));
-
-  // useEffect(() => {
-  //   api.start({
-  //     scale: isHovered ? 1 : 0.98,
-  //     shadowIntensity: clickable ? 3 : 0,
-  //   });
-  // }, [isHovered, clickable, api]);
-
-  // const animatedBoxShadow = shadowIntensity.to(
-  //   (intensity) =>
-  //     `0.592px 30.328px 161px 5px rgba(0, 0, 0, ${0.07 * intensity}),
-  //      0.3px 15.353px 70.186px 5px rgba(0, 0, 0, ${0.03 * intensity}),
-  //      0.118px 6.066px 26.163px 5px rgba(0, 0, 0, ${0.05 * intensity}),
-  //      0.026px 1.327px 9.308px 5px rgba(0, 0, 0, ${0.07 * intensity})`
-  // );
-
-  const { scale, animatedBoxShadow } = useHeroHoverAnimation(isHovered, clickable);
+  const { scale, animatedBoxShadow } = useHeroHoverAnimation(
+    isHovered,
+    clickable
+  );
 
   return (
     <div
@@ -97,6 +68,7 @@ const HeroLottie = ({ onFlip, showHero }) => {
           boxShadow: animatedBoxShadow,
         }}
       ></animated.div>
+      {clickable && showFooterHero ? <FooterHero /> : null}
     </div>
   );
 };

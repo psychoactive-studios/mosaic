@@ -4,10 +4,10 @@ import ShareModal from "./ShareModal";
 import AboutModal from "./AboutModal";
 import DownloadModal from "./DownloadModal";
 import SuggestionsModal from "./SuggestionsModal";
-import PathwaysModal from "./PathwaysModal";
+import PathwaysModal from "./pathways/PathwaysModal";
 import { closeDelay } from "@/data/globalVariables";
-import { useModalFade } from "@/configs/springConfigs";
-import { closeModalOnEscapeKey } from "@/utils/customHooks";
+import { useModalFade } from "@/configs/react-spring/modalConfigs";
+import { useCloseModalOnEscapeKey } from "@/utils/customHooks";
 
 const ModalWrapper = ({ modalState, setModalState }) => {
   const [isClosing, setIsClosing] = useState(false);
@@ -33,10 +33,10 @@ const ModalWrapper = ({ modalState, setModalState }) => {
   };
 
   // close modal on escape key
-  closeModalOnEscapeKey(handleClose);
+  useCloseModalOnEscapeKey(handleClose);
 
   // react spring config
-  const { backgroundColor } = useModalFade(modalState, isClosing);
+  const backgroundColor = useModalFade(modalState, isClosing);
 
   return (
     <animated.div
