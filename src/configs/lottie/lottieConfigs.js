@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import lottie from "lottie-web";
 
-export const lottieBtnConfig = (container, lottiePath, animationRef) => {
+export const useLottieBtnConfig = (container, lottiePath, animationRef) => {
   useEffect(() => {
     const animation = lottie.loadAnimation({
       container: container.current,
@@ -24,7 +24,7 @@ export const lottieBtnConfig = (container, lottiePath, animationRef) => {
   }, [lottiePath]);
 };
 
-export const heroLottieConfig = (
+export const useHeroLottieConfig = (
   container,
   lottiePath,
   animation,
@@ -56,11 +56,6 @@ export const heroLottieConfig = (
   }, [lottiePath]);
 };
 
-export const returnFrames = (
-  enterFrame,
-  holdFrame,
-  endFrame,
-  reverseFrame
-) => {
+export const returnFrames = (enterFrame, holdFrame, endFrame, reverseFrame) => {
   return { enterFrame, holdFrame, endFrame, reverseFrame };
 };

@@ -1,6 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { lottieData } from "@/data/lottieData";
-import { lottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
+import {
+  useLottieBtnConfig,
+  returnFrames,
+} from "@/configs/lottie/lottieConfigs";
 
 const CloseBtn = ({ handleClose }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -9,7 +12,7 @@ const CloseBtn = ({ handleClose }) => {
   const animationRef = useRef(null);
 
   const { enterFrame, holdFrame, endFrame } = returnFrames(0, 5, 11);
-  lottieBtnConfig(container, lottieData["close"], animationRef);
+  useLottieBtnConfig(container, lottieData["close"], animationRef);
 
   useEffect(() => {
     animationRef.current.setDirection(isHovered ? 1 : -1);

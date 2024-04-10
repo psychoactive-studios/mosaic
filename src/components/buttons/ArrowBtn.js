@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import ToolTip from "./ToolTip";
-import { lottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
+import {
+  useLottieBtnConfig,
+  returnFrames,
+} from "@/configs/lottie/lottieConfigs";
 
 const ArrowBtn = ({ lottiePath, category, frameDirection, text }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -9,7 +12,7 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text }) => {
   const container = useRef(null);
 
   const { enterFrame, holdFrame, endFrame } = returnFrames(1, 5, 14);
-  lottieBtnConfig(container, lottiePath);
+  useLottieBtnConfig(container, lottiePath);
 
   useEffect(() => {
     if (isHovered) setInitialMount(true);

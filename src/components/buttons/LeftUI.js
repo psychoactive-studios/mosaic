@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import lottie from "lottie-web";
 import ToolTip from "./ToolTip";
-import { lottieData } from "@/data/lottieData";
-import { lottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
+import {
+  useLottieBtnConfig,
+  returnFrames,
+} from "@/configs/lottie/lottieConfigs";
 
 const LeftUI = ({
   category,
@@ -26,7 +27,7 @@ const LeftUI = ({
     11,
     5
   );
-  lottieBtnConfig(container, lottiePath);
+  useLottieBtnConfig(container, lottiePath);
 
   useEffect(() => {
     if (isHovered) setInitialMount(true);

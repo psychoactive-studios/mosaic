@@ -5,7 +5,7 @@ import {
   useHeroBoxShadow,
   useHeroGrow,
 } from "@/configs/react-spring/heroHoverConfig";
-import { heroLottieConfig } from "@/configs/lottie/lottieConfigs";
+import { useHeroLottieConfig } from "@/configs/lottie/lottieConfigs";
 import FooterHero from "../main-ui/FooterHero";
 
 const HeroLottie = ({ onFlip, showHero }) => {
@@ -19,7 +19,7 @@ const HeroLottie = ({ onFlip, showHero }) => {
 
   const stillFrame = 147;
 
-  heroLottieConfig(
+  useHeroLottieConfig(
     container,
     lottieData.hero,
     animation,

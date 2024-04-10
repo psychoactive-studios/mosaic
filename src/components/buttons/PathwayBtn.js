@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import PathwayPulse from "./PathwayPulse";
-import { lottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
+import { useLottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
 
 const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
   const container = useRef(null);
@@ -8,7 +8,7 @@ const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
   const [initialMount, setInitialMount] = useState(false);
   const [clicked, setClicked] = useState(false);
 
-  lottieBtnConfig(container, lottiePath);
+  useLottieBtnConfig(container, lottiePath);
   const { enterFrame, holdFrame, endFrame, reverseFrame } = returnFrames(
     0,
     11,
