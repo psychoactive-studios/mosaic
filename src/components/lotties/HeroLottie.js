@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { lottieData } from "@/data/lottieData";
 import { animated } from "@react-spring/web";
-import { useHeroHoverAnimation } from "@/configs/react-spring/heroHoverConfig";
+import {
+  useHeroBoxShadow,
+  useHeroGrow,
+} from "@/configs/react-spring/heroHoverConfig";
 import { heroLottieConfig } from "@/configs/lottie/lottieConfigs";
 import FooterHero from "../main-ui/FooterHero";
 
@@ -48,10 +51,8 @@ const HeroLottie = ({ onFlip, showHero }) => {
     return () => container.current.removeEventListener("click", handleClick);
   }, []);
 
-  const { scale, animatedBoxShadow } = useHeroHoverAnimation(
-    isHovered,
-    clickable
-  );
+  const scale = useHeroGrow(isHovered);
+  const animatedBoxShadow = useHeroBoxShadow(isHovered, clickable);
 
   return (
     <div
@@ -64,8 +65,8 @@ const HeroLottie = ({ onFlip, showHero }) => {
         onMouseLeave={() => (clickable ? setIsHovered(false) : null)}
         className="lottie-container"
         style={{
+          ...animatedBoxShadow,
           transform: scale.to((s) => `scale(${s})`),
-          boxShadow: animatedBoxShadow,
         }}
       ></animated.div>
       {clickable && showFooterHero ? <FooterHero /> : null}

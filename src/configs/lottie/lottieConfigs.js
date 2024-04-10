@@ -56,6 +56,11 @@ export const heroLottieConfig = (
   }, [lottiePath]);
 };
 
-export const returnFrames = (enterFrame, holdFrame, endFrame) => {
-  return { enterFrame, holdFrame, endFrame };
+export const returnFrames = (
+  enterFrame,
+  holdFrame,
+  endFrame,
+  reverseFrame
+) => {
+  return { enterFrame, holdFrame, endFrame, reverseFrame };
 };

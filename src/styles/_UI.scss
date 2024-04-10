@@ -18,8 +18,8 @@
 }
 
 .right {
-  left: calc($g11 - $ui-sidebar-width);
-  // right: $g1;
+  // left: calc($g11 - $ui-sidebar-width);
+  right: $g1;
 }
 
 .ui-lottie-wrapper {

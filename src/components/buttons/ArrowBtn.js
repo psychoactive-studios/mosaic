@@ -2,12 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import ToolTip from "./ToolTip";
 import { lottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
 
-const ArrowBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
+const ArrowBtn = ({ lottiePath, category, frameDirection, text }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [initialMount, setInitialMount] = useState(false);
 
   const container = useRef(null);
-  
+
   const { enterFrame, holdFrame, endFrame } = returnFrames(1, 5, 14);
   lottieBtnConfig(container, lottiePath);
 
@@ -29,7 +29,7 @@ const ArrowBtn = ({ lottiePath, currentCategory, frameDirection, text }) => {
     <div className="ui-lottie-wrapper">
       <ToolTip
         text={text}
-        currentCategory={currentCategory}
+        category={category}
         isHovered={isHovered}
         direction={frameDirection}
       />

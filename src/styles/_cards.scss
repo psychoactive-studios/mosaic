@@ -10,9 +10,11 @@
 }
 
 .card-wrapper {
-  width: $card-width;
+  // height: calc($card-height * 1.02); // increased slightly to compensate for hover grow effect
+  // width: calc($card-width * 1.02); // increased slightly to compensate for hover grow effect
+  height: $card-height; // increased slightly to compensate for hover grow effect
+  width: $card-width; // increased slightly to compensate for hover grow effect
   max-width: $card-max-width;
-  height: $card-height;
   display: flex;
   flex-direction: column;
 }
@@ -62,6 +64,7 @@
   display: flex;
   align-items: center;
   height: 260px;
+  opacity: 0;
 }
 
 .bottom-half {

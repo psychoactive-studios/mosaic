@@ -1,41 +1,54 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
 import { getCategoryColor } from "@/utils/utilityFunctions";
 
 const Card = ({ card }) => {
   const [runAnimation, setRunAnimation] = useState(true);
-  const [runAnimation2, setRunAnimation2] = useState(false);
-  const [showText, setShowText] = useState(false);
+  // const [runAnimation2, setRunAnimation2] = useState(false);
+  // const prevCategoryRef = useRef();
+
+  // const [showText, setShowText] = useState(false);
 
   const currentCategory = getCategoryColor(card.category);
-  useEffect(() => {
-    // console.log("current cat changed");
-    setRunAnimation(true);
-  }, [currentCategory]);
 
-  useEffect(() => {
-    setRunAnimation2(true);
-  }, [card.id]);
+  // useEffect(() => {
+  //   setRunAnimation(true);
+  // }, [currentCategory]);
 
+  // useEffect(() => {
+  //   prevCategoryRef.current = currentCategory;
+  // });
+
+  // useEffect(() => {
+  //   setRunAnimation2(true);
+  // }, [card.id]);
+
+  // console.log(currentCategory !== prevCategoryRef.current);
   // move to spring configs once fixed
   const fadeOnlyOnCategoryChange = useSpring({
-    reset: runAnimation,
-    from: { opacity: 0 },
     to: { opacity: 1 },
-    // config: { ...config.molasses },
+    from: { opacity: 0 },
+    reset: runAnimation,
+    // Only trigger the animation if the category has actually changed
+    // by comparing the current category with the previous one stored in the ref.
+    // This will return `true` on an actual change, effectively resetting the animation in that case.
+    // reverse: currentCategory !== prevCategoryRef.current,
     onRest: () => {
-      // console.log("onREst");
       setRunAnimation(false);
     },
+    config: { duration: 100 },
   });
 
   const fadeEveryTime = useSpring({
-    reset: runAnimation2,
-    onStart: () => setShowText(true),
+    reset: !runAnimation,
+    // onStart: () => setShowText(true),
     from: { opacity: 0 },
     to: { opacity: 1 },
+    // config: { duration: 1000 },
     config: { ...config.molasses },
-    onRest: () => setRunAnimation2(false),
+    // onRest: () => {
+    //   setRunAnimation2(false);
+    // },
   });
 
   return (
@@ -75,7 +88,7 @@ const Card = ({ card }) => {
                 className={`card-list-item ${currentCategory}-bullet-point`}
                 key={index}
               >
-                {showText ? question : null}
+                {question}
               </li>
             ))}
           </ul>

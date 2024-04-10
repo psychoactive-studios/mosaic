@@ -1,9 +1,8 @@
 import { useRef, useState } from "react";
-import { getCategoryColor } from "@/utils/utilityFunctions";
 import { animated } from "@react-spring/web";
 import { useToolTipConfig } from "@/configs/react-spring/toolTipConfig";
 
-const ToolTip = ({ text, currentCategory, isHovered, direction }) => {
+const ToolTip = ({ text, category, isHovered, direction }) => {
   const [rightPosition, setRightPosition] = useState(0);
 
   const toolTip = useRef(null);
@@ -30,9 +29,7 @@ const ToolTip = ({ text, currentCategory, isHovered, direction }) => {
         <animated.div
           ref={toolTip}
           style={toolTipSpring}
-          className={`tooltip ${getCategoryColor(
-            currentCategory
-          )}-frame-${direction}`}
+          className={`tooltip ${category}-frame-${direction}`}
         >
           <p>{text}</p>
         </animated.div>

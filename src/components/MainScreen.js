@@ -9,7 +9,7 @@ import Footer from "./main-ui/Footer";
 import TopBorder from "./main-ui/TopBorder";
 import Preloader from "./lotties/PreloaderLottie";
 import HeroLottie from "./lotties/HeroLottie";
-import { useTopBorderSlideDownConfig } from "@/configs/react-spring/topBorderConfig";
+import { useTopBorderSlideDownConfig } from "@/configs/react-spring/uiSlideConfigs";
 
 const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);
@@ -65,12 +65,7 @@ const MainScreen = ({ setModalState }) => {
     if (displayCards.length > 0) setLoading(false);
   }, [displayCards, currentIndex]);
 
-  const [topBorderSlideDown, api] = useSpring(() => ({
-    config: { ...config.slow },
-    from: { transform: "translateY(-100%)" },
-  }));
-
-  useTopBorderSlideDownConfig(flip, api);
+  const topBorderSlideDown = useTopBorderSlideDownConfig(flip);
 
   return (
     <div

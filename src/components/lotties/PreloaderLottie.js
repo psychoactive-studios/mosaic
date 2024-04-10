@@ -34,7 +34,7 @@ const Preloader = ({ isLoading, setShowHero }) => {
     <div
       ref={container}
       className="lottie-container preloader"
-      style={{ transform: "scale(0.98)" }}
+// style={{ transform: "scale(0.98)" }}
     ></div>
   );
 };

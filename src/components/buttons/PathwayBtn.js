@@ -1,30 +1,20 @@
 import { useState, useEffect, useRef } from "react";
-import lottie from "lottie-web";
 import PathwayPulse from "./PathwayPulse";
+import { lottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
 
 const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
   const container = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [initialMount, setInitialMount] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
-  const enterFrame = 0;
-  const holdFrame = 11;
-  const reverseFrame = 10;
-  const endFrame = 21;
-
-  useEffect(() => {
-    const animation = lottie.loadAnimation({
-      container: container.current,
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: lottiePath,
-    });
-    container.current.animation = animation;
-    return () => {
-      container.current.animation.destroy();
-    };
-  }, [lottiePath]);
+  lottieBtnConfig(container, lottiePath);
+  const { enterFrame, holdFrame, endFrame, reverseFrame } = returnFrames(
+    0,
+    11,
+    15,
+    10
+  );
 
   useEffect(() => {
     if (isHovered) setInitialMount(true);
@@ -36,14 +26,20 @@ const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
     }
   }, [isHovered]);
 
+  useEffect(() => {
+    setClicked(false);
+  }, [initialMount]);
+
   if (isHovered && initialMount)
     container.current.animation.playSegments([enterFrame, holdFrame], true);
 
   const handleClick = () => {
-    container.current.animation.playSegments([holdFrame, endFrame], true);
+    setClicked(true);
+    updateState();
     setTimeout(() => {
-      updateState();
-    }, 100);
+      container.current.animation.goToAndStop(0, true);
+      setInitialMount(false);
+    }, 250);
   };
 
   return (
@@ -59,7 +55,11 @@ const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
         style={text == "previous" ? { transform: "scaleY(-1)" } : null}
       ></div>
       <div className="pathways-text-wrapper">
-        <p className={`${isHovered ? `${category}-text-color` : ""}`}>{text}</p>
+        <p
+          className={`${isHovered || clicked ? `${category}-text-color` : ""}`}
+        >
+          {text}
+        </p>
       </div>
       <PathwayPulse category={category} />
     </div>
