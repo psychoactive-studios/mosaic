@@ -4,6 +4,7 @@ import {
   useLottieBtnConfig,
   returnFrames,
 } from "@/configs/lottie/lottieConfigs";
+import { playSound } from "@/utils/sound";
 
 const CloseBtn = ({ handleClose }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -33,9 +34,13 @@ const CloseBtn = ({ handleClose }) => {
     <div
       className="pointer"
       ref={container}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => {
+        setIsHovered(true), playSound("hoverBtn");
+      }}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={handleClick}
+      onClick={() => {
+        handleClick(), playSound("clickSound");
+      }}
     ></div>
   );
 };

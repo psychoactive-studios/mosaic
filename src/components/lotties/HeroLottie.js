@@ -7,6 +7,7 @@ import {
 } from "@/configs/react-spring/heroHoverConfig";
 import { useHeroLottieConfig } from "@/configs/lottie/lottieConfigs";
 import FooterHero from "../main-ui/FooterHero";
+import { playSound } from "@/utils/sound";
 
 const HeroLottie = ({ onFlip, showHero }) => {
   const [clickable, setClickable] = useState(false);
@@ -44,6 +45,7 @@ const HeroLottie = ({ onFlip, showHero }) => {
         setTimeout(() => {
           onFlip();
           setShowFooterHero(false);
+          playSound("bgMusic");
         }, 2000); // Adjust lottie animation out time if necessary
       }
     };
