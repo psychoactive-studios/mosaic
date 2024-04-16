@@ -6,11 +6,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  // align-items: center;
   gap: 1rem;
   width: $ui-sidebar-width;
-  div {
-    cursor: pointer;
-  }
 }
 
 .left {
@@ -33,6 +31,7 @@
 .ui-lottie-container {
   width: $ui-lottie-size;
   height: $ui-lottie-size;
+  cursor: pointer;
 }
 
 .pathways-lottie {
@@ -81,10 +80,16 @@
   width: $ui-lottie-size;
   @include flex_centre;
   justify-content: flex-start;
+  // display: none;
+}
+
+.ui-item:hover .tooltip-container {
+  display: flex;
 }
 
 .tooltip {
   padding: 0.5rem 1rem;
+  cursor: default;
   p {
     color: white;
     font-size: 12px;
@@ -199,6 +204,7 @@
   height: 38px;
   // width: $width-minus-scrollbar;
   width: 100%;
+  overflow: hidden;
 }
 
 .top-border-inner {

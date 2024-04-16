@@ -15,7 +15,7 @@ const PathwayPulse = ({ category }) => {
       path: lottieData[`lp_pulse_${category}`],
     });
     return () => animation.current.destroy();
-  }, []);
+  }, [category]);
   return (
     <div className="pathways-pulse-wrapper">
       <div className="pathways-pulse-lottie" ref={container}></div>

@@ -30,13 +30,7 @@ const Preloader = ({ isLoading, setShowHero }) => {
     }
   }, [isLoading, setShowHero]);
 
-  return (
-    <div
-      ref={container}
-      className="lottie-container preloader"
-// style={{ transform: "scale(0.98)" }}
-    ></div>
-  );
+  return <div ref={container} className="lottie-container preloader"></div>;
 };
 
 export default Preloader;

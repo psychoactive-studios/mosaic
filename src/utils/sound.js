@@ -19,7 +19,7 @@ function reduceVolume(target, amount) {
 }
 
 function muteToggle(targetVolume) {
-  if (soundHasStarted)
+  if (soundHasStarted) {
     if (!muted) {
       fadeAllSounds(0);
       setTimeout(() => {
@@ -29,7 +29,23 @@ function muteToggle(targetVolume) {
       unMuteAllSounds();
       fadeAllSounds(targetVolume);
     }
-  muted = !muted;
+    muted = !muted;
+  }
+}
+
+function visibilitySoundToggle(targetVolume, visibilityState) {
+  if (soundHasStarted && !muted) {
+    if (!visibilityState) {
+      fadeAllSounds(0);
+      setTimeout(() => {
+        muteAllSounds();
+      }, 500);
+    } else {
+      console.log("unmute");
+      unMuteAllSounds();
+      fadeAllSounds(targetVolume);
+    }
+  }
 }
 
 function fadeAllSounds(targetVolume) {
@@ -83,6 +99,7 @@ export {
   setAudioRefs,
   playSound,
   muteToggle,
+  visibilitySoundToggle,
   fadeAllSounds,
   reduceVolume,
   isMuted,

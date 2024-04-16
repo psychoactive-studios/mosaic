@@ -4,10 +4,11 @@ import {
   useLottieBtnConfig,
   returnFrames,
 } from "@/configs/lottie/lottieConfigs";
+import { playSound } from "@/utils/sound";
 
-const ArrowBtn = ({ lottiePath, category, frameDirection, text }) => {
+const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [initialMount, setInitialMount] = useState(false);
+  const [initialMount, setInitialMount] = useState(true);
 
   const container = useRef(null);
 
@@ -15,17 +16,32 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text }) => {
   useLottieBtnConfig(container, lottiePath);
 
   useEffect(() => {
-    if (isHovered) setInitialMount(true);
-    if (!isHovered && initialMount) {
-      container.current.animation.playSegments([holdFrame, enterFrame], true);
+    if (isHovered) {
+      if (initialMount) {
+        playSound("hoverBtn");
+        container.current.animation.playSegments([enterFrame, holdFrame], true);
+      }
+    } else {
+      container.current.animation.playSegments([5, enterFrame], true);
     }
   }, [isHovered]);
 
-  if (isHovered && initialMount)
-    container.current.animation.playSegments([enterFrame, holdFrame], true);
+  useEffect(() => {
+    if (isHovered && !initialMount) {
+      setTimeout(() => {
+        container.current.animation.playSegments([enterFrame, holdFrame], true);
+        setInitialMount(true);
+      }, 150);
+    }
+  });
 
   const handleClick = () => {
+    playSound("clickSound");
     container.current.animation.playSegments([holdFrame, endFrame], true);
+    setTimeout(() => {
+      navigate();
+      setInitialMount(false);
+    }, 200);
   };
 
   return (
@@ -39,7 +55,9 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text }) => {
       <div
         className="ui-lottie-container"
         ref={container}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleClick}
         style={text == "previous" ? { transform: "scaleY(-1)" } : null}

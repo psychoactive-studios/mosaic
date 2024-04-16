@@ -1,22 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
-import Card from "./main-ui/Card";
 import UI from "./main-ui/UI";
-import ReactCardFlip from "react-card-flip";
 import { cardData, cardCategories } from "@/data/cardData";
 import { getCategoryColor, shuffleCards } from "@/utils/utilityFunctions";
 import Footer from "./main-ui/Footer";
 import TopBorder from "./main-ui/TopBorder";
-import Preloader from "./lotties/PreloaderLottie";
-import HeroLottie from "./lotties/HeroLottie";
 import { useTopBorderSlideDownConfig } from "@/configs/react-spring/uiSlideConfigs";
+import CardWrapper from "./CardWrapper";
 
 const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);
-  const [useTranslateY, setUseTranslateY] = useState(true);
-  const [loading, setLoading] = useState(true);
-  const [showHero, setShowHero] = useState(false);
-
   const [isShuffled, setIsShuffled] = useState(true);
   const [displayCards, setDisplayCards] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,28 +21,12 @@ const MainScreen = ({ setModalState }) => {
     setCurrentIndex(0);
   }, [isShuffled]);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setUseTranslateY(false);
-  //   }, 100);
-
-  //   return () => clearTimeout(timer);
-  // }, []);
-
-  const handleNextPreviousCommon = () => {
-    if (useTranslateY) {
-      setUseTranslateY(false);
-    }
-  };
-
   const handleNext = () => {
-    handleNextPreviousCommon();
     setNavDirection("next");
     setCurrentIndex((prevIndex) => (prevIndex + 1) % displayCards.length);
   };
 
   const handlePrevious = () => {
-    handleNextPreviousCommon();
     setNavDirection("prev");
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + displayCards.length) % displayCards.length
@@ -62,7 +39,6 @@ const MainScreen = ({ setModalState }) => {
 
   useEffect(() => {
     setCurrentCategory(displayCards[currentIndex]?.category);
-    if (displayCards.length > 0) setLoading(false);
   }, [displayCards, currentIndex]);
 
   const topBorderSlideDown = useTopBorderSlideDownConfig(flip);
@@ -82,14 +58,13 @@ const MainScreen = ({ setModalState }) => {
             <TopBorder
               currentCategory={currentCategory}
               currentIndex={currentIndex}
-              useTranslateY={useTranslateY}
               navDirection={navDirection}
             />
           </animated.div>
           <UI
             onNext={handleNext}
             onPrevious={handlePrevious}
-            onToggleShuffle={toggleShuffle}
+            toggleShuffle={toggleShuffle}
             isShuffled={isShuffled}
             setModalState={setModalState}
             currentCategory={currentCategory}
@@ -100,19 +75,14 @@ const MainScreen = ({ setModalState }) => {
           />
         </>
       ) : null}
-      {!showHero && <Preloader isLoading={loading} setShowHero={setShowHero} />}
-      {!loading && (
-        <ReactCardFlip
-          isFlipped={flip}
-          flipSpeedBackToFront={2}
-          flipSpeedFrontToBack={2}
-        >
-          <HeroLottie onFlip={() => setFlip(!flip)} showHero={showHero} />
-          <Card card={displayCards[currentIndex]} />
-        </ReactCardFlip>
-      )}
+      <CardWrapper
+        displayCards={displayCards}
+        currentIndex={currentIndex}
+        flip={flip}
+        setFlip={setFlip}
+      />
     </div>
   );
 };
 
-export default MainScreen;
+export default memo(MainScreen);

@@ -1,5 +1,9 @@
 import { globalVolume } from "@/data/globalVariables";
-import { setAudioRefs, reduceVolume, muteToggle, isMuted } from "@/utils/sound";
+import {
+  setAudioRefs,
+  reduceVolume,
+  visibilitySoundToggle,
+} from "@/utils/sound";
 import { useEffect, useRef } from "react";
 
 export default function BackgroundMusic() {
@@ -9,22 +13,15 @@ export default function BackgroundMusic() {
   useEffect(() => {
     setAudioRefs([bgMusic]);
     reduceVolume("bgMusic", musicVolume);
-
     // fade out music if user navigates away in tab
     const handleVisibilityChange = () => {
-      // console.log("visible change");
-      // console.log(isMuted);
-      // // if (!isMuted()) {
-      // console.log("trigger");
-      muteToggle(musicVolume);
-      // }
+      const visibilityState = document.visibilityState === "visible";
+      visibilitySoundToggle(musicVolume, visibilityState);
     };
-    // if (typeof window !== "undefined") {
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-    // }
   }, []);
 
   return (

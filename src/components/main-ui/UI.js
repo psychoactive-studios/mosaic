@@ -2,7 +2,7 @@ import { getCategoryColor } from "@/utils/utilityFunctions";
 import { lottieData } from "@/data/lottieData";
 import ArrowBtn from "../buttons/ArrowBtn";
 import LeftUI from "../buttons/LeftUI";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import PathwayBtn from "../buttons/PathwayBtn";
 import { animated, useSpring, config } from "@react-spring/web";
 import {
@@ -11,11 +11,13 @@ import {
 } from "@/configs/react-spring/uiSlideConfigs";
 import { muteToggle, playSound } from "@/utils/sound";
 import { globalVolume } from "@/data/globalVariables";
+import ShuffleBtn from "../buttons/ShuffleBtn";
+import SoundBtn from "../buttons/SoundBtn";
 
 const UI = ({
   onNext,
   onPrevious,
-  onToggleShuffle,
+  toggleShuffle,
   isShuffled,
   setModalState,
   currentCategory,
@@ -42,51 +44,36 @@ const UI = ({
       <animated.div className="ui-inner left" style={uiSlideLeft}>
         {/* MUTE BTN */}
         <div
-          className="ui-item pointer"
-          onMouseEnter={() => playSound("hoverBtn")}
-          onClick={() => playSound("clickSound")}
+          className="ui-item"
+          // onMouseEnter={() => playSound("hoverBtn")}
+          // onClick={() => playSound("clickSound")}
         >
-          <LeftUI
+          <SoundBtn
             category={category}
-            frameDirection="left"
-            text={isMuted ? "unmute" : "mute"}
-            state={isMuted}
-            updateState={toggleMute}
-            offState={lottieData[`sound_off_${category}`]}
-            onState={lottieData[`sound_on_${category}`]}
+            isMuted={isMuted}
+            toggleMute={toggleMute}
           />
         </div>
         {/*  SHUFFLE BTN */}
         <div
-          className="ui-item pointer"
-          onMouseEnter={() => playSound("hoverBtn")}
-          onClick={() => playSound("modalSound")}
+          className="ui-item"
         >
-          <LeftUI
+          <ShuffleBtn
             category={category}
-            frameDirection="left"
-            text={isShuffled ? "disable shuffle" : "enable shuffle"}
-            state={isShuffled}
-            updateState={onToggleShuffle}
-            offState={lottieData[`shuffle_off_${category}`]}
-            onState={lottieData[`shuffle_on_${category}`]}
+            isShuffled={isShuffled}
+            toggleShuffle={toggleShuffle}
           />
         </div>
       </animated.div>
       <animated.div className="ui-inner right" style={uiSlideRight}>
         {/* NEXT BTN */}
-        <div
-          className="ui-item"
-          onMouseEnter={() => playSound("hoverBtn")}
-          onClick={() => {
-            onNext(), playSound("clickSound");
-          }}
-        >
+        <div className="ui-item">
           <ArrowBtn
             lottiePath={lottieData[`arrow_${category}`]}
             category={category}
             frameDirection="right"
             text="next"
+            navigate={onNext}
           />
         </div>
         {/* PATHWAYS BTN */}
@@ -102,18 +89,13 @@ const UI = ({
           />
         </div>
         {/* PREVIOUS BTN */}
-        <div
-          className="ui-item"
-          onMouseEnter={() => playSound("hoverBtn")}
-          onClick={() => {
-            onPrevious(), playSound("clickSound");
-          }}
-        >
+        <div className="ui-item">
           <ArrowBtn
             lottiePath={lottieData[`arrow_${category}`]}
             category={category}
             frameDirection="right"
             text="previous"
+            navigate={onPrevious}
           />
         </div>
       </animated.div>
@@ -121,4 +103,4 @@ const UI = ({
   );
 };
 
-export default UI;
+export default memo(UI);

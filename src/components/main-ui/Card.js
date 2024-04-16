@@ -10,7 +10,6 @@ const Card = ({ card }) => {
   // const [showText, setShowText] = useState(false);
 
   const currentCategory = getCategoryColor(card.category);
-
   // useEffect(() => {
   //   setRunAnimation(true);
   // }, [currentCategory]);

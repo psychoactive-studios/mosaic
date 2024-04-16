@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import { lottieData } from "@/data/lottieData";
 import { animated } from "@react-spring/web";
 import {
@@ -76,4 +76,4 @@ const HeroLottie = ({ onFlip, showHero }) => {
   );
 };
 
-export default HeroLottie;
+export default memo(HeroLottie);
