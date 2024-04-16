@@ -42,6 +42,7 @@ const HeroLottie = ({ onFlip, showHero }) => {
     const handleClick = () => {
       if (clickableRef.current) {
         animation.current.play();
+        playSound("pathwaySound");
         setTimeout(() => {
           onFlip();
           setShowFooterHero(false);

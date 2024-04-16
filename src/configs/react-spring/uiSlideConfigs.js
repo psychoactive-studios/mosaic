@@ -20,9 +20,9 @@ export const useTopBorderSlideDownConfig = (flip) => {
 export const useUiSlideLeft = (trigger) => {
   const uiSlideLeft = useSpring({
     delay: 500,
-    from: { transform: "translateX(-220%)" },
+    from: { transform: "translateX(-250%)" },
     to: {
-      transform: trigger ? "translateX(0%)" : "translateX(-220%)",
+      transform: trigger ? "translateX(0%)" : "translateX(-250%)",
     },
     config: { ...config.slow },
   });
@@ -32,9 +32,9 @@ export const useUiSlideLeft = (trigger) => {
 export const useUiSlideRight = (trigger) => {
   const uiSlideRight = useSpring({
     delay: 500,
-    from: { transform: "translateX(220%)" },
+    from: { transform: "translateX(250%)" },
     to: {
-      transform: trigger ? "translateX(0%)" : "translateX(220%)",
+      transform: trigger ? "translateX(0%)" : "translateX(250%)",
     },
     config: { ...config.slow },
   });
