@@ -3,6 +3,7 @@ import { lottieData } from "@/data/lottieData";
 import ToolTip from "./ToolTip";
 import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
+import { isTouchDevice } from "@/utils/utilityFunctions";
 
 const ShuffleBtn = ({ category, isShuffled, toggleShuffle }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -85,12 +86,14 @@ const ShuffleBtn = ({ category, isShuffled, toggleShuffle }) => {
 
   return (
     <div className="ui-lottie-wrapper pointer">
-      <ToolTip
-        text={isShuffled ? "disable shuffle" : "enable shuffle"}
-        category={category}
-        isHovered={isHovered}
-        direction={"left"}
-      />
+      {!isTouchDevice() && (
+        <ToolTip
+          text={isShuffled ? "disable shuffle" : "enable shuffle"}
+          category={category}
+          isHovered={isHovered}
+          direction={"left"}
+        />
+      )}
       <div
         className="ui-lottie-container pointer"
         ref={container}

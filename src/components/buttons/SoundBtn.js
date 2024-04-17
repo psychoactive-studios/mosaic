@@ -3,6 +3,7 @@ import { lottieData } from "@/data/lottieData";
 import ToolTip from "./ToolTip";
 import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
+import { isTouchDevice } from "@/utils/utilityFunctions";
 
 const SoundBtn = ({ category, isMuted, toggleMute }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -91,12 +92,14 @@ const SoundBtn = ({ category, isMuted, toggleMute }) => {
 
   return (
     <div className="ui-lottie-wrapper pointer">
-      <ToolTip
-        text={isMuted ? "unmute" : "mute"}
-        category={category}
-        isHovered={isHovered}
-        direction={"left"}
-      />
+      {!isTouchDevice() && (
+        <ToolTip
+          text={isMuted ? "unmute" : "mute"}
+          category={category}
+          isHovered={isHovered}
+          direction={"left"}
+        />
+      )}
       <div
         className="ui-lottie-container pointer"
         ref={container}

@@ -39,7 +39,7 @@ const CloseBtn = ({ handleClose }) => {
 
   return (
     <div
-      className="pointer"
+      className="close-lottie pointer"
       ref={container}
       onMouseEnter={() => {
         setIsHovered(true), playSound("hoverBtn");

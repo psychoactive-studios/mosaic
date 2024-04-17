@@ -5,6 +5,7 @@ import {
   returnFrames,
 } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
+import { isTouchDevice } from "@/utils/utilityFunctions";
 
 const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -46,12 +47,14 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
 
   return (
     <div className="ui-lottie-wrapper">
-      <ToolTip
-        text={text}
-        category={category}
-        isHovered={isHovered}
-        direction={frameDirection}
-      />
+      {!isTouchDevice() && (
+        <ToolTip
+          text={text}
+          category={category}
+          isHovered={isHovered}
+          direction={frameDirection}
+        />
+      )}
       <div
         className="ui-lottie-container"
         ref={container}
