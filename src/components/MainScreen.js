@@ -7,6 +7,7 @@ import Footer from "./main-ui/Footer";
 import TopBorder from "./main-ui/TopBorder";
 import { useTopBorderSlideDownConfig } from "@/configs/react-spring/uiSlideConfigs";
 import CardWrapper from "./CardWrapper";
+import useIsSmallScreen from "@/utils/customHooks";
 
 const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);
@@ -43,6 +44,8 @@ const MainScreen = ({ setModalState }) => {
 
   const topBorderSlideDown = useTopBorderSlideDownConfig(flip);
 
+  const isSmallScreen = useIsSmallScreen();
+
   return (
     <div
       className={`mainscreen-wrapper ${
@@ -51,16 +54,18 @@ const MainScreen = ({ setModalState }) => {
     >
       {flip ? (
         <>
-          <animated.div
-            style={topBorderSlideDown}
-            className={"top-border-wrapper"}
-          >
-            <TopBorder
-              currentCategory={currentCategory}
-              currentIndex={currentIndex}
-              navDirection={navDirection}
-            />
-          </animated.div>
+          {!isSmallScreen && (
+            <animated.div
+              style={topBorderSlideDown}
+              className={"top-border-wrapper"}
+            >
+              <TopBorder
+                currentCategory={currentCategory}
+                currentIndex={currentIndex}
+                navDirection={navDirection}
+              />
+            </animated.div>
+          )}
           <UI
             onNext={handleNext}
             onPrevious={handlePrevious}
@@ -69,10 +74,12 @@ const MainScreen = ({ setModalState }) => {
             setModalState={setModalState}
             currentCategory={currentCategory}
           />
-          <Footer
-            setModalState={setModalState}
-            currentCategory={currentCategory}
-          />
+          {!isSmallScreen && (
+            <Footer
+              setModalState={setModalState}
+              currentCategory={currentCategory}
+            />
+          )}
         </>
       ) : null}
       <CardWrapper

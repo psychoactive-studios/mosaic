@@ -1,6 +1,7 @@
 import { svgData } from "@/data/svgData";
 import { playSound } from "@/utils/sound";
 import { getCategoryColor } from "@/utils/utilityFunctions";
+import { memo } from "react";
 
 const Footer = ({ setModalState, currentCategory }) => {
   const categoryColour = getCategoryColor(currentCategory);
@@ -61,4 +62,4 @@ const Footer = ({ setModalState, currentCategory }) => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

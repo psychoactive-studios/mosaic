@@ -6,6 +6,7 @@ import {
 } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
 import { isTouchDevice } from "@/utils/utilityFunctions";
+import useIsSmallScreen from "@/utils/customHooks";
 
 const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -45,9 +46,11 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
     }, 200);
   };
 
+  const isSmallScreen = useIsSmallScreen();
+
   return (
     <div className="ui-lottie-wrapper">
-      {!isTouchDevice() && (
+      {!isTouchDevice() && !isSmallScreen && (
         <ToolTip
           text={text}
           category={category}
@@ -56,7 +59,9 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
         />
       )}
       <div
-        className="ui-lottie-container"
+        className={`ui-lottie-container arrow-${
+          text == "previous" ? "left" : "right"
+        }`}
         ref={container}
         onMouseEnter={() => {
           setIsHovered(true);

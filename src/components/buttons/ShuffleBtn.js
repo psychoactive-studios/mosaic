@@ -4,6 +4,7 @@ import ToolTip from "./ToolTip";
 import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
 import { isTouchDevice } from "@/utils/utilityFunctions";
+import useIsSmallScreen from "@/utils/customHooks";
 
 const ShuffleBtn = ({ category, isShuffled, toggleShuffle }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -84,9 +85,11 @@ const ShuffleBtn = ({ category, isShuffled, toggleShuffle }) => {
     }, 150);
   };
 
+  const isSmallScreen = useIsSmallScreen();
+
   return (
     <div className="ui-lottie-wrapper pointer">
-      {!isTouchDevice() && (
+      {!isTouchDevice() && !isSmallScreen && (
         <ToolTip
           text={isShuffled ? "disable shuffle" : "enable shuffle"}
           category={category}

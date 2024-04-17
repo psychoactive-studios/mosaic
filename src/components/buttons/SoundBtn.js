@@ -4,6 +4,7 @@ import ToolTip from "./ToolTip";
 import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
 import { isTouchDevice } from "@/utils/utilityFunctions";
+import useIsSmallScreen from "@/utils/customHooks";
 
 const SoundBtn = ({ category, isMuted, toggleMute }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -90,9 +91,11 @@ const SoundBtn = ({ category, isMuted, toggleMute }) => {
     }, 150);
   };
 
+  const isSmallScreen = useIsSmallScreen();
+
   return (
     <div className="ui-lottie-wrapper pointer">
-      {!isTouchDevice() && (
+      {!isTouchDevice() && !isSmallScreen && (
         <ToolTip
           text={isMuted ? "unmute" : "mute"}
           category={category}
