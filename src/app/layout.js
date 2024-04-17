@@ -21,7 +21,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${kefa.variable} ${firaSans.className}`}>
-      <body>{children}</body>
+      <body>
+        <link rel="icon" href="/images/logos/favicon.png" sizes="any" />
+        {children}
+      </body>
     </html>
   );
 }

@@ -12,8 +12,8 @@
 .card-wrapper {
   // height: calc($card-height * 1.02); // increased slightly to compensate for hover grow effect
   // width: calc($card-width * 1.02); // increased slightly to compensate for hover grow effect
-  height: $card-height; // increased slightly to compensate for hover grow effect
-  width: $card-width; // increased slightly to compensate for hover grow effect
+  height: $card-height;
+  width: $card-width;
   max-width: $card-max-width;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
 .top-half {
   background-color: $black;
   color: white;
-  min-height: 324px;
+  min-height: 334px;
   display: flex;
   flex-direction: column;
 }

@@ -48,7 +48,7 @@ const Footer = ({ setModalState, currentCategory }) => {
         </div>
       </a>
       <div
-        className={`footer-item link-footer link-footer-${categoryColour}`}
+        className={`footer-item link-footer link-footer-${categoryColour} last`}
         onClick={() => {
           setModalState("download"), playSound("clickSound");
         }}

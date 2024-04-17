@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, memo } from "react";
 import { lottieData } from "@/data/lottieData";
 import {
   useLottieBtnConfig,
@@ -8,6 +8,7 @@ import { playSound } from "@/utils/sound";
 
 const CloseBtn = ({ handleClose }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [initialMount, setInitialMount] = useState(true);
 
   const container = useRef(null);
   const animationRef = useRef(null);
@@ -16,11 +17,17 @@ const CloseBtn = ({ handleClose }) => {
   useLottieBtnConfig(container, lottieData["close"], animationRef);
 
   useEffect(() => {
-    animationRef.current.setDirection(isHovered ? 1 : -1);
-    animationRef.current.playSegments(
-      [isHovered ? enterFrame : holdFrame, isHovered ? holdFrame : enterFrame],
-      true
-    );
+    if (!initialMount) {
+      animationRef.current.setDirection(isHovered ? 1 : -1);
+      animationRef.current.playSegments(
+        [
+          isHovered ? enterFrame : holdFrame,
+          isHovered ? holdFrame : enterFrame,
+        ],
+        true
+      );
+    }
+    setInitialMount(false);
   }, [isHovered]);
 
   const handleClick = () => {
@@ -45,4 +52,4 @@ const CloseBtn = ({ handleClose }) => {
   );
 };
 
-export default CloseBtn;
+export default memo(CloseBtn);

@@ -1,4 +1,3 @@
-import { globalVolume } from "@/data/globalVariables";
 import { setAudioRefs, reduceVolume } from "@/utils/sound";
 import { useEffect, useRef, memo } from "react";
 
@@ -9,15 +8,13 @@ function UiSounds() {
   const pathwaySound = useRef(null);
   const modalSound = useRef(null);
 
-  const uiVolume = globalVolume;
-
   useEffect(() => {
     setAudioRefs([hoverText, hoverBtn, clickSound, pathwaySound, modalSound]);
-    reduceVolume("hoverText", uiVolume);
+    reduceVolume("hoverText", 0.1);
     reduceVolume("hoverBtn", 0.1);
     reduceVolume("clickSound", 0.1);
     reduceVolume("pathwaySound", 0.6);
-    reduceVolume("modalSound", uiVolume);
+    reduceVolume("modalSound", 0.2);
   }, []);
 
   return (

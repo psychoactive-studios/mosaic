@@ -1,0 +1,82 @@
+// RESPONSIVE REMS
+@media (min-width: 1960px) {
+  html {
+    font-size: calc(0.625rem + 0.41666666666666674vw);
+  }
+  $card-height: 42rem;
+
+  .card-wrapper {
+    height: $card-height;
+  }
+
+  .lottie-container {
+    height: $card-height;
+  }
+  .top-half {
+    min-height: 420px;
+  }
+}
+@media (max-width: 1440px) {
+  html {
+    font-size: calc(0.8126951092611863rem + 0.20811654526534862vw);
+  }
+  .top-half {
+    min-height: 320px;
+  }
+}
+@media (max-width: 479px) {
+  html {
+    font-size: calc(0.7494769874476988rem + 0.8368200836820083vw);
+  }
+}
+
+// LAPTOP - 1120PX
+@media (max-width: $laptop) {
+  // laptop variables
+  $card-width: 60vw;
+  $card-max-width: unset;
+  $card-height: 42rem;
+  .card-wrapper {
+    height: $card-height;
+    width: $card-width;
+    max-width: $card-max-width;
+  }
+
+  .lottie-container {
+    width: $card-width;
+    max-width: $card-max-width;
+    height: $card-height;
+  }
+
+  .right {
+    right: calc(10vw - 48px);
+  }
+
+  .left {
+    left: calc(10vw - 48px);
+  }
+}
+
+@media (max-width: 863px) {
+  .top-half {
+    min-height: 290px;
+  }
+  .title-wrapper {
+    padding-top: 1rem;
+  }
+
+  .additional-question {
+    padding: 0.75rem 1rem;
+  }
+}
+
+// TABLET - 1120PX
+@media (max-width: 806px) {
+  $card-width: 70vw;
+  .card-wrapper {
+    width: $card-width;
+  }
+  .lottie-container {
+    width: $card-width;
+  }
+}

@@ -28,7 +28,7 @@ const CardWrapper = ({ displayCards, currentIndex, flip, setFlip }) => {
           flipSpeedFrontToBack={2}
         >
           <HeroLottie onFlip={onFlip} showHero={showHero} />
-          <Card card={displayCards[currentIndex]} />
+          <Card card={displayCards[currentIndex]} flipState={flip} />
         </ReactCardFlip>
       )}
     </>

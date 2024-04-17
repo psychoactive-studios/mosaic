@@ -1,16 +1,14 @@
 import { getCategoryColor } from "@/utils/utilityFunctions";
 import { lottieData } from "@/data/lottieData";
 import ArrowBtn from "../buttons/ArrowBtn";
-import LeftUI from "../buttons/LeftUI";
 import { useState, useEffect, memo } from "react";
 import PathwayBtn from "../buttons/PathwayBtn";
-import { animated, useSpring, config } from "@react-spring/web";
+import { animated } from "@react-spring/web";
 import {
   useUiSlideLeft,
   useUiSlideRight,
 } from "@/configs/react-spring/uiSlideConfigs";
 import { muteToggle, playSound } from "@/utils/sound";
-import { globalVolume } from "@/data/globalVariables";
 import ShuffleBtn from "../buttons/ShuffleBtn";
 import SoundBtn from "../buttons/SoundBtn";
 
@@ -33,7 +31,7 @@ const UI = ({
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
-    muteToggle(globalVolume);
+    muteToggle(0.2);
   };
 
   const uiSlideLeft = useUiSlideLeft(triggerAnimations);
@@ -55,9 +53,7 @@ const UI = ({
           />
         </div>
         {/*  SHUFFLE BTN */}
-        <div
-          className="ui-item"
-        >
+        <div className="ui-item">
           <ShuffleBtn
             category={category}
             isShuffled={isShuffled}

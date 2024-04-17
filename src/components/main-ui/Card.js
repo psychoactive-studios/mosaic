@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
 import { getCategoryColor } from "@/utils/utilityFunctions";
 
-const Card = ({ card }) => {
+const Card = ({ card, flipState }) => {
   const [runAnimation, setRunAnimation] = useState(true);
   // const [runAnimation2, setRunAnimation2] = useState(false);
   // const prevCategoryRef = useRef();
@@ -22,7 +22,6 @@ const Card = ({ card }) => {
   //   setRunAnimation2(true);
   // }, [card.id]);
 
-  // console.log(currentCategory !== prevCategoryRef.current);
   // move to spring configs once fixed
   const fadeOnlyOnCategoryChange = useSpring({
     to: { opacity: 1 },
@@ -50,36 +49,54 @@ const Card = ({ card }) => {
     // },
   });
 
+  const [initialFade, api] = useSpring(() => ({
+    config: { ...config.molasses },
+    from: { opacity: 0 },
+  }));
+
+  useEffect(() => {
+    api.start({
+      delay: 900,
+      opacity: flipState ? 1 : 0,
+    });
+  }, [flipState, api]);
+
   return (
     <div className={`card-wrapper ${currentCategory}-box-shadow`}>
       <div className="top-half">
-        <animated.div
-          style={fadeOnlyOnCategoryChange}
-          className={`card-border ${currentCategory}-card-border`}
-        ></animated.div>
+        <animated.div style={initialFade}>
+          <animated.div
+            style={fadeOnlyOnCategoryChange}
+            className={`card-border ${currentCategory}-card-border`}
+          ></animated.div>
+        </animated.div>
         <animated.div
           className="card-category-wrapper flex card-padding"
           style={fadeOnlyOnCategoryChange}
         >
-          <div className="card-category">
+          <animated.div className="card-category" style={initialFade}>
             <p className={`${currentCategory}-text-color`}>{card.category}</p>
-          </div>
-          <div className={`card-id ${currentCategory}-background-color`}>
+          </animated.div>
+          <animated.div
+            className={`card-id ${currentCategory}-background-color`}
+            style={initialFade}
+          >
             <p>{card.id}</p>
-          </div>
+          </animated.div>
         </animated.div>
         <animated.div
           className="title-wrapper card-padding"
           style={fadeEveryTime}
         >
-          <h3>{card.title}</h3>
+          <animated.h3 style={initialFade}>{card.title}</animated.h3>
         </animated.div>
       </div>
       <animated.div className="bottom-half" style={fadeEveryTime}>
-        <div
+        <animated.div
           className={`question-wrapper card-padding ${
             card.questions.length > 4 ? "question-column" : ""
           }`}
+          style={initialFade}
         >
           <ul className="question-text">
             {card.questions.map((question, index) => (
@@ -91,17 +108,18 @@ const Card = ({ card }) => {
               </li>
             ))}
           </ul>
-        </div>
+        </animated.div>
         <div className="additional-text-wrapper card-padding">
           {card.highlighted && (
-            <div
+            <animated.div
               className={`question-text additional-question ${currentCategory}-frame-left`}
+              style={initialFade}
             >
               <p className="align-left">{card.highlighted}</p>
-            </div>
+            </animated.div>
           )}
           {card.text && Object.keys(card.text).length > 0 && (
-            <div className="additional-text">
+            <animated.div className="additional-text" style={initialFade}>
               <p>
                 <strong>
                   {Object.keys(card.text)[0] == "Values"
@@ -119,7 +137,7 @@ const Card = ({ card }) => {
                 </strong>
                 {card.text.Beliefs}
               </p>
-            </div>
+            </animated.div>
           )}
         </div>
       </animated.div>

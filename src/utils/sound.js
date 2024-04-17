@@ -41,7 +41,6 @@ function visibilitySoundToggle(targetVolume, visibilityState) {
         muteAllSounds();
       }, 500);
     } else {
-      console.log("unmute");
       unMuteAllSounds();
       fadeAllSounds(targetVolume);
     }
@@ -67,6 +66,10 @@ function unMuteAllSounds() {
   allSounds.forEach((key) => {
     sounds[key].muted = false;
   });
+}
+
+function getSound() {
+  return sounds;
 }
 
 function isMuted() {
@@ -101,6 +104,7 @@ export {
   muteToggle,
   visibilitySoundToggle,
   fadeAllSounds,
+  getSound,
   reduceVolume,
   isMuted,
   animateVolume,

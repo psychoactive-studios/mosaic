@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import PathwayPulse from "./PathwayPulse";
-import { useLottieBtnConfig, returnFrames } from "@/configs/lottie/lottieConfigs";
+import {
+  useLottieBtnConfig,
+  returnFrames,
+} from "@/configs/lottie/lottieConfigs";
 
 const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
   const container = useRef(null);
@@ -50,7 +53,7 @@ const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
       onClick={handleClick}
     >
       <div
-        className="ui-lottie-container pathways-lottie"
+        className="ui-lottie-container pathways-lottie pointer"
         ref={container}
         style={text == "previous" ? { transform: "scaleY(-1)" } : null}
       ></div>

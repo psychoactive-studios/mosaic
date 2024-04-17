@@ -36,6 +36,7 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
             <p className="medium">
               Developing ourselves and our communities/our aspirations.{" "}
             </p>
+            <br />
             <p>
               Each card has a main open question framing a discussion, followed
               by related sub questions that could help you expand and dive
@@ -64,29 +65,37 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
               When using the cards, we encourage you to:
             </p>
             <p>
-              Listen to understand, don’t listen to respond <br />
+              Listen to understand, don’t listen to respond.
+              <br />
+              <br />
               It’s okay to not know some terms or be able to answer some
               questions. Use it as an opportunity to explore together (we
-              recommend doing that in pairs when needed) <br /> Share your own
-              stories if you are comfortable to do so <br /> Create a safe space
-              together, acknowledge your peers, their backgrounds and different
-              experiences. Agree on ways to support each other if any of the
-              discussions cause offense <br /> It’s ok to say ‘I don’t see
-              things like that, but am glad to hear your views and the reasons
-              behind them’.
+              recommend doing that in pairs when needed). <br /> <br />
+              Share your own stories if you are comfortable to do so.
+              <br />
+              <br />
+              Create a safe space together, acknowledge your peers, their
+              backgrounds and different experiences. Agree on ways to support
+              each other if any of the discussions cause offense. <br />
+              <br /> It’s ok to say ‘I don’t see things like that, but am glad
+              to hear your views and the reasons behind them’.
             </p>
+            <br />
             <p className="medium no-mb">
               They have been designed based on a number of assumptions:
             </p>
             <p>
               Directly ‘calling people out’ can limit their capacity for reason,
               empathy and self-reflection. It can further isolate a young
-              person, and entrench them in an unhealthy position <br />
+              person, and entrench them in an unhealthy position. <br />
+              <br />
               Fact checking and myth busting does not shift hearts and minds
-              <br /> Having privilege results in insulation, and can create
-              blind spots or oversensitivity <br /> Creating opportunities for
-              young people to discuss their views with trusted people will allow
-              them to identify who they are and what they believe in.
+              <br /> <br />
+              Having privilege results in insulation, and can create blind spots
+              or oversensitivity <br />
+              <br /> Creating opportunities for young people to discuss their
+              views with trusted people will allow them to identify who they are
+              and what they believe in.
             </p>
           </div>
           <div className="modal-text-block no-mb hide">
