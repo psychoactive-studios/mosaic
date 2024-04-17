@@ -1,4 +1,4 @@
-import { getCategoryColor } from "@/utils/utilityFunctions";
+import { getCategoryColor, isTouchDevice } from "@/utils/utilityFunctions";
 import { lottieData } from "@/data/lottieData";
 import ArrowBtn from "../buttons/ArrowBtn";
 import { useState, useEffect, memo } from "react";
@@ -11,6 +11,9 @@ import {
 import { muteToggle, playSound } from "@/utils/sound";
 import ShuffleBtn from "../buttons/ShuffleBtn";
 import SoundBtn from "../buttons/SoundBtn";
+import HamburgerBtn from "../buttons/mobile-versions/HamburgerBtn";
+import useIsSmallScreen from "@/utils/customHooks";
+import MobileShuffle from "../buttons/mobile-versions/MobileShuffle";
 
 const UI = ({
   onNext,
@@ -37,6 +40,8 @@ const UI = ({
   const uiSlideLeft = useUiSlideLeft(triggerAnimations);
   const uiSlideRight = useUiSlideRight(triggerAnimations);
 
+  const isSmallScreen = useIsSmallScreen();
+
   return (
     <div className="ui-wrapper">
       <animated.div className="ui-inner left" style={uiSlideLeft}>
@@ -54,13 +59,27 @@ const UI = ({
         </div>
         {/*  SHUFFLE BTN */}
         <div className="ui-item">
-          <ShuffleBtn
-            category={category}
-            isShuffled={isShuffled}
-            toggleShuffle={toggleShuffle}
-          />
+          {isTouchDevice() ? (
+            <MobileShuffle
+              category={category}
+              isShuffled={isShuffled}
+              toggleShuffle={toggleShuffle}
+            />
+          ) : (
+            <ShuffleBtn
+              category={category}
+              isShuffled={isShuffled}
+              toggleShuffle={toggleShuffle}
+            />
+          )}
         </div>
       </animated.div>
+      {/*  HAMBURGER BTN */}
+      {isSmallScreen && (
+        <div className="ui-item">
+          <HamburgerBtn updateState={() => setModalState("mobileMenu")} />
+        </div>
+      )}
       <animated.div className="ui-inner right" style={uiSlideRight}>
         {/* NEXT BTN */}
         <div className="ui-item">

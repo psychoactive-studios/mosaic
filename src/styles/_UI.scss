@@ -142,6 +142,54 @@
   }
 }
 
+// HAMBURGER / MOBILE MENU
+.mobile-menu-outer {
+  width: 100%;
+}
+.hamburger-menu-wrapper {
+  @include flex_centre;
+  position: absolute;
+  right: 10vw;
+  top: 1rem;
+}
+
+.hamburger-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.mobile-menu-wrapper {
+  height: 100%;
+  width: 100%;
+  @include flex_centre;
+}
+
+.mobile-menu-inner {
+  width: 70vw;
+}
+
+.mobile-item {
+  border-right: none !important;
+  padding-right: 0 !important;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid $subtle-grey;
+  width: 100%;
+  justify-content: center;
+  p {
+    margin-bottom: 0 !important;
+    color: $dark-grey;
+    opacity: 0.9;
+    font-weight: 800;
+  }
+}
+
+.last-mobile-item {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 // FORM / INPUTS
 .copy-link-wrapper {
   background-color: $subtle-grey;

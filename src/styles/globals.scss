@@ -52,6 +52,25 @@ p {
   letter-spacing: 0.16px;
 }
 
+// ios browser style blocker
+.pointer,
+.ui-lottie-container,
+.ui-lottie-wrapper,
+button,
+a {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pointer:focus,
+.ui-lottie-container,
+.ui-lottie-wrapper,
+button:focus,
+a:focus {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 // CUSTOM SCROLLBAR
 /* Width of the scrollbar */
 ::-webkit-scrollbar {

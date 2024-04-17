@@ -116,27 +116,24 @@
 }
 
 @media (max-width: 623px) {
-  $card-width: 90vw;
+  $card-width: 100%;
   $card-height: 40rem;
   .card-wrapper {
     width: $card-width;
     height: $card-height;
+    padding: 0 1rem;
   }
   .lottie-container {
     width: $card-width;
     height: $card-height;
+  }
+  .hamburger-menu-wrapper {
+    right: 1rem;
+  }
+  .left {
+    left: 1rem;
   }
 }
 
-@media (max-width: 523px) {
-  $card-width: 96vw;
-  $card-height: 40rem;
-  .card-wrapper {
-    width: $card-width;
-    height: $card-height;
-  }
-  .lottie-container {
-    width: $card-width;
-    height: $card-height;
-  }
+@media (max-width: 519px) {
 }

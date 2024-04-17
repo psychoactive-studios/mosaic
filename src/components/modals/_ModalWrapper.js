@@ -5,6 +5,7 @@ import AboutModal from "./AboutModal";
 import DownloadModal from "./DownloadModal";
 import SuggestionsModal from "./SuggestionsModal";
 import PathwaysModal from "./pathways/PathwaysModal";
+import MobileModal from "./MobileModal";
 import { closeDelay } from "@/data/globalVariables";
 import { useModalFade } from "@/configs/react-spring/modalConfigs";
 import { useCloseModalOnEscapeKey } from "@/utils/customHooks";
@@ -19,6 +20,7 @@ const ModalWrapper = ({ modalState, setModalState }) => {
     share: ShareModal,
     suggestions: SuggestionsModal,
     pathways: PathwaysModal,
+    mobileMenu: MobileModal,
   };
 
   const SelectedModal = modals[modalState];
