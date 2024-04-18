@@ -11,8 +11,8 @@ import {
 import { muteToggle, playSound } from "@/utils/sound";
 import ShuffleBtn from "../buttons/ShuffleBtn";
 import SoundBtn from "../buttons/SoundBtn";
-import HamburgerBtn from "../buttons/mobile-versions/HamburgerBtn";
-import useIsSmallScreen from "@/utils/customHooks";
+import { useIsSmallScreen } from "@/utils/customHooks";
+import HamburgerBtn from "../buttons/HamburgerBtn";
 
 const UI = ({
   onNext,
@@ -69,7 +69,7 @@ const UI = ({
       </animated.div>
       {/*  HAMBURGER BTN */}
       {isSmallScreen && (
-        <div className="ui-item" >
+        <div className="ui-item">
           <HamburgerBtn updateState={() => setModalState("mobileMenu")} />
         </div>
       )}

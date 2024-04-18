@@ -6,7 +6,7 @@ import {
 } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
 import { isTouchDevice } from "@/utils/utilityFunctions";
-import useIsSmallScreen from "@/utils/customHooks";
+import { useIsSmallScreen } from "@/utils/customHooks";
 
 const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const [isHovered, setIsHovered] = useState(false);

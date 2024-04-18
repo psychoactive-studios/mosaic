@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { animated } from "@react-spring/web";
 import { useToolTipConfig } from "@/configs/react-spring/toolTipConfig";
 
@@ -7,12 +7,6 @@ const ToolTip = ({ text, category, isHovered, direction }) => {
 
   const toolTip = useRef(null);
   const toolTipWrapper = useRef(null);
-
-  useEffect(() => {
-    if (toolTipWrapper.current) {
-      // toolTipWrapper.current.className += " hide"; // Adding a new class
-    }
-  }, []);
 
   const toolTipSpring = useToolTipConfig(
     isHovered,

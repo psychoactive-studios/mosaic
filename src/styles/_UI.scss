@@ -198,6 +198,7 @@
   opacity: 0.8;
   padding: 1.125rem 0.75rem;
   gap: 1rem;
+  justify-content: space-around;
 }
 
 // SVG hovers
@@ -287,6 +288,7 @@
   align-items: center;
   gap: 0.5rem;
   flex-wrap: nowrap;
+  cursor: pointer;
   p {
     line-height: 70%;
     letter-spacing: 1.2px;

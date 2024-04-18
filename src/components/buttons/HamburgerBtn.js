@@ -11,7 +11,7 @@ const HamburgerBtn = ({ updateState }) => {
   return (
     <animated.div
       onClick={updateState}
-      className="hamburger-menu-wrapper"
+      className="hamburger-menu-wrapper pointer"
       style={uiSlideRightRegardless}
     >
       <img

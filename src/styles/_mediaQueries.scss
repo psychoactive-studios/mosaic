@@ -24,11 +24,11 @@
     min-height: 320px;
   }
 }
-@media (max-width: 479px) {
-  html {
-    // font-size: calc(0.7494769874476988rem + 0.8368200836820083vw);
-  }
-}
+// @media (max-width: 479px) {
+//   html {
+//     // font-size: calc(0.7494769874476988rem + 0.8368200836820083vw);
+//   }
+// }
 
 // LAPTOP - 1120PX
 @media (max-width: $laptop) {
@@ -123,9 +123,6 @@
   .landingscreen-wrapper {
     @include flex_centre;
   }
-  .mainscreen-wrapper {
-    // width: calc(100% - 2rem);
-  }
   main {
     display: flex;
     justify-content: center;
@@ -136,9 +133,6 @@
   }
   .left {
     left: 1rem;
-  }
-  .right {
-    // width: $card-width;
   }
 }
 
@@ -192,6 +186,12 @@
       font-size: 12px;
     }
   }
+  h1 {
+    font-size: 2rem !important;
+  }
+  p {
+    font-size: 12px !important;
+  }
   h3 {
     font-size: 1.5rem !important;
   }
@@ -223,11 +223,38 @@
   .yellow-bullet-point {
     background: url(/svgs/yellow-bullet-mobile.svg) no-repeat left 2px;
   }
-  // $ui-lottie-size: 42px;
-  // .ui-lottie-container {
-  //   width: $ui-lottie-size;
-  //   height: $ui-lottie-size;
-  // }
+  .pathway-item {
+    width: 31%;
+    margin-bottom: 1.5rem!important;
+  }
+  .pdf-title {
+    font-size: 14px !important;
+  }
+  .modal-footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4rem;
+  }
+  .left-footer {
+    flex-basis: 100%;
+    border-right: none;
+  }
+  .right-footer {
+    flex-basis: 100%;
+  }
+  .clare-wrapper {
+    justify-content: flex-start;
+  }
+  .clare-logo {
+    margin-top: 1rem;
+    width: 35%;
+  }
+  .modal-inner-wrapper {
+    padding-bottom: 5rem;
+  }
+  .modal-inner-medium {
+    padding-bottom: 3rem;
+  }
 }
 
 @media (max-width: 419px) {
@@ -250,5 +277,21 @@
   }
   .hamburger-menu-wrapper {
     right: 1rem;
+  }
+  .pathway-item {
+    width: 47%;
+    height: 15rem;
+    margin-bottom: 1rem!important;
+  }
+  .modal-inner-medium {
+    width: 100%;
+  }
+  .copy-link-wrapper {
+    overflow: hidden;
+    p {
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
   }
 }

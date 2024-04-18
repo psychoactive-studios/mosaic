@@ -7,7 +7,7 @@ import Footer from "./main-ui/Footer";
 import TopBorder from "./main-ui/TopBorder";
 import { useTopBorderSlideDownConfig } from "@/configs/react-spring/uiSlideConfigs";
 import CardWrapper from "./CardWrapper";
-import useIsSmallScreen from "@/utils/customHooks";
+import { useIsSmallScreen } from "@/utils/customHooks";
 
 const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);
@@ -43,7 +43,6 @@ const MainScreen = ({ setModalState }) => {
   }, [displayCards, currentIndex]);
 
   const topBorderSlideDown = useTopBorderSlideDownConfig(flip);
-
   const isSmallScreen = useIsSmallScreen();
 
   return (
