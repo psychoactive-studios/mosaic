@@ -304,9 +304,33 @@
   .mobile-menu-wrapper {
     height: 90%;
   }
+
+  // shrink ui
   $ui-lottie-size: 42px;
-  .ui-lottie-container {
+
+  .ui-lottie-container,
+  .close-lottie {
     width: $ui-lottie-size;
     height: $ui-lottie-size;
+  }
+  .hamburger-icon {
+    width: $ui-lottie-size - 2;
+    height: $ui-lottie-size - 2;
+  }
+  .pathways-lottie,
+  .pathways-pulse-wrapper,
+  .pathways-text-wrapper {
+    width: 72px;
+    height: 72px;
+  }
+  .pathways-pulse-lottie {
+    width: 96px;
+    height: 96px;
+  }
+  .pathways-text-wrapper p {
+    font-size: 9px !important;
+  }
+  .right {
+    gap: 1.5rem;
   }
 }
