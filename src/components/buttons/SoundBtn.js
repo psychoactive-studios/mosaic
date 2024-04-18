@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, memo } from "react";
 import { lottieData } from "@/data/lottieData";
 import ToolTip from "./ToolTip";
 import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
-import { playSound } from "@/utils/sound";
 import { isTouchDevice } from "@/utils/utilityFunctions";
 import { useIsSmallScreen } from "@/utils/customHooks";
 
@@ -45,7 +44,6 @@ const SoundBtn = ({ category, isMuted, toggleMute }) => {
   function handleHover() {
     if (isHovered) {
       if (!isMuted) {
-        // playSound("hoverBtn");
         container.current.animation.playSegments(
           [onStartFrame, onHoverEndFrame],
           true
@@ -73,7 +71,6 @@ const SoundBtn = ({ category, isMuted, toggleMute }) => {
 
   // handle lottie click
   const handleClick = () => {
-    // playSound("clickSound");
     if (!isMuted) {
       container.current.animation.playSegments(
         [onHoverStartFrame, offStartFrame],

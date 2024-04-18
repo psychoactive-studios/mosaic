@@ -46,11 +46,7 @@ const UI = ({
       <animated.div className="ui-inner left" style={uiSlideLeft}>
         {/* MUTE BTN */}
         {!isTouchDevice() && (
-          <div
-            className="ui-item"
-            // onMouseEnter={() => playSound("hoverBtn")}
-            // onClick={() => playSound("clickSound")}
-          >
+          <div className="ui-item">
             <SoundBtn
               category={category}
               isMuted={isMuted}
@@ -85,10 +81,7 @@ const UI = ({
           />
         </div>
         {/* PATHWAYS BTN */}
-        <div
-          // onMouseEnter={() => triggerAudio("hoverSound")}
-          onClick={() => playSound("pathwaySound")}
-        >
+        <div onClick={() => playSound("pathwaySound")}>
           <PathwayBtn
             lottiePath={lottieData[`lp_${category}`]}
             category={category}

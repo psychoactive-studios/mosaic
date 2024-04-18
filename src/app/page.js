@@ -17,11 +17,11 @@ export default function Home() {
   const memoizedSetModalState = useCallback(setModalState, []);
 
   useEffect(() => {
-    setIsTouch(isTouchDevice());
+    setIsTouch(isTouchDevice()); // remove audio on touch devices
   }, []);
 
   const isIOS = useIsIOS();
-  useAdjustViewportHeight(isIOS);
+  useAdjustViewportHeight(isIOS); // adjust vh if user's device is ios (to compensate for browser address bar)
 
   return (
     <main>

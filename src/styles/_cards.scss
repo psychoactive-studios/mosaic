@@ -10,8 +10,6 @@
 }
 
 .card-wrapper {
-  // height: calc($card-height * 1.02); // increased slightly to compensate for hover grow effect
-  // width: calc($card-width * 1.02); // increased slightly to compensate for hover grow effect
   height: $card-height;
   width: $card-width;
   max-width: $card-max-width;

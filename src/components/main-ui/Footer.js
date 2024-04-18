@@ -13,7 +13,6 @@ const Footer = ({ setModalState, currentCategory }) => {
         onClick={() => {
           setModalState("suggestions"), playSound("modalSound");
         }}
-        // onMouseEnter={() => playSound("hoverBtn")}
       >
         <p className={`hover-footer-${categoryColour}`}>SUGGESTIONS</p>
       </div>
@@ -22,7 +21,6 @@ const Footer = ({ setModalState, currentCategory }) => {
         onClick={() => {
           setModalState("about"), playSound("modalSound");
         }}
-        // onMouseEnter={() => playSound("hoverBtn")}
       >
         <p className={`hover-footer-${categoryColour}`}>ABOUT</p>
       </div>
@@ -31,16 +29,10 @@ const Footer = ({ setModalState, currentCategory }) => {
         onClick={() => {
           setModalState("share"), playSound("clickSound");
         }}
-        // onMouseEnter={() => playSound("hoverBtn")}
       >
         <p className={`hover-footer-${categoryColour}`}>SHARE</p>
       </div>
-      <a
-        className="no-deco"
-        href={link}
-        target="_blank"
-        // onMouseEnter={() => playSound("hoverBtn")}
-      >
+      <a className="no-deco" href={link} target="_blank">
         <div
           className={`footer-item link-footer link-footer-${categoryColour}`}
         >
@@ -53,7 +45,6 @@ const Footer = ({ setModalState, currentCategory }) => {
         onClick={() => {
           setModalState("download"), playSound("clickSound");
         }}
-        // onMouseEnter={() => playSound("hoverBtn")}
       >
         <p className={`hover-footer-${categoryColour}`}>DOWNLOAD CARDS</p>
         {svgData["download"]}

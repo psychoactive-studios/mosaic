@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { useSpring, animated, config, easings } from "react-spring";
+import { useSpring, animated, easings } from "react-spring";
 import Card from "./main-ui/Card";
 import Preloader from "./lotties/Preloader";
 import HeroLottie from "./lotties/HeroLottie";
@@ -23,7 +23,6 @@ const CardWrapper = ({ displayCards, currentIndex, flip, setFlip }) => {
       duration: 1500,
       easing: easings.easeInOutQuart,
     },
-    // },
   });
 
   return (
@@ -38,28 +37,17 @@ const CardWrapper = ({ displayCards, currentIndex, flip, setFlip }) => {
               opacity: opacity.to((o) => 1 - o),
               transform,
               position: "absolute",
-              // width: "100%",
-              // height: "100%",
-              // background: "lightblue",
-              // display: "flex",
-              // justifyContent: "center",
-              // alignItems: "center",
               backfaceVisibility: "hidden",
             }}
           >
             <HeroLottie onFlip={onFlip} showHero={showHero} />
           </animated.div>
           <animated.div
+            className="react-card-back"
             style={{
               opacity,
               transform: transform.to((t) => `${t} rotateY(180deg)`),
               position: "absolute",
-              // width: "100%",
-              // height: "100%",
-              // background: "pink",
-              // display: "flex",
-              // justifyContent: "center",
-              // alignItems: "center",
               backfaceVisibility: "hidden",
             }}
           >

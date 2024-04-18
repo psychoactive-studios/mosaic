@@ -7,11 +7,9 @@ import { svgData } from "@/data/svgData";
 const ShareModal = ({ modalState, isClosing, handleClose }) => {
   const pageFade = usePageFadeConfig("share", modalState, isClosing);
   const copyLink = "https://arataiohi.org.nz/publications/mosaic-cards/";
-
   const copyToClipboard = () => {
     navigator.clipboard.writeText(copyLink);
   };
-
   return (
     <>
       <animated.div
