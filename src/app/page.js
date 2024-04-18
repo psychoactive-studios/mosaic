@@ -8,6 +8,7 @@ import { PreloadResources } from "./resources";
 import BackgroundMusic from "@/components/sound/BackgroundMusic";
 import UiSounds from "@/components/sound/UiSounds";
 import { isTouchDevice } from "@/utils/utilityFunctions";
+import { useAdjustViewportHeight, useIsIOS } from "@/utils/customHooks";
 
 export default function Home() {
   const [modalState, setModalState] = useState("closed");
@@ -18,6 +19,9 @@ export default function Home() {
   useEffect(() => {
     setIsTouch(isTouchDevice());
   }, []);
+
+  const isIOS = useIsIOS();
+  useAdjustViewportHeight(isIOS);
 
   return (
     <main>

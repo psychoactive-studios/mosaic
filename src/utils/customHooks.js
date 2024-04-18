@@ -33,3 +33,35 @@ export const useIsSmallScreen = () => {
   }, []);
   return isSmall;
 };
+
+export const useIsIOS = () => {
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      const userAgent = navigator.userAgent.toLowerCase();
+      setIsIOS(/iphone|ipad|ipod/.test(userAgent));
+    }
+  }, []);
+
+  return isIOS;
+};
+
+export const useAdjustViewportHeight = (isIOS) => {
+  useEffect(() => {
+    if (isIOS) {
+      const adjustHeight = () => {
+        const viewportHeight = window.innerHeight;
+        document.documentElement.style.height = `${viewportHeight}px`;
+      };
+
+      adjustHeight(); // Adjust height on mount
+
+      window.addEventListener("resize", adjustHeight); // Adjust on resize
+
+      return () => {
+        window.removeEventListener("resize", adjustHeight); // Clean up listener
+      };
+    }
+  }, [isIOS]);
+};

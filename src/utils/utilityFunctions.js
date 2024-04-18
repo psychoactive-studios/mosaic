@@ -94,6 +94,6 @@ export {
   getCategoryColor,
   getInitials,
   getTimeFromNow,
-  isTouchDevice,
+  isTouchDevice
 };
 export default isTouchDevice;

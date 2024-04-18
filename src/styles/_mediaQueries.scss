@@ -225,7 +225,7 @@
   }
   .pathway-item {
     width: 31%;
-    margin-bottom: 1.5rem!important;
+    margin-bottom: 1.5rem !important;
   }
   .pdf-title {
     font-size: 14px !important;
@@ -281,7 +281,7 @@
   .pathway-item {
     width: 47%;
     height: 15rem;
-    margin-bottom: 1rem!important;
+    margin-bottom: 1rem !important;
   }
   .modal-inner-medium {
     width: 100%;
@@ -289,9 +289,19 @@
   .copy-link-wrapper {
     overflow: hidden;
     p {
-      max-width: 100%;
+      max-width: 85%;
       word-wrap: break-word;
       overflow-wrap: break-word;
+      text-align: left !important;
     }
+    svg {
+      min-width: 24px;
+    }
+  }
+  .mainscreen-wrapper {
+    padding-bottom: 6rem;
+  }
+  .mobile-menu-wrapper {
+    height: 90%;
   }
 }

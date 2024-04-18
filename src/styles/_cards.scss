@@ -17,6 +17,7 @@
   max-width: $card-max-width;
   display: flex;
   flex-direction: column;
+  background: white;
 }
 
 .top-half {
@@ -73,6 +74,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 2.5rem;
+  background: white;
 }
 
 .question-wrapper {
