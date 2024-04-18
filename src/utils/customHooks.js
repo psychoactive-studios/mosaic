@@ -55,13 +55,28 @@ export const useAdjustViewportHeight = (isIOS) => {
         document.documentElement.style.height = `${viewportHeight}px`;
       };
 
-      adjustHeight(); // Adjust height on mount
-
-      window.addEventListener("resize", adjustHeight); // Adjust on resize
-
+      adjustHeight();
+      window.addEventListener("resize", adjustHeight); 
       return () => {
-        window.removeEventListener("resize", adjustHeight); // Clean up listener
+        window.removeEventListener("resize", adjustHeight); 
       };
     }
   }, [isIOS]);
+};
+
+export const useAdjustDivHeight = (isIOS, ref) => {
+  useEffect(() => {
+    if (isIOS && ref.current) {
+      const adjustHeight = () => {
+        const viewportHeight = window.innerHeight;
+        ref.current.style.height = `${viewportHeight}px`;
+      };
+
+      adjustHeight(); 
+      window.addEventListener("resize", adjustHeight); 
+      return () => {
+        window.removeEventListener("resize", adjustHeight);
+      };
+    }
+  }, [isIOS, ref]);
 };

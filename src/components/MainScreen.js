@@ -1,5 +1,5 @@
-import { useState, useEffect, memo } from "react";
-import { useSpring, animated, config } from "@react-spring/web";
+import { useState, useEffect, useRef, memo } from "react";
+import { animated } from "@react-spring/web";
 import UI from "./main-ui/UI";
 import { cardData, cardCategories } from "@/data/cardData";
 import { getCategoryColor, shuffleCards } from "@/utils/utilityFunctions";
@@ -8,6 +8,7 @@ import TopBorder from "./main-ui/TopBorder";
 import { useTopBorderSlideDownConfig } from "@/configs/react-spring/uiSlideConfigs";
 import CardWrapper from "./CardWrapper";
 import { useIsSmallScreen } from "@/utils/customHooks";
+import { useAdjustDivHeight, useIsIOS } from "@/utils/customHooks";
 
 const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);
@@ -16,6 +17,8 @@ const MainScreen = ({ setModalState }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentCategory, setCurrentCategory] = useState(cardCategories.red);
   const [navDirection, setNavDirection] = useState("next");
+
+  const mainscreenRef = useRef(null);
 
   useEffect(() => {
     setDisplayCards(isShuffled ? shuffleCards([...cardData]) : [...cardData]);
@@ -45,11 +48,15 @@ const MainScreen = ({ setModalState }) => {
   const topBorderSlideDown = useTopBorderSlideDownConfig(flip);
   const isSmallScreen = useIsSmallScreen();
 
+  const isIOS = useIsIOS();
+  useAdjustDivHeight(isIOS, mainscreenRef);
+
   return (
     <div
       className={`mainscreen-wrapper ${
         flip ? getCategoryColor(currentCategory) : null
       }-background-main`}
+      ref={mainscreenRef}
     >
       {flip ? (
         <>

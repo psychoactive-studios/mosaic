@@ -304,4 +304,9 @@
   .mobile-menu-wrapper {
     height: 90%;
   }
+  $ui-lottie-size: 42px;
+  .ui-lottie-container {
+    width: $ui-lottie-size;
+    height: $ui-lottie-size;
+  }
 }
