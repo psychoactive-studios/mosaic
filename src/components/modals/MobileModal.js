@@ -2,12 +2,17 @@ import { animated } from "@react-spring/web";
 import CloseBtn from "../buttons/CloseBtn";
 import { svgData } from "@/data/svgData";
 import { usePageSlideConfig } from "@/configs/react-spring/modalConfigs";
+import { useIsIOS } from "@/utils/customHooks";
 
 const MobileModal = ({ modalState, setModalState, isClosing, handleClose }) => {
   const pageSlide = usePageSlideConfig("mobileMenu", modalState, isClosing);
   const link = "https://arataiohi.org.nz/publications/mosaic-cards/";
+  const isIOS = useIsIOS();
   return (
-    <animated.div className="modal-wrapper modal-outer-large" style={pageSlide}>
+    <animated.div
+      className={`modal-wrapper modal-outer-large ${isIOS ? "iosHeight" : ""}`}
+      style={pageSlide}
+    >
       <div className="modal-inner-wrapper mobile-menu-outer">
         <div className="close-btn">
           <CloseBtn handleClose={handleClose} />
