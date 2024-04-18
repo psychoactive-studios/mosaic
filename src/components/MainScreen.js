@@ -5,7 +5,10 @@ import { cardData, cardCategories } from "@/data/cardData";
 import { getCategoryColor, shuffleCards } from "@/utils/utilityFunctions";
 import Footer from "./main-ui/Footer";
 import TopBorder from "./main-ui/TopBorder";
-import { useTopBorderSlideDownConfig } from "@/configs/react-spring/uiSlideConfigs";
+import {
+  useFooterSlideUpConfig,
+  useTopBorderSlideDownConfig,
+} from "@/configs/react-spring/uiSlideConfigs";
 import CardWrapper from "./CardWrapper";
 import { useIsSmallScreen } from "@/utils/customHooks";
 import { useAdjustDivHeight, useIsIOS } from "@/utils/customHooks";
@@ -46,6 +49,7 @@ const MainScreen = ({ setModalState }) => {
   }, [displayCards, currentIndex]);
 
   const topBorderSlideDown = useTopBorderSlideDownConfig(flip);
+  const footerSlideUpConfig = useFooterSlideUpConfig(flip);
   const isSmallScreen = useIsSmallScreen();
 
   const isIOS = useIsIOS();
@@ -81,10 +85,15 @@ const MainScreen = ({ setModalState }) => {
             currentCategory={currentCategory}
           />
           {!isSmallScreen && (
-            <Footer
-              setModalState={setModalState}
-              currentCategory={currentCategory}
-            />
+            <animated.div
+              style={footerSlideUpConfig}
+              className={"footer-outer-wrapper"}
+            >
+              <Footer
+                setModalState={setModalState}
+                currentCategory={currentCategory}
+              />
+            </animated.div>
           )}
         </>
       ) : null}

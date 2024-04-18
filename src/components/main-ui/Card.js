@@ -50,13 +50,13 @@ const Card = ({ card, flipState }) => {
   });
 
   const [initialFade, api] = useSpring(() => ({
-    config: { ...config.molasses },
+    config: { ...config.molasses, duration: 1000 },
     from: { opacity: 0 },
   }));
 
   useEffect(() => {
     api.start({
-      delay: 900,
+      delay: 1000,
       opacity: flipState ? 1 : 0,
     });
   }, [flipState, api]);

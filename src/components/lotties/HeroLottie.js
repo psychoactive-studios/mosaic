@@ -47,7 +47,7 @@ const HeroLottie = ({ onFlip, showHero }) => {
           onFlip();
           setShowFooterHero(false);
           playSound("bgMusic");
-        }, 2000); // Adjust lottie animation out time if necessary
+        }, 1500); // Adjust lottie animation out time if necessary
       }
     };
     container.current.addEventListener("click", handleClick);

@@ -10,17 +10,33 @@ export const useTopBorderSlideDownConfig = (flip) => {
   }));
   useEffect(() => {
     api.start({
-      delay: 1000,
+      delay: 1500,
       transform: flip ? "translateY(0%)" : "translateY(-100%)",
     });
   }, [flip, api]);
   return topBorderSlideDown;
 };
 
+// FOOTER SLIDE UP
+export const useFooterSlideUpConfig = (flip) => {
+  const [footerSlideUpConfig, api] = useSpring(() => ({
+    config: { ...config.slow },
+    from: { transform: "translateY(700%)" },
+  }));
+  console.log("Animation triggered:", flip);
+  useEffect(() => {
+    api.start({
+      delay: 1500,
+      transform: flip ? "translateY(0%)" : "translateY(700%)",
+    });
+  }, [flip, api]);
+  return footerSlideUpConfig;
+};
+
 // UI SLIDES
 export const useUiSlideLeft = (trigger) => {
   const uiSlideLeft = useSpring({
-    delay: 500,
+    delay: 1000,
     from: { transform: "translateX(-250%)" },
     to: {
       transform: trigger ? "translateX(0%)" : "translateX(-250%)",
@@ -34,7 +50,7 @@ export const useUiSlideRight = (trigger) => {
   const isSmallScreen = useIsSmallScreen();
 
   const uiSlideRight = useSpring({
-    delay: 500,
+    delay: 1000,
     from: {
       transform: isSmallScreen ? "translateY(150%)" : "translateX(250%)",
     },
@@ -53,7 +69,7 @@ export const useUiSlideRight = (trigger) => {
 };
 export const useUiSlideRightRegardless = (trigger) => {
   const uiSlideRight = useSpring({
-    delay: 500,
+    delay: 1000,
     from: {
       transform: "translateX(150%)",
     },
