@@ -15,17 +15,16 @@ export const useCloseModalOnEscapeKey = (handleClose) => {
 };
 
 export const useIsSmallScreen = () => {
-  const [isSmall, setIsSmall] = useState(undefined);
+  const [isSmall, setIsSmall] = useState(window.innerWidth <= 806);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-
       const handleResize = () => {
         setIsSmall(window.innerWidth <= 806);
       };
 
       handleResize();
-      
+
       window.addEventListener("resize", handleResize);
       return () => {
         window.removeEventListener("resize", handleResize);

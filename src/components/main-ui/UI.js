@@ -13,7 +13,6 @@ import ShuffleBtn from "../buttons/ShuffleBtn";
 import SoundBtn from "../buttons/SoundBtn";
 import HamburgerBtn from "../buttons/mobile-versions/HamburgerBtn";
 import useIsSmallScreen from "@/utils/customHooks";
-import MobileShuffle from "../buttons/mobile-versions/MobileShuffle";
 
 const UI = ({
   onNext,
@@ -37,46 +36,40 @@ const UI = ({
     muteToggle(0.2);
   };
 
+  const isSmallScreen = useIsSmallScreen();
+
   const uiSlideLeft = useUiSlideLeft(triggerAnimations);
   const uiSlideRight = useUiSlideRight(triggerAnimations);
-
-  const isSmallScreen = useIsSmallScreen();
 
   return (
     <div className="ui-wrapper">
       <animated.div className="ui-inner left" style={uiSlideLeft}>
         {/* MUTE BTN */}
-        <div
-          className="ui-item"
-          // onMouseEnter={() => playSound("hoverBtn")}
-          // onClick={() => playSound("clickSound")}
-        >
-          <SoundBtn
-            category={category}
-            isMuted={isMuted}
-            toggleMute={toggleMute}
-          />
-        </div>
+        {!isTouchDevice() && (
+          <div
+            className="ui-item"
+            // onMouseEnter={() => playSound("hoverBtn")}
+            // onClick={() => playSound("clickSound")}
+          >
+            <SoundBtn
+              category={category}
+              isMuted={isMuted}
+              toggleMute={toggleMute}
+            />
+          </div>
+        )}
         {/*  SHUFFLE BTN */}
         <div className="ui-item">
-          {isTouchDevice() ? (
-            <MobileShuffle
-              category={category}
-              isShuffled={isShuffled}
-              toggleShuffle={toggleShuffle}
-            />
-          ) : (
-            <ShuffleBtn
-              category={category}
-              isShuffled={isShuffled}
-              toggleShuffle={toggleShuffle}
-            />
-          )}
+          <ShuffleBtn
+            category={category}
+            isShuffled={isShuffled}
+            toggleShuffle={toggleShuffle}
+          />
         </div>
       </animated.div>
       {/*  HAMBURGER BTN */}
       {isSmallScreen && (
-        <div className="ui-item">
+        <div className="ui-item" >
           <HamburgerBtn updateState={() => setModalState("mobileMenu")} />
         </div>
       )}

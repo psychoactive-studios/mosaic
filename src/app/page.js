@@ -7,6 +7,7 @@ import ModalWrapper from "@/components/modals/_ModalWrapper";
 import { PreloadResources } from "./resources";
 import BackgroundMusic from "@/components/sound/BackgroundMusic";
 import UiSounds from "@/components/sound/UiSounds";
+import { isTouchDevice } from "@/utils/utilityFunctions";
 
 export default function Home() {
   const [modalState, setModalState] = useState("closed");
@@ -14,8 +15,9 @@ export default function Home() {
   return (
     <main>
       <PreloadResources />
-      <BackgroundMusic />
-      <UiSounds />
+      {!isTouchDevice() && <BackgroundMusic />}
+
+      {!isTouchDevice() && <UiSounds />}
       <MainScreen setModalState={memoizedSetModalState} />
       {modalState != "closed" ? (
         <ModalWrapper modalState={modalState} setModalState={setModalState} />

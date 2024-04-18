@@ -26,7 +26,7 @@
 }
 @media (max-width: 479px) {
   html {
-    font-size: calc(0.7494769874476988rem + 0.8368200836820083vw);
+    // font-size: calc(0.7494769874476988rem + 0.8368200836820083vw);
   }
 }
 
@@ -36,16 +36,12 @@
   $card-width: 60vw;
   $card-max-width: unset;
   $card-height: 42rem;
-  .card-wrapper {
-    height: $card-height;
-    width: $card-width;
-    max-width: $card-max-width;
-  }
 
+  .card-wrapper,
   .lottie-container {
+    height: $card-height;
     width: $card-width;
     max-width: $card-max-width;
-    height: $card-height;
   }
 
   .right {
@@ -75,10 +71,8 @@
 @media (max-width: 806px) {
   $card-width: 80vw;
   $card-height: 40rem;
-  .card-wrapper {
-    width: $card-width;
-    height: $card-height;
-  }
+
+  .card-wrapper,
   .lottie-container {
     width: $card-width;
     height: $card-height;
@@ -103,6 +97,7 @@
     align-items: center;
     width: 100%;
     flex-direction: row-reverse;
+    gap: 2rem;
   }
   .arrow-right {
     transform: rotate(90deg);
@@ -116,24 +111,144 @@
 }
 
 @media (max-width: 623px) {
-  $card-width: 100%;
-  $card-height: 40rem;
+  $card-width: calc(100% - 2rem);
   .card-wrapper {
     width: $card-width;
-    height: $card-height;
-    padding: 0 1rem;
+    margin-left: 1rem;
   }
   .lottie-container {
     width: $card-width;
-    height: $card-height;
+    // margin-left: 1rem;
   }
+  .landingscreen-wrapper {
+    @include flex_centre;
+  }
+  .mainscreen-wrapper {
+    // width: calc(100% - 2rem);
+  }
+  main {
+    display: flex;
+    justify-content: center;
+  }
+
   .hamburger-menu-wrapper {
     right: 1rem;
   }
   .left {
     left: 1rem;
   }
+  .right {
+    // width: $card-width;
+  }
 }
 
 @media (max-width: 519px) {
+  // mobile card version
+  $card-width: 100%;
+  $card-height: 80vh;
+  $card-max-width: calc(100% - 4rem);
+  $card-max-height: 32rem;
+
+  .react-card-back {
+    @include flex_centre;
+  }
+
+  .card-wrapper {
+    width: $card-width;
+    height: $card-height;
+    max-width: $card-max-width;
+    max-height: $card-max-height;
+    margin-left: 0;
+  }
+  .lottie-container {
+    width: $card-width;
+    height: $card-height;
+    max-width: $card-max-width;
+    max-height: $card-max-height;
+    margin-left: 0;
+  }
+  .left {
+    left: 2rem;
+  }
+  .hamburger-menu-wrapper {
+    right: 2rem;
+  }
+  .card-border {
+    height: 28px;
+  }
+  .card-padding {
+    padding: 0 1.5rem;
+  }
+  .card-category-wrapper {
+    padding-top: 1rem;
+  }
+  .card-category {
+    font-size: 12px;
+  }
+  .card-id {
+    width: 20px;
+    height: 20px;
+    p {
+      font-size: 12px;
+    }
+  }
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  .top-half {
+    min-height: 200px;
+  }
+  .bottom-half {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .question-wrapper {
+    padding-bottom: 1rem;
+  }
+  .question-text {
+    font-size: 1rem;
+  }
+  .additional-text p {
+    font-size: 12px;
+  }
+  .card-list-item {
+    padding-left: 1.5rem;
+  }
+  .red-bullet-point {
+    background: url(/svgs/red-bullet-mobile.svg) no-repeat left 2px;
+  }
+  .blue-bullet-point {
+    background: url(/svgs/blue-bullet-mobile.svg) no-repeat left 2px;
+  }
+  .yellow-bullet-point {
+    background: url(/svgs/yellow-bullet-mobile.svg) no-repeat left 2px;
+  }
+  // $ui-lottie-size: 42px;
+  // .ui-lottie-container {
+  //   width: $ui-lottie-size;
+  //   height: $ui-lottie-size;
+  // }
+}
+
+@media (max-width: 419px) {
+  $card-width: calc(100% - 2rem);
+  $card-height: 35rem;
+
+  .card-wrapper {
+    max-width: $card-width;
+    max-height: $card-height;
+  }
+  .lottie-container {
+    max-width: $card-width;
+    max-height: $card-height;
+  }
+  .top-half {
+    min-height: 220px;
+  }
+  .left {
+    left: 1rem;
+  }
+  .hamburger-menu-wrapper {
+    right: 1rem;
+  }
 }

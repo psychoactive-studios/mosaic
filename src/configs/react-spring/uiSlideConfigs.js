@@ -1,3 +1,4 @@
+import useIsSmallScreen from "@/utils/customHooks";
 import { useSpring, config } from "@react-spring/web";
 import { useEffect } from "react";
 
@@ -30,11 +31,34 @@ export const useUiSlideLeft = (trigger) => {
 };
 
 export const useUiSlideRight = (trigger) => {
+  const isSmallScreen = useIsSmallScreen();
+
   const uiSlideRight = useSpring({
     delay: 500,
-    from: { transform: "translateX(250%)" },
+    from: {
+      transform: isSmallScreen ? "translateY(150%)" : "translateX(250%)",
+    },
     to: {
-      transform: trigger ? "translateX(0%)" : "translateX(250%)",
+      transform: trigger
+        ? isSmallScreen
+          ? "translateY(0%)"
+          : "translateX(0%)"
+        : isSmallScreen
+        ? "translateY(150%)"
+        : "translateX(250%)",
+    },
+    config: { ...config.slow },
+  });
+  return uiSlideRight;
+};
+export const useUiSlideRightRegardless = (trigger) => {
+  const uiSlideRight = useSpring({
+    delay: 500,
+    from: {
+      transform: "translateX(150%)",
+    },
+    to: {
+      transform: trigger ? "translateX(0%)" : "translateX(150%)",
     },
     config: { ...config.slow },
   });

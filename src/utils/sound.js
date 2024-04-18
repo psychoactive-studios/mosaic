@@ -1,3 +1,5 @@
+import { isTouchDevice } from "./utilityFunctions";
+
 const sounds = {};
 
 let muted = false;
@@ -10,8 +12,10 @@ function setAudioRefs(soundRef) {
 }
 
 function playSound(sound) {
-  soundHasStarted = true;
-  if (!muted) sounds[sound].play();
+  if (!isTouchDevice()) {
+    soundHasStarted = true;
+    if (!muted) sounds[sound].play();
+  }
 }
 
 function reduceVolume(target, amount) {
@@ -19,7 +23,7 @@ function reduceVolume(target, amount) {
 }
 
 function muteToggle(targetVolume) {
-  if (soundHasStarted) {
+  if (soundHasStarted && !isTouchDevice()) {
     if (!muted) {
       fadeAllSounds(0);
       setTimeout(() => {
@@ -34,7 +38,7 @@ function muteToggle(targetVolume) {
 }
 
 function visibilitySoundToggle(targetVolume, visibilityState) {
-  if (soundHasStarted && !muted) {
+  if (soundHasStarted && !muted && !isTouchDevice()) {
     if (!visibilityState) {
       fadeAllSounds(0);
       setTimeout(() => {
