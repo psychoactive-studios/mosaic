@@ -10,7 +10,7 @@ export default function BackgroundMusic() {
 
   useEffect(() => {
     setAudioRefs([bgMusic]);
-    reduceVolume("bgMusic", 0.25);
+    reduceVolume("bgMusic", 0.3);
     // fade out music if user navigates away in tab
     const handleVisibilityChange = () => {
       const visibilityState = document.visibilityState === "visible";

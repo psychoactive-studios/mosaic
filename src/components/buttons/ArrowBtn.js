@@ -1,48 +1,82 @@
 import { useState, useEffect, useRef } from "react";
 import ToolTip from "./ToolTip";
-import {
-  useLottieBtnConfig,
-  returnFrames,
-} from "@/configs/lottie/lottieConfigs";
+import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
 import { isTouchDevice } from "@/utils/utilityFunctions";
 import { useIsSmallScreen } from "@/utils/customHooks";
 
 const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [initialMount, setInitialMount] = useState(true);
 
   const container = useRef(null);
-
-  const { enterFrame, holdFrame, endFrame } = returnFrames(1, 5, 14);
   useLottieBtnConfig(container, lottiePath);
 
-  useEffect(() => {
-    if (isHovered) {
-      if (initialMount) {
-        playSound("hoverBtn");
-        container.current.animation.playSegments([enterFrame, holdFrame], true);
-      }
-    } else {
-      container.current.animation.playSegments([5, enterFrame], true);
-    }
-  }, [isHovered]);
+  // FRAMES
+  const redStart = 0;
+  const redHold = 5;
+  const redEnd = 12;
+  const yellowStart = 12;
+  const yellowHold = 17;
+  const yellowEnd = 24;
+  const blueStart = 24;
+  const blueHold = 28;
+  const blueEnd = 36;
 
   useEffect(() => {
-    if (isHovered && !initialMount) {
-      setTimeout(() => {
-        container.current.animation.playSegments([enterFrame, holdFrame], true);
-        setInitialMount(true);
-      }, 150);
+    const animation = container.current.animation;
+    if (isHovered) {
+      playSound("hoverBtn");
+      // HOVER IN ANIMATIONS
+      switch (category) {
+        case "red":
+          animation.playSegments([redStart, redHold], true);
+          break;
+        case "yellow":
+          animation.playSegments([yellowStart, yellowHold], true);
+          break;
+        case "blue":
+          animation.playSegments([blueStart, blueHold], true);
+          break;
+        default:
+          break;
+      }
+    } else {
+      // HOVER OUT ANIMATIONS
+      switch (category) {
+        case "red":
+          animation.playSegments([redHold, redStart], true);
+          break;
+        case "yellow":
+          animation.playSegments([yellowHold, yellowStart], true);
+          break;
+        case "blue":
+          animation.playSegments([blueHold, blueStart], true);
+          break;
+        default:
+          break;
+      }
     }
   });
 
   const handleClick = () => {
     playSound("clickSound");
-    container.current.animation.playSegments([holdFrame, endFrame], true);
+    const animation = container.current.animation;
+    // CLICK ANIMATIONS
+    switch (category) {
+      case "red":
+        animation.playSegments([redHold, redEnd], true);
+        break;
+      case "yellow":
+        animation.playSegments([yellowHold, yellowEnd], true);
+        break;
+      case "blue":
+        animation.playSegments([blueHold, blueEnd], true);
+        break;
+      default:
+        break;
+    }
     setTimeout(() => {
       navigate();
-      setInitialMount(false);
     }, 200);
   };
 

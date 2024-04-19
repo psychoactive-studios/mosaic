@@ -10,10 +10,10 @@ function UiSounds() {
 
   useEffect(() => {
     setAudioRefs([hoverText, hoverBtn, clickSound, pathwaySound, modalSound]);
-    reduceVolume("hoverText", 0.1);
-    reduceVolume("hoverBtn", 0.1);
-    reduceVolume("clickSound", 0.1);
-    reduceVolume("pathwaySound", 0.6);
+    reduceVolume("hoverText", 0.5);
+    reduceVolume("hoverBtn", 0.03);
+    reduceVolume("clickSound", 0.05);
+    reduceVolume("pathwaySound", 0.7);
     reduceVolume("modalSound", 0.2);
   }, []);
 

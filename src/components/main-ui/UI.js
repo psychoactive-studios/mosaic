@@ -92,7 +92,7 @@ const UI = ({
         {/* PREVIOUS BTN */}
         <div className="ui-item">
           <ArrowBtn
-            lottiePath={lottieData[`arrow_${category}`]}
+            lottiePath={lottieData["arrow"]}
             category={category}
             frameDirection="right"
             text="previous"
