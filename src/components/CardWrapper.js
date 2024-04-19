@@ -18,7 +18,7 @@ const CardWrapper = ({ displayCards, currentIndex, flip, setFlip }) => {
 
   const { transform, opacity } = useSpring({
     opacity: flip ? 1 : 0,
-    transform: `perspective(600px) rotateY(${flip ? -180 : 0}deg)`,
+    transform: `perspective(1300px) rotateY(${flip ? -180 : 0}deg)`,
     config: {
       duration: 1500,
       easing: easings.easeInOutQuart,

@@ -1,5 +1,5 @@
 @import "./variables", "./mixins", "./UI", "./preloader", "./modals", "./cards",
-  "./comments", "./dynamicStyles", "./reusableClasses", "./mediaQueries";
+  "./comments", "./dynamicStyles", "./reusableClasses", "./mediaQueries", "./cardSizing";
 
 // CSS RESET
 * {
@@ -41,7 +41,7 @@ h2 {
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   letter-spacing: 0.512px;
   line-height: 150%;
 }

@@ -3,38 +3,15 @@
   html {
     font-size: calc(0.625rem + 0.41666666666666674vw);
   }
-  $card-height: 42rem;
-  .card-wrapper {
-    height: $card-height;
-  }
-  .lottie-container {
-    height: $card-height;
-  }
-  .top-half {
-    min-height: 420px;
-  }
 }
 @media (max-width: 1440px) {
   html {
     font-size: calc(0.8126951092611863rem + 0.20811654526534862vw);
   }
-  .top-half {
-    min-height: 320px;
-  }
 }
 
 // LAPTOP
 @media (max-width: 1120px) {
-  $card-width: 60vw;
-  $card-max-width: unset;
-  $card-height: 42rem;
-
-  .card-wrapper,
-  .lottie-container {
-    height: $card-height;
-    width: $card-width;
-    max-width: $card-max-width;
-  }
   .right {
     right: calc(10vw - 48px);
   }
@@ -45,12 +22,6 @@
 
 // TABLET
 @media (max-width: 863px) {
-  .top-half {
-    min-height: 290px;
-  }
-  .title-wrapper {
-    padding-top: 1rem;
-  }
   .additional-question {
     padding: 0.75rem 1rem;
   }
@@ -58,14 +29,6 @@
 
 // ******* MAIN MOBILE VIEW SWITCH ********* //
 @media (max-width: 806px) {
-  $card-width: 80vw;
-  $card-height: 40rem;
-
-  .card-wrapper,
-  .lottie-container {
-    width: $card-width;
-    height: $card-height;
-  }
   .ui-wrapper {
     width: 100%;
   }
@@ -101,14 +64,6 @@
 
 // MOBILE
 @media (max-width: 623px) {
-  $card-width: calc(100% - 2rem);
-  .card-wrapper {
-    width: $card-width;
-    margin-left: 1rem;
-  }
-  .lottie-container {
-    width: $card-width;
-  }
   .landingscreen-wrapper {
     @include flex_centre;
   }
@@ -126,37 +81,14 @@
 
 // SHRINK CARD
 @media (max-width: 519px) {
-  $card-width: 100%;
-  $card-height: 80vh;
-  $card-max-width: calc(100% - 4rem);
-  $card-max-height: 32rem;
-
   .react-card-back {
     @include flex_centre;
-  }
-
-  .card-wrapper {
-    width: $card-width;
-    height: $card-height;
-    max-width: $card-max-width;
-    max-height: $card-max-height;
-    margin-left: 0;
-  }
-  .lottie-container {
-    width: $card-width;
-    height: $card-height;
-    max-width: $card-max-width;
-    max-height: $card-max-height;
-    margin-left: 0;
   }
   .left {
     left: 2rem;
   }
   .hamburger-menu-wrapper {
     right: 2rem;
-  }
-  .card-border {
-    height: 28px;
   }
   .card-padding {
     padding: 0 1.5rem;
@@ -182,9 +114,6 @@
   }
   h3 {
     font-size: 1.5rem !important;
-  }
-  .top-half {
-    min-height: 200px;
   }
   .bottom-half {
     padding-top: 2rem;
@@ -246,20 +175,6 @@
 }
 
 @media (max-width: 419px) {
-  $card-width: calc(100% - 2rem);
-  $card-height: 35rem;
-
-  .card-wrapper {
-    max-width: $card-width;
-    max-height: $card-height;
-  }
-  .lottie-container {
-    max-width: $card-width;
-    max-height: $card-height;
-  }
-  .top-half {
-    min-height: 220px;
-  }
   .left {
     left: 1rem;
   }
