@@ -7,6 +7,7 @@ import { useIsSmallScreen } from "@/utils/customHooks";
 
 const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [reCheckHover, setReCheckHover] = useState(false);
 
   const container = useRef(null);
   useLottieBtnConfig(container, lottiePath);
@@ -24,59 +25,79 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
 
   useEffect(() => {
     const animation = container.current.animation;
-    if (isHovered) {
-      playSound("hoverBtn");
-      // HOVER IN ANIMATIONS
+    if (!isTouchDevice())
+      if (isHovered) {
+        playSound("hoverBtn");
+        setReCheckHover(false);
+        // HOVER IN ANIMATIONS
+        switch (category) {
+          case "red":
+            animation.playSegments([redStart, redHold], true);
+            break;
+          case "yellow":
+            animation.playSegments([yellowStart, yellowHold], true);
+            break;
+          case "blue":
+            animation.playSegments([blueStart, blueHold], true);
+            break;
+          default:
+            break;
+        }
+      } else {
+        // HOVER OUT ANIMATIONS
+        switch (category) {
+          case "red":
+            animation.playSegments([redHold, redStart], true);
+            break;
+          case "yellow":
+            animation.playSegments([yellowHold, yellowStart], true);
+            break;
+          case "blue":
+            animation.playSegments([blueHold, blueStart], true);
+            break;
+          default:
+            break;
+        }
+      }
+  }, [isHovered, reCheckHover]);
+
+  const handleClick = () => {
+    playSound("clickSound");
+    const animation = container.current.animation;
+    if (!isTouchDevice()) {
+      // CLICK ANIMATIONS DESKTOP
       switch (category) {
         case "red":
-          animation.playSegments([redStart, redHold], true);
+          animation.playSegments([redHold, redEnd], true);
           break;
         case "yellow":
-          animation.playSegments([yellowStart, yellowHold], true);
+          animation.playSegments([yellowHold, yellowEnd], true);
           break;
         case "blue":
-          animation.playSegments([blueStart, blueHold], true);
+          animation.playSegments([blueHold, blueEnd], true);
           break;
         default:
           break;
       }
     } else {
-      // HOVER OUT ANIMATIONS
+      // CLICK ANIMATIONS MOBILE
       switch (category) {
         case "red":
-          animation.playSegments([redHold, redStart], true);
+          animation.playSegments([redStart + 1, redEnd], true);
           break;
         case "yellow":
-          animation.playSegments([yellowHold, yellowStart], true);
+          animation.playSegments([yellowStart + 1, yellowEnd], true);
           break;
         case "blue":
-          animation.playSegments([blueHold, blueStart], true);
+          animation.playSegments([blueStart + 1, blueEnd], true);
           break;
         default:
           break;
       }
     }
-  });
-
-  const handleClick = () => {
-    playSound("clickSound");
-    const animation = container.current.animation;
-    // CLICK ANIMATIONS
-    switch (category) {
-      case "red":
-        animation.playSegments([redHold, redEnd], true);
-        break;
-      case "yellow":
-        animation.playSegments([yellowHold, yellowEnd], true);
-        break;
-      case "blue":
-        animation.playSegments([blueHold, blueEnd], true);
-        break;
-      default:
-        break;
-    }
     setTimeout(() => {
       navigate();
+      setReCheckHover(true);
     }, 200);
   };
 

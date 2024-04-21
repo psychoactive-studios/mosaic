@@ -13,6 +13,7 @@ import ShuffleBtn from "../buttons/ShuffleBtn";
 import SoundBtn from "../buttons/SoundBtn";
 import { useIsSmallScreen } from "@/utils/customHooks";
 import HamburgerBtn from "../buttons/HamburgerBtn";
+import PrevBtn from "../buttons/PrevBtn";
 
 const UI = ({
   onNext,
@@ -73,7 +74,7 @@ const UI = ({
         {/* NEXT BTN */}
         <div className="ui-item">
           <ArrowBtn
-            lottiePath={lottieData[`arrow_${category}`]}
+            lottiePath={lottieData["arrow"]}
             category={category}
             frameDirection="right"
             text="next"
@@ -83,7 +84,7 @@ const UI = ({
         {/* PATHWAYS BTN */}
         <div onClick={() => playSound("pathwaySound")}>
           <PathwayBtn
-            lottiePath={lottieData[`lp_${category}`]}
+            lottiePath={lottieData["lp"]}
             category={category}
             text="learning pathways"
             updateState={() => setModalState("pathways")}
@@ -98,6 +99,13 @@ const UI = ({
             text="previous"
             navigate={onPrevious}
           />
+          {/* <PrevBtn
+            lottiePath={lottieData["arrow"]}
+            category={category}
+            frameDirection="right"
+            text="previous"
+            navigate={onPrevious}
+          /> */}
         </div>
       </animated.div>
     </div>
