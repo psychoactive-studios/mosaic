@@ -9,7 +9,7 @@ const firaSans = Fira_Sans({
 const kefa = localFont({
   src: "../../public/fonts/Kefa-Bold.woff2",
   variable: "--font-kefa",
-  display: "block", // change to auto or swap if taking too long to load
+  display: "block",
 });
 
 export const metadata = {
