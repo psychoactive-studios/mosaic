@@ -73,8 +73,14 @@ const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
       }
     }
     setClicked(true); // for text colour
-    updateState(); // open pathway modal
+    if (!isTouchDevice()) updateState(); // open pathway modal - desktop
+
     setTimeout(() => {
+      if (isTouchDevice()) updateState(); // open pathway modal - mobile
+    }, 300);
+
+    setTimeout(() => {
+      if (isTouchDevice()) changeStartFrame();
       setClicked(false); // change back after modal opens
     }, 500);
   };
