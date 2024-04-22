@@ -86,11 +86,34 @@ function isTouchDevice() {
   }
 }
 
+function playLottie(start, end, animation) {
+  return animation.playSegments([start, end], true);
+}
+
+const setInitialFrame = (red, yellow, blue, category, container) => {
+  const animation = container.current.animation;
+  switch (category) {
+    case "red":
+      animation.goToAndStop(red, true);
+      break;
+    case "yellow":
+      animation.goToAndStop(yellow, true);
+      break;
+    case "blue":
+      animation.goToAndStop(blue, true);
+      break;
+    default:
+      break;
+  }
+};
+
 export {
   shuffleCards,
   getCategoryColor,
   getInitials,
   getTimeFromNow,
-  isTouchDevice
+  isTouchDevice,
+  playLottie,
+  setInitialFrame,
 };
 export default isTouchDevice;

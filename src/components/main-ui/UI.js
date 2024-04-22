@@ -13,7 +13,6 @@ import ShuffleBtn from "../buttons/ShuffleBtn";
 import SoundBtn from "../buttons/SoundBtn";
 import { useIsSmallScreen } from "@/utils/customHooks";
 import HamburgerBtn from "../buttons/HamburgerBtn";
-import PrevBtn from "../buttons/PrevBtn";
 
 const UI = ({
   onNext,

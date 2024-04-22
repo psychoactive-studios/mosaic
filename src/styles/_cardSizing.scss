@@ -16,68 +16,7 @@ $card-height: 530px;
   height: 100%;
 }
 
-// media queries
-// @media (min-width: 1960px) {
-//   $card-height: 42rem;
-
-//   .card-wrapper,
-//   .lottie-container {
-//     height: $card-height;
-//   }
-//   .top-half {
-//     min-height: 420px;
-//   }
-// }
-
-// @media (max-width: 1440px) {
-//   .top-half {
-//     min-height: 320px;
-//   }
-// }
-
-// @media (max-width: 1120px) {
-//   $card-width: 60vw;
-//   $card-max-width: unset;
-//   $card-height: 42rem;
-
-//   .card-wrapper,
-//   .lottie-container {
-//     height: $card-height;
-//     width: $card-width;
-//     max-width: $card-max-width;
-//   }
-// }
-
-// @media (max-width: 863px) {
-//   .top-half {
-//     min-height: 290px;
-//   }
-//   .title-wrapper {
-//     padding-top: 1rem;
-//   }
-// }
-
-// @media (max-width: 806px) {
-//   $card-width: 80vw;
-//   $card-height: 40rem;
-
-//   .card-wrapper,
-//   .lottie-container {
-//     width: $card-width;
-//     height: $card-height;
-//   }
-// }
-
 @media (max-width: 623px) {
-  // $card-width: calc(100% - 2rem);
-
-  // .card-wrapper,
-  // .lottie-container {
-  //   // width: $card-width;
-  //   // max-width: $card-width;
-  //   // height: auto;
-  //   // margin-left: 1rem;
-  // }
   $card-height: 480px;
 
   .card-wrapper,
@@ -94,10 +33,7 @@ $card-height: 530px;
 
 // //shrink card
 @media (max-width: 519px) {
-  // $card-width: 100%;
   $card-height: 400px;
-  // $card-max-width: calc(100% - 4rem);
-  // $card-max-height: 32rem;
 
   .card-wrapper,
   .lottie-container {
@@ -112,29 +48,10 @@ $card-height: 530px;
 }
 
 @media (max-width: 419px) {
-  // $card-width: calc(100% - 2rem);
-  // $card-height: 35rem;
-
-  // .card-wrapper {
-  //   max-width: $card-width;
-  //   max-height: $card-height;
-  // }
-  // .lottie-container {
-  //   max-width: $card-width;
-  //   max-height: $card-height;
-  // }
-  // .top-half {
-  //   min-height: 220px;
-  // }
-  // $card-width: 100%;
-  $card-height: 310px;
-  // $card-max-width: calc(100% - 4rem);
-  // $card-max-height: 32rem;
-
   .card-wrapper,
   .lottie-container {
     height: auto;
-    width: 90%;
+    width: 90vw;
   }
   .card-border {
     min-height: 12px;
@@ -146,7 +63,6 @@ $card-height: 530px;
   .card-id p {
     font-size: 10px !important;
   }
-
   .card-id {
     width: 14px;
     height: 14px;

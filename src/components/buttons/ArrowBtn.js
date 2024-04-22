@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import ToolTip from "./ToolTip";
 import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
-import { isTouchDevice } from "@/utils/utilityFunctions";
+import { isTouchDevice, playLottie } from "@/utils/utilityFunctions";
 import { useIsSmallScreen } from "@/utils/customHooks";
+import { arrow } from "@/configs/lottie/lottieFrames";
 
 const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -12,19 +13,7 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const container = useRef(null);
   useLottieBtnConfig(container, lottiePath);
 
-  // FRAMES
-  const redStart = 0;
-  const redHold = 5;
-  const redEnd = 12;
-  const yellowStart = 12;
-  const yellowHold = 17;
-  const yellowEnd = 24;
-  const blueStart = 24;
-  const blueHold = 28;
-  const blueEnd = 36;
-
   useEffect(() => {
-    const animation = container.current.animation;
     if (!isTouchDevice())
       if (isHovered) {
         playSound("hoverBtn");
@@ -32,13 +21,13 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
         // HOVER IN ANIMATIONS
         switch (category) {
           case "red":
-            animation.playSegments([redStart, redHold], true);
+            playAnim(arrow.red.start, arrow.red.hold);
             break;
           case "yellow":
-            animation.playSegments([yellowStart, yellowHold], true);
+            playAnim(arrow.yellow.start, arrow.yellow.hold);
             break;
           case "blue":
-            animation.playSegments([blueStart, blueHold], true);
+            playAnim(arrow.blue.start, arrow.blue.hold);
             break;
           default:
             break;
@@ -47,13 +36,13 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
         // HOVER OUT ANIMATIONS
         switch (category) {
           case "red":
-            animation.playSegments([redHold, redStart], true);
+            playAnim(arrow.red.hold, arrow.red.start);
             break;
           case "yellow":
-            animation.playSegments([yellowHold, yellowStart], true);
+            playAnim(arrow.yellow.hold, arrow.yellow.start);
             break;
           case "blue":
-            animation.playSegments([blueHold, blueStart], true);
+            playAnim(arrow.blue.hold, arrow.blue.start);
             break;
           default:
             break;
@@ -68,13 +57,13 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
       // CLICK ANIMATIONS DESKTOP
       switch (category) {
         case "red":
-          animation.playSegments([redHold, redEnd], true);
+          playAnim(arrow.red.hold, arrow.red.end);
           break;
         case "yellow":
-          animation.playSegments([yellowHold, yellowEnd], true);
+          playAnim(arrow.yellow.hold, arrow.yellow.end);
           break;
         case "blue":
-          animation.playSegments([blueHold, blueEnd], true);
+          playAnim(arrow.blue.hold, arrow.blue.end);
           break;
         default:
           break;
@@ -83,13 +72,13 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
       // CLICK ANIMATIONS MOBILE
       switch (category) {
         case "red":
-          animation.playSegments([redStart + 1, redEnd], true);
+          playAnim(arrow.red.start + 1, arrow.red.end);
           break;
         case "yellow":
-          animation.playSegments([yellowStart + 1, yellowEnd], true);
+          playAnim(arrow.yellow.start + 1, arrow.yellow.end);
           break;
         case "blue":
-          animation.playSegments([blueStart + 1, blueEnd], true);
+          playAnim(arrow.blue.start + 1, arrow.blue.end);
           break;
         default:
           break;
@@ -100,6 +89,11 @@ const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
       setReCheckHover(true);
     }, 200);
   };
+
+  function playAnim(start, end) {
+    const animation = container.current.animation;
+    playLottie(start, end, animation);
+  }
 
   const isSmallScreen = useIsSmallScreen();
 

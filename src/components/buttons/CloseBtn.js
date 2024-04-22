@@ -4,6 +4,7 @@ import {
   useLottieBtnConfig,
   returnFrames,
 } from "@/configs/lottie/lottieConfigs";
+import { isTouchDevice } from "@/utils/utilityFunctions";
 import { playSound } from "@/utils/sound";
 
 const CloseBtn = ({ handleClose }) => {
@@ -17,7 +18,7 @@ const CloseBtn = ({ handleClose }) => {
   useLottieBtnConfig(container, lottieData["close"], animationRef);
 
   useEffect(() => {
-    if (!initialMount) {
+    if (!initialMount && !isTouchDevice()) {
       animationRef.current.setDirection(isHovered ? 1 : -1);
       animationRef.current.playSegments(
         [
@@ -31,10 +32,15 @@ const CloseBtn = ({ handleClose }) => {
   }, [isHovered]);
 
   const handleClick = () => {
-    animationRef.current.playSegments([holdFrame, endFrame], true);
+    if (!isTouchDevice()) {
+      animationRef.current.playSegments([holdFrame, endFrame], true);
+    } else {
+      animationRef.current.playSegments([enterFrame, endFrame], true);
+    }
+    const closeDelay = !isTouchDevice() ? 150 : 300;
     setTimeout(() => {
       handleClose();
-    }, 200);
+    }, closeDelay);
   };
 
   return (

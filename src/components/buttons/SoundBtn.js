@@ -1,92 +1,102 @@
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { lottieData } from "@/data/lottieData";
 import ToolTip from "./ToolTip";
 import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
-import { isTouchDevice } from "@/utils/utilityFunctions";
+import { isTouchDevice, playLottie } from "@/utils/utilityFunctions";
 import { useIsSmallScreen } from "@/utils/customHooks";
+import { playSound } from "@/utils/sound";
+import { sound } from "@/configs/lottie/lottieFrames";
 
 const SoundBtn = ({ category, isMuted, toggleMute }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [reCheckHover, setReCheckHover] = useState(false);
   const [initialMount, setInitialMount] = useState(true);
 
   const container = useRef(null);
-
-  const onStartFrame = 0;
-  const onHoverStartFrame = 5;
-  const onHoverEndFrame = 6;
-  const offStartFrame = 10;
-  const offHoverStartFrame = 15;
-  const offHoverEndFrame = 16;
-  const finalFrame = 21;
-
-  useLottieBtnConfig(container, lottieData[`sound_${category}`]);
+  useLottieBtnConfig(container, lottieData["sound"]);
 
   useEffect(() => {
-    if (isMuted) {
-      container.current.animation.goToAndStop(10, true);
-    }
-  });
-
-  useEffect(() => {
-    if (initialMount && isHovered) {
-      setTimeout(() => {
-        handleHover();
-        setInitialMount(false);
-      }, 200);
-    }
-  }, [initialMount, isHovered]);
-
-  // handle lottie hover
-  useEffect(() => {
-    handleHover();
-  }, [isHovered]);
-
-  function handleHover() {
     if (isHovered) {
-      if (!isMuted) {
-        container.current.animation.playSegments(
-          [onStartFrame, onHoverEndFrame],
-          true
-        );
-      } else {
-        container.current.animation.playSegments(
-          [offStartFrame, offHoverEndFrame],
-          true
-        );
+      playSound("hoverBtn");
+      setReCheckHover(false);
+      setInitialMount(false);
+      // HOVER IN ANIMATIONS
+      switch (category) {
+        case "red":
+          !isMuted
+            ? playAnim(sound.red.muteStart, sound.red.muteHold)
+            : playAnim(sound.red.unmuteStart, sound.red.unmuteHold);
+          break;
+        case "yellow":
+          !isMuted
+            ? playAnim(sound.yellow.muteStart, sound.yellow.muteHold)
+            : playAnim(sound.yellow.unmuteStart, sound.yellow.unmuteHold);
+          break;
+        case "blue":
+          !isMuted
+            ? playAnim(sound.blue.muteStart, sound.blue.muteHold)
+            : playAnim(sound.blue.unmuteStart, sound.blue.unmuteHold);
+          break;
+        default:
+          break;
       }
     } else {
-      if (!isMuted) {
-        container.current.animation.playSegments(
-          [onHoverStartFrame, onStartFrame],
-          true
-        );
-      } else {
-        container.current.animation.playSegments(
-          [offHoverStartFrame, offStartFrame],
-          true
-        );
-      }
+      // HOVER OUT ANIMATIONS
+      if (!initialMount)
+        switch (category) {
+          case "red":
+            !isMuted
+              ? playAnim(sound.red.muteHold, sound.red.muteStart)
+              : playAnim(sound.red.unmuteHold, sound.red.unmuteStart);
+            break;
+          case "yellow":
+            !isMuted
+              ? playAnim(sound.yellow.muteHold, sound.yellow.muteStart)
+              : playAnim(sound.yellow.unmuteHold, sound.yellow.unmuteStart);
+            break;
+          case "blue":
+            !isMuted
+              ? playAnim(sound.blue.muteHold, sound.blue.muteStart)
+              : playAnim(sound.blue.unmuteHold, sound.blue.unmuteStart);
+            break;
+          default:
+            break;
+        }
     }
-  }
+  }, [isHovered, reCheckHover]);
 
-  // handle lottie click
   const handleClick = () => {
-    if (!isMuted) {
-      container.current.animation.playSegments(
-        [onHoverStartFrame, offStartFrame],
-        true
-      );
-    } else {
-      container.current.animation.playSegments(
-        [offHoverStartFrame, finalFrame],
-        true
-      );
+    // CLICK ANIMATIONS DESKTOP
+    switch (category) {
+      case "red":
+        !isMuted
+          ? playAnim(sound.red.muteHold, sound.red.muteEnd)
+          : playAnim(sound.red.unmuteHold, sound.red.unmuteEnd);
+        break;
+      case "yellow":
+        !isMuted
+          ? playAnim(sound.yellow.muteHold, sound.yellow.muteEnd)
+          : playAnim(sound.yellow.unmuteHold, sound.yellow.unmuteEnd);
+        break;
+      case "blue":
+        !isMuted
+          ? playAnim(sound.blue.muteHold, sound.blue.muteEnd)
+          : playAnim(sound.blue.unmuteHold, sound.blue.unmuteEnd);
+        break;
+      default:
+        break;
     }
+    // toggle
     setTimeout(() => {
-      setInitialMount(true);
       toggleMute();
+      setReCheckHover(true);
     }, 150);
   };
+
+  function playAnim(start, end) {
+    const animation = container.current.animation;
+    playLottie(start, end, animation);
+  }
 
   const isSmallScreen = useIsSmallScreen();
 
