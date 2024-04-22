@@ -9,6 +9,9 @@ export function PreloadResources() {
   ReactDOM.preload("/images/card-border_red.png", { as: "image" });
   ReactDOM.preload("/images/card-border_blue.png", { as: "image" });
   ReactDOM.preload("/images/card-border_yellow.png", { as: "image" });
+  ReactDOM.preload("/svgs/red-bullet.svg", { as: "image" });
+  ReactDOM.preload("/svgs/yellow-bullet.svg", { as: "image" });
+  ReactDOM.preload("/svgs/blue-bullet.svg", { as: "image" });
   ReactDOM.preload("/svgs/red-frame.svg", { as: "image" });
   ReactDOM.preload("/svgs/red-frame-flipped.svg", { as: "image" });
   ReactDOM.preload("/svgs/blue-frame.svg", { as: "image" });
