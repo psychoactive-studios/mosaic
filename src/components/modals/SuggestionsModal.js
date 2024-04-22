@@ -64,6 +64,7 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
             <p className="medium no-mb">
               When using the cards, we encourage you to:
             </p>
+            <br />
             <p>
               Listen to understand, don’t listen to respond.
               <br />
@@ -84,6 +85,7 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
             <p className="medium no-mb">
               They have been designed based on a number of assumptions:
             </p>
+            <br />
             <p>
               Directly ‘calling people out’ can limit their capacity for reason,
               empathy and self-reflection. It can further isolate a young

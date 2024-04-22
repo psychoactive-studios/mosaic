@@ -40,12 +40,12 @@
   }
   .left {
     left: calc(((100vw - 530px) / 2) - 5.5px);
-    top: 1rem;
+    top: 2rem;
     justify-content: flex-start;
   }
   .right {
     right: unset;
-    bottom: 1rem;
+    bottom: 2rem;
     align-items: center;
     width: 100%;
     flex-direction: row-reverse;
@@ -209,7 +209,7 @@
   }
 
   // shrink ui
-  $ui-lottie-size: 42px;
+  $ui-lottie-size: 48px;
 
   .ui-lottie-container,
   .close-lottie {
@@ -223,12 +223,12 @@
   .pathways-lottie,
   .pathways-pulse-wrapper,
   .pathways-text-wrapper {
-    width: 72px;
-    height: 72px;
+    width: 78px;
+    height: 78px;
   }
   .pathways-pulse-lottie {
-    width: 96px;
-    height: 96px;
+    width: 102px;
+    height: 102px;
   }
   .pathways-text-wrapper p {
     font-size: 9px !important;

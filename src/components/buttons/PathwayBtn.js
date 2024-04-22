@@ -7,6 +7,7 @@ import {
   setInitialFrame,
 } from "@/utils/utilityFunctions";
 import { lp } from "@/configs/lottie/lottieFrames";
+import { playSound } from "@/utils/sound";
 
 const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -20,6 +21,7 @@ const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
     if (!isTouchDevice()) {
       setInitialMount(false);
       if (isHovered) {
+        playSound("hoverBtn");
         // HOVER IN ANIMATIONS
         switch (category) {
           case "red":
