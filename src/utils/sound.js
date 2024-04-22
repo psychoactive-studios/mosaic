@@ -1,6 +1,7 @@
 import { isTouchDevice } from "./utilityFunctions";
 
 const sounds = {};
+let volumes = {};
 
 let muted = false;
 let soundHasStarted = false;
@@ -8,6 +9,12 @@ let soundHasStarted = false;
 function setAudioRefs(soundRef) {
   soundRef.forEach((ref) => {
     sounds[`${ref.current?.id}`] = ref.current;
+  });
+}
+
+function storeVolumes() {
+  Object.keys(sounds).forEach((key) => {
+    volumes[key] = sounds[key].volume;
   });
 }
 
@@ -20,9 +27,10 @@ function playSound(sound) {
 
 function reduceVolume(target, amount) {
   sounds[target].volume = amount;
+  storeVolumes();
 }
 
-function muteToggle(targetVolume) {
+function muteToggle() {
   if (soundHasStarted && !isTouchDevice()) {
     if (!muted) {
       fadeAllSounds(0);
@@ -31,13 +39,13 @@ function muteToggle(targetVolume) {
       }, 500);
     } else {
       unMuteAllSounds();
-      fadeAllSounds(targetVolume);
+      fadeAllSounds();
     }
     muted = !muted;
   }
 }
 
-function visibilitySoundToggle(targetVolume, visibilityState) {
+function visibilitySoundToggle(visibilityState) {
   if (soundHasStarted && !muted && !isTouchDevice()) {
     if (!visibilityState) {
       fadeAllSounds(0);
@@ -46,14 +54,15 @@ function visibilitySoundToggle(targetVolume, visibilityState) {
       }, 500);
     } else {
       unMuteAllSounds();
-      fadeAllSounds(targetVolume);
+      fadeAllSounds();
     }
   }
 }
 
-function fadeAllSounds(targetVolume) {
+function fadeAllSounds() {
   const allSounds = Object.keys(sounds);
   allSounds.forEach((key) => {
+    const targetVolume = volumes[key];
     animateVolume(sounds[key], targetVolume, 500);
   });
 }

@@ -33,7 +33,7 @@ const UI = ({
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
-    muteToggle(0.2);
+    muteToggle();
   };
 
   const isSmallScreen = useIsSmallScreen();
@@ -98,13 +98,6 @@ const UI = ({
             text="previous"
             navigate={onPrevious}
           />
-          {/* <PrevBtn
-            lottiePath={lottieData["arrow"]}
-            category={category}
-            frameDirection="right"
-            text="previous"
-            navigate={onPrevious}
-          /> */}
         </div>
       </animated.div>
     </div>

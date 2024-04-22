@@ -39,7 +39,7 @@
     top: unset;
   }
   .left {
-    left: calc(10vw - 6.5px);
+    left: calc(((100vw - 530px) / 2) - 5.5px);
     top: 1rem;
     justify-content: flex-start;
   }
@@ -72,10 +72,10 @@
     justify-content: center;
   }
   .hamburger-menu-wrapper {
-    right: 1rem;
+    right: calc((100vw - 480px) / 2);
   }
   .left {
-    left: 1rem;
+    left: calc(((100vw - 480px) / 2) - 5.5px);
   }
 }
 
@@ -84,11 +84,11 @@
   .react-card-back {
     @include flex_centre;
   }
-  .left {
-    left: 2rem;
-  }
   .hamburger-menu-wrapper {
-    right: 2rem;
+    right: calc((100vw - 400px) / 2);
+  }
+  .left {
+    left: calc(((100vw - 400px) / 2) - 5.5px);
   }
   .card-padding {
     padding: 0 1.5rem;
@@ -176,10 +176,10 @@
 
 @media (max-width: 419px) {
   .left {
-    left: 1rem;
+    left: 5%;
   }
   .hamburger-menu-wrapper {
-    right: 1rem;
+    right: 5%;
   }
   .pathway-item {
     width: 47%;

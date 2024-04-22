@@ -1,6 +1,10 @@
+import isTouchDevice from "@/utils/utilityFunctions";
+
 export const lottieData = {
-  preloader: "lotties/MOSAIC_PRELOADER_v05.json",
-  hero: "lotties/MOSAIC_HERO_v12.json",
+  preloader: `lotties/MOSAIC_PRELOADER_${
+    isTouchDevice() ? "MOBILE_v01" : "v05"
+  }.json`,
+  hero: `lotties/MOSAIC_HERO_${isTouchDevice() ? "MOBILE_v01" : "v12"}.json`,
   close: "lotties/ui/Close_RED.json",
   arrow: "lotties/ui/nextArrow_COMBINED.json",
   shuffle: "lotties/ui/Shuffle_FULL_COMBINED.json",

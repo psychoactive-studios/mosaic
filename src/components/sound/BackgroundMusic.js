@@ -14,7 +14,7 @@ export default function BackgroundMusic() {
     // fade out music if user navigates away in tab
     const handleVisibilityChange = () => {
       const visibilityState = document.visibilityState === "visible";
-      visibilitySoundToggle(0.25, visibilityState);
+      visibilitySoundToggle(visibilityState);
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => {

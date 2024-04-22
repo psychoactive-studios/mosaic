@@ -146,7 +146,7 @@
 .hamburger-menu-wrapper {
   @include flex_centre;
   position: absolute;
-  right: 10vw;
+  right: calc((100vw - 530px) / 2);
   top: 1rem;
   z-index: 3;
 }
