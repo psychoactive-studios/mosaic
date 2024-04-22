@@ -51,13 +51,13 @@ $card-height: 530px;
   .card-wrapper,
   .lottie-container {
     height: auto;
-    width: 90vw;
+    width: 94vw;
   }
   .card-border {
     min-height: 12px;
   }
   .title-wrapper {
-    min-height: 120px;
+    min-height: 110px;
   }
   .card-category p,
   .card-id p {
@@ -69,12 +69,20 @@ $card-height: 530px;
   }
   h3 {
     font-size: 1.5rem !important;
+    letter-spacing: 0.312px !important;
+    line-height: 130% !important;
   }
-  .question-text,
-  .additional-text {
+  .question-text {
     font-size: 12px !important;
     p {
       font-size: 12px !important;
+    }
+  }
+
+  .additional-text p {
+    font-size: 10px !important;
+    p {
+      font-size: 10px !important;
     }
   }
 }
