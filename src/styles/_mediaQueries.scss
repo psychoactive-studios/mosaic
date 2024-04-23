@@ -77,6 +77,10 @@
   .left {
     left: calc(((100vw - 480px) / 2) - 5.5px);
   }
+  .pathway-item {
+    width: 31%;
+    margin-bottom: 1.5rem !important;
+  }
 }
 
 // SHRINK CARD
@@ -140,13 +144,6 @@
   .yellow-bullet-point {
     background: url(/svgs/yellow-bullet-mobile.svg) no-repeat left 2px;
   }
-  .pathway-item {
-    width: 31%;
-    margin-bottom: 1.5rem !important;
-  }
-  .pdf-title {
-    font-size: 14px !important;
-  }
   .modal-footer {
     flex-direction: row;
     flex-wrap: wrap;
@@ -183,8 +180,9 @@
   }
   .pathway-item {
     width: 47%;
-    height: 15rem;
-    margin-bottom: 1rem !important;
+  }
+  .pdf-title {
+    font-size: 14px !important;
   }
   .modal-inner-medium {
     width: 100%;

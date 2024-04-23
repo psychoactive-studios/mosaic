@@ -59,7 +59,7 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
               cultures, views and opinions we have around us.
             </p>
           </div>
-          <div className="modal-text-block no-mb">
+          <div className="modal-text-block">
             <h2>Suggestions</h2>
             <p className="medium no-mb">
               When using the cards, we encourage you to:
@@ -100,7 +100,7 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
               and what they believe in.
             </p>
           </div>
-          <div className="modal-text-block no-mb hide">
+          <div className="modal-text-block no-mb">
             <h2>Facilitation Guide</h2>
             <p className="medium">
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
@@ -121,7 +121,15 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
               elit. Nunc vulputate libero et velit interdum. Morem ipsum dolor
               sit amet, consectetur.
             </p>
-            <PrimaryCTA text={"Download Guide"} icon={"download"} />
+            <div className="flex-center">
+              <a
+                className="no-deco"
+                href={"/pdfs/placeholder.pdf"}
+                target="_blank"
+              >
+                <PrimaryCTA text={"Download Guide"} icon={"download"} />
+              </a>
+            </div>
           </div>
         </div>
       </animated.div>

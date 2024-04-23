@@ -125,11 +125,11 @@ $card-max-width: 42rem;
 }
 
 .pathway-item {
-  width: 21%;
+  width: 22%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 10rem;
+  aspect-ratio: 1/1;
 }
 
 .pdf-img {

@@ -11,9 +11,11 @@ export async function POST(req) {
     subject: "Your comment on Mosaic Cards has been approved!",
     text: `Kia ora ${fullName},
 
-Great news! Your feedback on the ${pathway} has been approved and added to the Mosaic website at: https://mosaicaotearoa.nz. We’re thrilled to share your comments with the community.
+Great news! Your feedback on the ${pathway} has been approved and added to the Mosaic website at: mosaicaotearoa.nz. 
 
-${comment}
+We’re thrilled to share your comment with the community.
+
+"${comment}"
 
 It’s voices like yours that fuel our journey towards a more understanding, inclusive, and vibrant Aotearoa. 
 

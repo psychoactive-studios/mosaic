@@ -21,9 +21,10 @@ const PathwaysModal = ({ modalState, isClosing, handleClose }) => {
           <div className="modal-text-block mb-large">
             <h1>Learning Pathways</h1>
             <p>
-              Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet odio. Jorem ipsum
-              dolor sit amet, consectetur adipiscing elit.{" "}
+              Learning Pathways are structured educational resources designed to
+              facilitate meaningful conversations on complex topics. We invite
+              your feedback, insights, and suggestions for improvements to this
+              pathway, as well as your ideas for additional topics.
             </p>
           </div>
           <div className="pathways-wrapper flex mb-large">
