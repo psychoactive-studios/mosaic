@@ -46,7 +46,7 @@ const AboutModal = ({ modalState, isClosing, handleClose }) => {
             <h2>Extra support</h2>
             <p>
               If you or a young person finds using the cards/the facilitation
-              upsetting please check ICON (in case of online negativity
+              upsetting please check ICON (in case of online negativity 
               <a target="_blank" href="https://icon.org.nz/about">
                 https://icon.org.nz/about/
               </a>

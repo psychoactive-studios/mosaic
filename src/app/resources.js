@@ -21,6 +21,8 @@ export function PreloadResources() {
   ReactDOM.preload("/svgs/yellow-frame.svg", { as: "image" });
   ReactDOM.preload("/svgs/yellow-frame-flipped.svg", { as: "image" });
 
+  ReactDOM.preload("/svgs/download.svg", { as: "image" });
+
   ReactDOM.preload("/images/pathway_thumbnails/allyship.jpg", { as: "image" });
   ReactDOM.preload("/images/pathway_thumbnails/building-cohesion.jpg", {
     as: "image",
