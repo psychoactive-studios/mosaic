@@ -91,3 +91,19 @@ export const shuffle = {
     unshuffleEnd: 61,
   },
 };
+
+// HAMBURGER FRAMES
+export const hamburger = {
+  red: {
+    start: 0,
+    end: 10,
+  },
+  blue: {
+    start: 10,
+    end: 20,
+  },
+  yellow: {
+    start: 20,
+    end: 30,
+  },
+};

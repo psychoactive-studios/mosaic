@@ -66,7 +66,10 @@ const UI = ({
       {/*  HAMBURGER BTN */}
       {isSmallScreen && (
         <div className="ui-item">
-          <HamburgerBtn updateState={() => setModalState("mobileMenu")} />
+          <HamburgerBtn
+            updateState={() => setModalState("mobileMenu")}
+            category={category}
+          />
         </div>
       )}
       <animated.div className="ui-inner right" style={uiSlideRight}>

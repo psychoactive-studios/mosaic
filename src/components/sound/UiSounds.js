@@ -2,15 +2,13 @@ import { setAudioRefs, reduceVolume } from "@/utils/sound";
 import { useEffect, useRef, memo } from "react";
 
 function UiSounds() {
-  const hoverText = useRef(null);
   const hoverBtn = useRef(null);
   const clickSound = useRef(null);
   const pathwaySound = useRef(null);
   const modalSound = useRef(null);
 
   useEffect(() => {
-    setAudioRefs([hoverText, hoverBtn, clickSound, pathwaySound, modalSound]);
-    reduceVolume("hoverText", 0.1);
+    setAudioRefs([hoverBtn, clickSound, pathwaySound, modalSound]);
     reduceVolume("hoverBtn", 0.04);
     reduceVolume("clickSound", 0.05);
     reduceVolume("pathwaySound", 0.6);
@@ -19,11 +17,6 @@ function UiSounds() {
 
   return (
     <>
-      <audio
-        src="https://general-client-assets.sfo3.cdn.digitaloceanspaces.com/Mosaic/ui-sound/hover_text.wav"
-        ref={hoverText}
-        id="hoverText"
-      />
       <audio
         src="https://general-client-assets.sfo3.cdn.digitaloceanspaces.com/Mosaic/ui-sound/hover_btns.mp3"
         ref={hoverBtn}

@@ -6,6 +6,7 @@ export const lottieData = {
   }.json`,
   hero: `lotties/MOSAIC_HERO_${isTouchDevice() ? "MOBILE_v03" : "v12"}.json`,
   close: "lotties/ui/Close_RED.json",
+  hamburger: "lotties/ui/Hamburger_RED.json",
   arrow: "lotties/ui/nextArrow_COMBINED.json",
   shuffle: "lotties/ui/Shuffle_FULL_COMBINED.json",
   sound: "lotties/ui/Sound_FULL_COMBINED.json",

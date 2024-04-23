@@ -69,10 +69,10 @@ export const useUiSlideRightRegardless = (trigger) => {
   const uiSlideRight = useSpring({
     delay: 1000,
     from: {
-      transform: "translateX(200%)",
+      transform: "translateX(300%)",
     },
     to: {
-      transform: trigger ? "translateX(0%)" : "translateX(200%)",
+      transform: trigger ? "translateX(0%)" : "translateX(300%)",
     },
     config: { ...config.slow },
   });

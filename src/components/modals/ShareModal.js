@@ -3,8 +3,12 @@ import CloseBtn from "../buttons/CloseBtn";
 import { usePageFadeConfig } from "@/configs/react-spring/modalConfigs";
 import ShareIcon from "../buttons/ShareIcon";
 import { svgData } from "@/data/svgData";
+import { useState, useEffect } from "react";
+import ToolTip from "../buttons/ToolTip";
 
 const ShareModal = ({ modalState, isClosing, handleClose }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const pageFade = usePageFadeConfig("share", modalState, isClosing);
   const copyLink = "https://arataiohi.org.nz/publications/mosaic-cards/";
   const copyToClipboard = () => {
@@ -28,6 +32,12 @@ const ShareModal = ({ modalState, isClosing, handleClose }) => {
               <ShareIcon platform={"reddit"} />
             </div>
             <p className="medium align-left mb-small">Page Link</p>
+            <ToolTip
+              text={"copy link"}
+              category={"red"}
+              isHovered={isHovered}
+              direction={"right"}
+            />
             <div
               className="copy-link-wrapper flex pointer"
               onClick={copyToClipboard}

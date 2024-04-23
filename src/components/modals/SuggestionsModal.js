@@ -121,7 +121,7 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
               elit. Nunc vulputate libero et velit interdum. Morem ipsum dolor
               sit amet, consectetur.
             </p>
-            <div className="flex-center">
+            <div className="flex-center download-div">
               <a
                 className="no-deco"
                 href={"/pdfs/placeholder.pdf"}
