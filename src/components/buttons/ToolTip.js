@@ -15,10 +15,16 @@ const ToolTip = ({ text, category, isHovered, direction }) => {
     setRightPosition
   );
 
+  const isShareModal = text == "copy link" || text == "link copied!";
+
   return (
-    <div className="tooltip-wrapper">
+    <div
+      className={`tooltip-wrapper ${
+        isShareModal ? "share-tooltip-wrapper" : ""
+      }`}
+    >
       <div
-        className="tooltip-container"
+        className={`tooltip-container ${isShareModal ? "share-tooltip" : ""}`}
         ref={toolTipWrapper}
         style={
           direction == "right"

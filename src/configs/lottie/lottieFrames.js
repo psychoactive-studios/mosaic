@@ -96,14 +96,14 @@ export const shuffle = {
 export const hamburger = {
   red: {
     start: 0,
-    end: 10,
+    end: 5,
   },
   blue: {
-    start: 10,
-    end: 20,
+    start: 5,
+    end: 10,
   },
   yellow: {
-    start: 20,
-    end: 30,
+    start: 10,
+    end: 15,
   },
 };

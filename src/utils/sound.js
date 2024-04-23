@@ -21,7 +21,7 @@ function storeVolumes() {
 function playSound(sound) {
   if (!isTouchDevice()) {
     soundHasStarted = true;
-    if (!muted) sounds[sound].play();
+    if (!muted && sound !== "undefined") sounds[sound].play();
   }
 }
 

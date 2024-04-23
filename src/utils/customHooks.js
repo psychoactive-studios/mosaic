@@ -15,7 +15,7 @@ export const useCloseModalOnEscapeKey = (handleClose) => {
 };
 
 export const useIsSmallScreen = () => {
-  const [isSmall, setIsSmall] = useState(true);
+  const [isSmall, setIsSmall] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -56,9 +56,9 @@ export const useAdjustViewportHeight = (isIOS) => {
       };
 
       adjustHeight();
-      window.addEventListener("resize", adjustHeight); 
+      window.addEventListener("resize", adjustHeight);
       return () => {
-        window.removeEventListener("resize", adjustHeight); 
+        window.removeEventListener("resize", adjustHeight);
       };
     }
   }, [isIOS]);
@@ -72,8 +72,8 @@ export const useAdjustDivHeight = (isIOS, ref) => {
         ref.current.style.height = `${viewportHeight}px`;
       };
 
-      adjustHeight(); 
-      window.addEventListener("resize", adjustHeight); 
+      adjustHeight();
+      window.addEventListener("resize", adjustHeight);
       return () => {
         window.removeEventListener("resize", adjustHeight);
       };

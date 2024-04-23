@@ -127,6 +127,20 @@
   }
 }
 
+.share-tooltip-wrapper {
+  position: static;
+}
+
+.share-tooltip {
+  position: static;
+  height: auto;
+  width: auto;
+  p {
+    margin-bottom: 0 !important;
+  }
+  transform: translateX(10%);
+}
+
 .social-share-icon {
   background-color: $subtle-grey;
   padding: 1rem;
@@ -202,6 +216,7 @@
   padding: 1.125rem 0.75rem;
   gap: 1rem;
   justify-content: space-around;
+  width: 102%;
 }
 
 // SVG hovers

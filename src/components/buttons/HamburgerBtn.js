@@ -22,19 +22,19 @@ const HamburgerBtn = ({ updateState, category }) => {
   }, []);
 
   const handleClick = () => {
-    // switch (category) {
-    //   case "red":
-    //     playAnim(hamburger.red.start, hamburger.red.end);
-    //     break;
-    //   case "yellow":
-    //     playAnim(hamburger.yellow.start, arrow.yellow.end);
-    //     break;
-    //   case "blue":
-    //     playAnim(hamburger.blue.start, hamburger.blue.end);
-    //     break;
-    //   default:
-    //     break;
-    // }
+    switch (category) {
+      case "red":
+        playAnim(hamburger.red.start, hamburger.red.end);
+        break;
+      case "yellow":
+        playAnim(hamburger.yellow.start, hamburger.yellow.end);
+        break;
+      case "blue":
+        playAnim(hamburger.blue.start, hamburger.blue.end);
+        break;
+      default:
+        break;
+    }
     setTimeout(() => {
       updateState();
     }, 150);

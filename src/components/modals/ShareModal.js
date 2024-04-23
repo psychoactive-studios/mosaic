@@ -8,12 +8,27 @@ import ToolTip from "../buttons/ToolTip";
 
 const ShareModal = ({ modalState, isClosing, handleClose }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [text, setText] = useState("copy link");
 
   const pageFade = usePageFadeConfig("share", modalState, isClosing);
   const copyLink = "https://arataiohi.org.nz/publications/mosaic-cards/";
-  const copyToClipboard = () => {
+
+  const handleClick = () => {
+    setText("link copied!");
+    setTimeout(() => {
+      setIsHovered(false);
+    }, 1000);
     navigator.clipboard.writeText(copyLink);
   };
+
+  useEffect(() => {
+    if (!isHovered) {
+      setTimeout(() => {
+        setText("copy link");
+      }, 500);
+    }
+  }, [isHovered]);
+
   return (
     <>
       <animated.div
@@ -31,16 +46,24 @@ const ShareModal = ({ modalState, isClosing, handleClose }) => {
               <ShareIcon platform={"x"} />
               <ShareIcon platform={"reddit"} />
             </div>
-            <p className="medium align-left mb-small">Page Link</p>
-            <ToolTip
-              text={"copy link"}
-              category={"red"}
-              isHovered={isHovered}
-              direction={"right"}
-            />
+            <div className="flex page-link-wrapper">
+              <p className="medium align-left">Page Link</p>
+              <div className="mb-small">
+                <ToolTip
+                  text={text}
+                  category={"red"}
+                  isHovered={isHovered}
+                  direction={"left"}
+                />
+              </div>
+            </div>
             <div
               className="copy-link-wrapper flex pointer"
-              onClick={copyToClipboard}
+              onClick={handleClick}
+              onMouseEnter={() => {
+                setIsHovered(true);
+              }}
+              onMouseLeave={() => setIsHovered(false)}
             >
               <p className="no-mb">{copyLink}</p>
               {svgData["copy"]}
