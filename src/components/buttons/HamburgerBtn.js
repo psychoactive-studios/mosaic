@@ -1,10 +1,7 @@
 import { useUiSlideRightRegardless } from "@/configs/react-spring/uiSlideConfigs";
 import { animated } from "@react-spring/web";
 import { lottieData } from "@/data/lottieData";
-import {
-  useLottieBtnConfig,
-  returnFrames,
-} from "@/configs/lottie/lottieConfigs";
+import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
 import { useState, useEffect, useRef } from "react";
 import { playLottie } from "@/utils/utilityFunctions";
 import { hamburger } from "@/configs/lottie/lottieFrames";

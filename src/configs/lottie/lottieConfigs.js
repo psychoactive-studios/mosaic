@@ -3,6 +3,8 @@ import lottie from "lottie-web";
 
 export const useLottieBtnConfig = (container, lottiePath, animationRef) => {
   useEffect(() => {
+    if (!container.current) return;
+
     const animation = lottie.loadAnimation({
       container: container.current,
       renderer: "svg",
@@ -18,7 +20,10 @@ export const useLottieBtnConfig = (container, lottiePath, animationRef) => {
     } else {
       container.current.animation = animation;
       return () => {
-        container.current.animation.destroy();
+        if (container.current && container.current.animation) {
+          container.current.animation.destroy();
+          container.current.animation = null;
+        }
       };
     }
   }, [lottiePath]);
