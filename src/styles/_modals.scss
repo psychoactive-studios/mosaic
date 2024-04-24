@@ -27,6 +27,7 @@ $card-max-width: 42rem;
 .modal-outer-large {
   width: 100%;
   min-height: 100vh;
+  overflow-y: hidden;
 }
 
 .modal-inner-wrapper {
