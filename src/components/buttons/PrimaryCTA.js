@@ -6,7 +6,7 @@ const PrimaryCTA = ({ text, icon }) => {
       }`}
     >
       <p className="medium no-mb">{text}</p>
-      <img src={`/svgs/icons/${icon}.svg`} alt={`/${icon} icon`} />
+      <img src={`/svgs/${icon}.svg`} alt={`/${icon} icon`} />
     </div>
   );
 };
