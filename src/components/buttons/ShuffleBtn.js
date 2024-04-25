@@ -160,6 +160,21 @@ const ShuffleBtn = ({ category, isShuffled, toggleShuffle }) => {
 
   const isSmallScreen = useIsSmallScreen();
 
+  // set initial frame to shuffled
+  useEffect(() => {
+    if (container.current && container.current.animation) {
+      const animation = container.current.animation;
+      animation.addEventListener("DOMLoaded", () => {
+        animation.playSegments([9, 10], true);
+      });
+    }
+    return () => {
+      if (container.current && container.current.animation) {
+        container.current.animation.removeEventListener("DOMLoaded");
+      }
+    };
+  }, []);
+
   return (
     <div className="ui-lottie-wrapper pointer">
       {!isTouchDevice() && !isSmallScreen && (

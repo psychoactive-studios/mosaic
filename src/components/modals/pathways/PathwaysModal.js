@@ -23,8 +23,8 @@ const PathwaysModal = ({ modalState, isClosing, handleClose }) => {
             <p>
               Learning Pathways are structured educational resources designed to
               facilitate meaningful conversations on complex topics. We invite
-              your feedback, insights, and suggestions for improvements to this
-              pathway, as well as your ideas for additional topics.
+              your feedback, insights, and suggestions for improvements to these
+              pathways, as well as your ideas for additional topics.
             </p>
           </div>
           <div className="pathways-wrapper flex mb-large">
