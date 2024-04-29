@@ -1,6 +1,6 @@
 const PathwayItem = ({ title, thumbnail, pdf }) => {
   return (
-    <a className="pathway-item no-deco mb-large" href={pdf} download>
+    <a className="pathway-item no-deco mb-large" href={pdf} target="_blank">
       <div
         style={{ background: `url(${thumbnail})` }}
         className="pdf-img mb-small"
