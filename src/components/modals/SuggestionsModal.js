@@ -103,28 +103,24 @@ const SuggestionsModal = ({ modalState, isClosing, handleClose }) => {
           <div className="modal-text-block no-mb">
             <h2>Facilitation Guide</h2>
             <p className="medium">
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              officia deserunt mollit culpa qui officia deserunt mollit anim id
-              est laborum.
+              This guide is provided to support you with challenging
+              conversations in a constructive way.
             </p>
             <p>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Nunc vulputate libero et
-              velit interdum. Morem ipsum dolor sit amet, consectetur adipiscing
-              elit. Nunc vulputate libero et velit interdum. Morem ipsum dolor
-              sit amet, consectetur.
+              Facilitation is the process of guiding individuals and groups
+              through discussions or activities to achieve common goals.
+              Facilitation ensures equitable participation and encourages
+              collaboration.
             </p>
             <p>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Nunc vulputate libero et
-              velit interdum. Morem ipsum dolor sit amet, consectetur adipiscing
-              elit. Nunc vulputate libero et velit interdum. Morem ipsum dolor
-              sit amet, consectetur.
+              This involves creating a supportive environment where diverse
+              perspectives are valued and decision- making processes are
+              inclusive.
             </p>
             <div className="flex-center download-div">
               <a
                 className="no-deco"
-                href={"/pdfs/placeholder.pdf"}
+                href={"/pdfs/mosaic-facilitation-guide.pdf"}
                 target="_blank"
               >
                 <PrimaryCTA text={"Download Guide"} icon={"download"} />
