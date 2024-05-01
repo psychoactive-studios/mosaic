@@ -1,4 +1,4 @@
-import { useIsSmallScreen } from "@/utils/customHooks";
+import { useIsSmallScreen } from "@/hooks/customHooks";
 import { useSpring, config } from "@react-spring/web";
 import { useEffect } from "react";
 

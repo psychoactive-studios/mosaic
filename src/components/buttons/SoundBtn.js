@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { lottieData } from "@/data/lottieData";
+import { lottieData } from "@/data/lottieLinks";
 import ToolTip from "./ToolTip";
-import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
+import { useLottieBtnConfig } from "@/hooks/configs/lottie/lottieConfigs";
 import { isTouchDevice, playLottie } from "@/utils/utilityFunctions";
-import { useIsSmallScreen } from "@/utils/customHooks";
+import { useIsSmallScreen } from "@/hooks/customHooks";
 import { playSound } from "@/utils/sound";
-import { sound } from "@/configs/lottie/lottieFrames";
+import { sound } from "@/data/lottieFrames";
 
 const SoundBtn = ({ category, isMuted, toggleMute }) => {
   const [isHovered, setIsHovered] = useState(false);

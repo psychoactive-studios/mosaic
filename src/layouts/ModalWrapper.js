@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { animated } from "@react-spring/web";
-import ShareModal from "./ShareModal";
-import AboutModal from "./AboutModal";
-import DownloadModal from "./DownloadModal";
-import SuggestionsModal from "./SuggestionsModal";
-import PathwaysModal from "./pathways/PathwaysModal";
-import MobileModal from "./MobileModal";
-import { closeDelay } from "@/data/globalVariables";
-import { useModalFade } from "@/configs/react-spring/modalConfigs";
-import { useCloseModalOnEscapeKey } from "@/utils/customHooks";
+import ShareModal from "./modals/ShareModal";
+import AboutModal from "./modals/AboutModal";
+import DownloadModal from "./modals/DownloadModal";
+import SuggestionsModal from "./modals/SuggestionsModal";
+import PathwaysModal from "./modals/PathwaysModal";
+import MobileModal from "./modals/MobileModal";
+import { closeDelay } from "@/utils/globalVariables";
+import { useModalFade } from "@/hooks/configs/react-spring/modalConfigs";
+import { useCloseModalOnEscapeKey } from "@/hooks/customHooks";
 
 const ModalWrapper = ({ modalState, setModalState }) => {
   const [isClosing, setIsClosing] = useState(false);

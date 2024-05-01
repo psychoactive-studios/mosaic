@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSpring, animated, easings } from "react-spring";
-import Card from "./main-ui/Card";
-import Preloader from "./lotties/Preloader";
-import HeroLottie from "./lotties/HeroLottie";
+import Card from "./Card";
+import Preloader from "../components/lotties/PreloaderLottie";
+import HeroLottie from "../components/lotties/HeroLottie";
 
 const CardWrapper = ({ displayCards, currentIndex, flip, setFlip }) => {
   const [loading, setLoading] = useState(true);

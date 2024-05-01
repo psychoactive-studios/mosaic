@@ -1,17 +1,17 @@
 import { useState, useEffect, useRef, memo } from "react";
 import { animated } from "@react-spring/web";
-import UI from "./main-ui/UI";
+import UI from "./UiWrapper";
 import { cardData, cardCategories } from "@/data/cardData";
 import { getCategoryColor, shuffleCards } from "@/utils/utilityFunctions";
-import Footer from "./main-ui/Footer";
-import TopBorder from "./main-ui/TopBorder";
+import Footer from "./Footer";
+import TopBorder from "../components/ui/TopBorder";
 import {
   useFooterSlideUpConfig,
   useTopBorderSlideDownConfig,
-} from "@/configs/react-spring/uiSlideConfigs";
+} from "@/hooks/configs/react-spring/uiSlideConfigs";
 import CardWrapper from "./CardWrapper";
-import { useIsSmallScreen } from "@/utils/customHooks";
-import { useAdjustDivHeight, useIsIOS } from "@/utils/customHooks";
+import { useIsSmallScreen } from "@/hooks/customHooks";
+import { useAdjustDivHeight, useIsIOS } from "@/hooks/customHooks";
 
 const MainScreen = ({ setModalState }) => {
   const [flip, setFlip] = useState(false);

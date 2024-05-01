@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef, memo } from "react";
-import { lottieData } from "@/data/lottieData";
+import { lottieData } from "@/data/lottieLinks";
 import {
   useLottieBtnConfig,
   returnFrames,
-} from "@/configs/lottie/lottieConfigs";
+} from "@/hooks/configs/lottie/lottieConfigs";
 import { isTouchDevice } from "@/utils/utilityFunctions";
 import { playSound } from "@/utils/sound";
 

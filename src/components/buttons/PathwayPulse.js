@@ -1,4 +1,4 @@
-import { lottieData } from "@/data/lottieData";
+import { lottieData } from "@/data/lottieLinks";
 import { useRef, useEffect } from "react";
 import lottie from "lottie-web";
 

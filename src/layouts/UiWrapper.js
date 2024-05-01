@@ -1,18 +1,18 @@
 import { getCategoryColor, isTouchDevice } from "@/utils/utilityFunctions";
-import { lottieData } from "@/data/lottieData";
-import ArrowBtn from "../buttons/ArrowBtn";
+import { lottieData } from "@/data/lottieLinks";
+import ArrowBtn from "../components/buttons/ArrowBtn";
 import { useState, useEffect, memo } from "react";
-import PathwayBtn from "../buttons/PathwayBtn";
+import PathwayBtn from "../components/buttons/PathwayBtn";
 import { animated } from "@react-spring/web";
 import {
   useUiSlideLeft,
   useUiSlideRight,
-} from "@/configs/react-spring/uiSlideConfigs";
+} from "@/hooks/configs/react-spring/uiSlideConfigs";
 import { muteToggle, playSound } from "@/utils/sound";
-import ShuffleBtn from "../buttons/ShuffleBtn";
-import SoundBtn from "../buttons/SoundBtn";
-import { useIsSmallScreen } from "@/utils/customHooks";
-import HamburgerBtn from "../buttons/HamburgerBtn";
+import ShuffleBtn from "../components/buttons/ShuffleBtn";
+import SoundBtn from "../components/buttons/SoundBtn";
+import { useIsSmallScreen } from "@/hooks/customHooks";
+import HamburgerBtn from "../components/buttons/HamburgerBtn";
 
 const UI = ({
   onNext,

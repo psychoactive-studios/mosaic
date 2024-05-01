@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import ToolTip from "./ToolTip";
-import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
+import { useLottieBtnConfig } from "@/hooks/configs/lottie/lottieConfigs";
 import { playSound } from "@/utils/sound";
 import { isTouchDevice, playLottie } from "@/utils/utilityFunctions";
-import { useIsSmallScreen } from "@/utils/customHooks";
-import { arrow } from "@/configs/lottie/lottieFrames";
+import { useIsSmallScreen } from "@/hooks/customHooks";
+import { arrow } from "@/data/lottieFrames";
 
 const ArrowBtn = ({ lottiePath, category, frameDirection, text, navigate }) => {
   const [isHovered, setIsHovered] = useState(false);

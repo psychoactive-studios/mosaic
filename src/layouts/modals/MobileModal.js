@@ -1,8 +1,8 @@
 import { animated } from "@react-spring/web";
-import CloseBtn from "../buttons/CloseBtn";
+import CloseBtn from "../../components/buttons/CloseBtn";
 import { svgData } from "@/data/svgData";
-import { usePageSlideConfig } from "@/configs/react-spring/modalConfigs";
-import { useIsIOS } from "@/utils/customHooks";
+import { usePageSlideConfig } from "@/hooks/configs/react-spring/modalConfigs";
+import { useIsIOS } from "@/hooks/customHooks";
 
 const MobileModal = ({ modalState, setModalState, isClosing, handleClose }) => {
   const pageSlide = usePageSlideConfig("mobileMenu", modalState, isClosing);

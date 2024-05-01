@@ -1,10 +1,10 @@
 import { animated } from "@react-spring/web";
-import CloseBtn from "../../buttons/CloseBtn";
-import { usePageSlideConfig } from "@/configs/react-spring/modalConfigs";
-import PathwayItem from "./PathwayItem";
+import CloseBtn from "../../components/buttons/CloseBtn";
+import { usePageSlideConfig } from "@/hooks/configs/react-spring/modalConfigs";
+import PathwayItem from "../../components/pathways/PathwayItem";
 import { pathwaysData } from "@/data/pathwaysData";
-import CommentForm from "./CommentForm";
-import Comments from "./Comments";
+import CommentForm from "../../components/pathways/CommentForm";
+import Comments from "../../components/pathways/Comments";
 
 const PathwaysModal = ({ modalState, isClosing, handleClose }) => {
   const pageSlide = usePageSlideConfig("pathways", modalState, isClosing);

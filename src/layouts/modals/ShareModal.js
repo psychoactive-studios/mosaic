@@ -1,10 +1,10 @@
 import { animated } from "@react-spring/web";
-import CloseBtn from "../buttons/CloseBtn";
-import { usePageFadeConfig } from "@/configs/react-spring/modalConfigs";
-import ShareIcon from "../buttons/ShareIcon";
+import CloseBtn from "../../components/buttons/CloseBtn";
+import { usePageFadeConfig } from "@/hooks/configs/react-spring/modalConfigs";
+import ShareIcon from "../../components/buttons/ShareIcon";
 import { svgData } from "@/data/svgData";
 import { useState, useEffect } from "react";
-import ToolTip from "../buttons/ToolTip";
+import ToolTip from "../../components/buttons/ToolTip";
 
 const ShareModal = ({ modalState, isClosing, handleClose }) => {
   const [isHovered, setIsHovered] = useState(false);

@@ -1,10 +1,10 @@
-import { useUiSlideRightRegardless } from "@/configs/react-spring/uiSlideConfigs";
+import { useUiSlideRightRegardless } from "@/hooks/configs/react-spring/uiSlideConfigs";
 import { animated } from "@react-spring/web";
-import { lottieData } from "@/data/lottieData";
-import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
+import { lottieData } from "@/data/lottieLinks";
+import { useLottieBtnConfig } from "@/hooks/configs/lottie/lottieConfigs";
 import { useState, useEffect, useRef } from "react";
 import { playLottie } from "@/utils/utilityFunctions";
-import { hamburger } from "@/configs/lottie/lottieFrames";
+import { hamburger } from "@/data/lottieFrames";
 
 const HamburgerBtn = ({ updateState, category }) => {
   const [triggerAnimations, setTriggerAnimations] = useState(false);

@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef, memo } from "react";
-import { lottieData } from "@/data/lottieData";
+import { lottieData } from "@/data/lottieLinks";
 import { animated } from "@react-spring/web";
 import {
   useHeroBoxShadow,
   useHeroGrow,
-} from "@/configs/react-spring/heroHoverConfig";
-import { useHeroLottieConfig } from "@/configs/lottie/lottieConfigs";
-import FooterHero from "../main-ui/FooterHero";
+} from "@/hooks/configs/react-spring/heroHoverConfig";
+import { useHeroLottieConfig } from "@/hooks/configs/lottie/lottieConfigs";
+import FooterHero from "../ui/FooterHero";
 import { playSound } from "@/utils/sound";
 
 const HeroLottie = ({ onFlip, showHero }) => {

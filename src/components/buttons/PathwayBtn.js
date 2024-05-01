@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import PathwayPulse from "./PathwayPulse";
-import { useLottieBtnConfig } from "@/configs/lottie/lottieConfigs";
+import { useLottieBtnConfig } from "@/hooks/configs/lottie/lottieConfigs";
 import {
   isTouchDevice,
   playLottie,
   setInitialFrame,
 } from "@/utils/utilityFunctions";
-import { lp } from "@/configs/lottie/lottieFrames";
+import { lp } from "@/data/lottieFrames";
 import { playSound } from "@/utils/sound";
 
 const PathwayBtn = ({ lottiePath, category, text, updateState }) => {
