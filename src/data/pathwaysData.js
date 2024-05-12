@@ -66,3 +66,13 @@ export const pathwaysData = [
     pdf: "pdfs/pathway_pdfs/white-supremacy.pdf",
   },
 ];
+
+// create your own pathways
+const pathwayTemplate = {
+  id: pathwaysData.length + 2,
+  title: "Create your own!",
+  thumbnail: "images/pathway_thumbnails/_create-your-own-pathway.jpg",
+  pdf: "https://docs.google.com/presentation/d/1H0dSH_vh6QuNrg3DhZ52fXqZH3MwtkgaPnb_JAvjyjA/edit#slide=id.g2d0eae58d08_0_42",
+};
+
+pathwaysData.push(pathwayTemplate);
